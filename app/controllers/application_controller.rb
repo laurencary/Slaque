@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+    helper_method :current_user
     before_action :snake_case_params
 
     def current_user
