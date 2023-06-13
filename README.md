@@ -1,2 +1,0 @@
-# Slaque
-clone of Slack
