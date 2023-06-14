@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './SigninForm.css';
+import './SigninPage.css';
+import SessionHeader from '../SessionHeader';
+import SessionForm from '../SessionForm';
 
-const SigninFormPage = () => {
+const SigninPage = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [email, setEmail] = useState('');
@@ -30,21 +32,20 @@ const SigninFormPage = () => {
             });
     }
 
+    const handleSetEmail = (e) => setEmail(e.target.value);
+    const handleSetPassword = (e) => setPassword(e.target.value);
+
     return (
-        <div className='p-refreshed_page'>
-            <h1 className='p-refreshed_page__heading'>Sign in to Slaque</h1>
-            <p>We suggest using the <strong>email address you use at work.</strong></p>
-            <form onSubmit={ handleSubmit }>
-                <input type="text" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@work-email.com" />
-                <input type="password" 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="password" />
-                <button>Sign In With Email</button>
-            </form>
+        <div className='signin-page'>
+            <SessionHeader type="login" />
+            <SessionForm 
+                handleSubmit={ handleSubmit } 
+                email={ email }
+                handleSetEmail={ handleSetEmail }
+                password={password}
+                handleSetPassword={handleSetPassword}
+                buttonText="Sign In With Email"
+                />
             <ul>
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
@@ -52,4 +53,4 @@ const SigninFormPage = () => {
     )
 };
 
-export default SigninFormPage
+export default SigninPage
