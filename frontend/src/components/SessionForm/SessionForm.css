@@ -22,6 +22,7 @@ input.form-input {
     border: 1px solid rgba(29, 28, 29, .3);
     transition: border 80ms ease-out, box-shadow 80ms ease-out;
     box-sizing: border-box;
+    text-align: left;
 }
 
 .session-button {
