@@ -26,7 +26,7 @@ input.form-input {
 }
 
 .session-button {
-    background-color: #4a154b;
+    background-color: #611f69;
     border: none;
     color: #fff;
     /* margin-bottom: 20px; */
@@ -42,4 +42,30 @@ input.form-input {
 .session-button:focus {
     --saf-0: rgba(var(--sk_highlight, 18, 100, 163), 1);
     box-shadow: 0 0 0 1px var(--saf-0), 0 0 0 5px #1d9bd14d;
+}
+
+.session-button:hover {
+    background-color: #742b7c;
+}
+
+.signin-redirect {
+    margin-bottom: 1px;
+    margin-top: 24px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50px;
+    font-size: 15px;
+}
+
+.signin-redirect-text {
+    color: #616061;
+    font-weight: 300;
+    font-family: Slack-Lato, Slack-Fractions, appleLogo, sans-serif;
+}
+
+.signin-redirect-link {
+    color: #1264a3;
+    text-decoration: none;
 }

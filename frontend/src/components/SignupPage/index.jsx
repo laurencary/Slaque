@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import '../SigninPage/SignPage.css';
 import SessionHeader from '../SessionHeader';
 import SessionForm from '../SessionForm';
 import DemoButton from '../DemoButton';
 import SessionSplitter from '../SessionSplitter';
+
 
 const SignupPage = () => {
     const dispatch = useDispatch();
@@ -58,6 +59,10 @@ const SignupPage = () => {
             </ul>
             <SessionSplitter />
             <DemoButton />
+            <div className="signin-redirect">
+                <p className='signin-redirect-text'>Already using Slaque?</p>
+                <Link to="/signin" className='signin-redirect-link'>Sign in to an existing workspace</Link>
+            </div>
         </div>
     )
 };
