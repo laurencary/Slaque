@@ -1,1 +1,5 @@
 /* TODO Add site wide styles */
+* {
+    background-color: #4a154b;
+    color: white
+}
