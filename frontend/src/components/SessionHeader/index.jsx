@@ -1,4 +1,4 @@
-import SlackLogo from '../../images/slack_logo.svg'
+import SlaqueLogo from '../SlaqueLogo'
 import './SessionHeader.css'
 
 const SessionHeader = ({type}) => {
@@ -8,10 +8,7 @@ const SessionHeader = ({type}) => {
         <>
             <header className="session-header">
                 <div className="left-col"></div>
-                <div className="center-col">
-                    <img src={ SlackLogo } className="logo-img" />
-                    <h1 className="logo-text">slaque</h1>
-                </div>
+                <SlaqueLogo />
                 <div className="right-col"></div>
             </header>
             <h1 className="session-title">{ title }</h1>

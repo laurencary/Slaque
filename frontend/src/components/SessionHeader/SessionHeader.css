@@ -7,23 +7,7 @@
     width: 100%;
 }
 
-.logo-img {
-    height: 26px;
-}
-
-.center-col {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo-text {
-    padding-left: .8vw;
-    font-size: 28px;
-}
-
-.left-col, .center-col, .right-col {
+.left-col, .logo-container, .right-col {
     height: 30px;
 }
 
