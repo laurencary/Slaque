@@ -144,3 +144,7 @@ table {
         sans-serif;
     text-align: center;
 }
+
+.hidden {
+    display: none;
+}

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './SignupPage.css';
+import '../SigninPage/SignPage.css';
 import SessionHeader from '../SessionHeader';
 import SessionForm from '../SessionForm';
+import DemoButton from '../DemoButton';
+import SessionSplitter from '../SessionSplitter';
 
 const SignupPage = () => {
     const dispatch = useDispatch();
@@ -12,6 +14,11 @@ const SignupPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
+
+    let errorClass = "hidden";
+    useEffect(() => {
+        errorClass = errors.length === 0 ? "hidden" : "session-errors"
+    }, [errors])
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -36,7 +43,7 @@ const SignupPage = () => {
     const handleSetPassword = (e) => setPassword(e.target.value);
 
     return (
-        <div className='signup-page'>
+        <div className='sign-page'>
             <SessionHeader type="signup" />
             <SessionForm
                 handleSubmit={handleSubmit}
@@ -46,9 +53,11 @@ const SignupPage = () => {
                 handleSetPassword={handleSetPassword}
                 buttonText="Continue"
             />
-            <ul>
+            <ul className={errorClass}>
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
+            <SessionSplitter />
+            <DemoButton />
         </div>
     )
 };

@@ -1,0 +1,16 @@
+.hr-container {
+    margin: 24px 0 24px 0;
+    display: flex;
+    align-items: center;
+    width: 400px;
+}
+
+hr {
+    color: #565456;
+    flex-grow: 1;
+    margin: 0;
+}
+
+.hr-text {
+    padding: 0 20px;
+}

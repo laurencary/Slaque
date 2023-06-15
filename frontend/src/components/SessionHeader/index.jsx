@@ -2,7 +2,7 @@ import SlackLogo from '../../images/slack_logo.svg'
 import './SessionHeader.css'
 
 const SessionHeader = ({type}) => {
-    const title = type === "login" ? "Sign in to Slack" : "First, enter your credentials"
+    const title = type === "login" ? "Sign in to Slaque" : "First, enter your credentials"
 
     return (
         <>
