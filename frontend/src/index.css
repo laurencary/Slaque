@@ -1,5 +1,10 @@
 /* TODO Add site wide styles */
-* {
+.purple {
     background-color: #4a154b;
     color: white
+}
+
+.white {
+    background-color: white;
+    color: black;
 }

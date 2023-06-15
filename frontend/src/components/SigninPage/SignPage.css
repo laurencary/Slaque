@@ -9,6 +9,7 @@
     text-align: center;
 }
 
+
 .sign-page {
     align-items: center;
     display: flex;
@@ -21,4 +22,29 @@
 
 .session-errors {
     color: red;
+}
+.demo-button {
+    width: 400px;
+    max-width: 400px;
+    /* margin-bottom: 20px; */
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    height: 44px;
+    min-width: 96px;
+    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    /* -webkit-appearance: none; */
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid rgba(29, 28, 29, .3);
+    color: black;
+}
+
+.demo-button:hover {
+    outline: 0;
+    box-shadow: 0 0 0 1px #a3a6a9, 0 0 0 3px rgba(163, 166, 168, 0.3);
+    /* border-radius: 4px; */
+    border-color: transparent;
+    transition: all 80ms linear;
 }

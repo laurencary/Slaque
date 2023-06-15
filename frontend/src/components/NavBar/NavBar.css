@@ -37,6 +37,7 @@
 
 .link-text {
     text-decoration: none;
+    color: white
 }
 
 .link-text:hover {

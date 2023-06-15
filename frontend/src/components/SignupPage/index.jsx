@@ -21,6 +21,12 @@ const SignupPage = () => {
         errorClass = errors.length === 0 ? "hidden" : "session-errors"
     }, [errors])
 
+    useEffect(() => {
+        document.body.classList.remove('purple')
+        document.body.classList.add('white')
+    }, [])
+
+
     if (sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {

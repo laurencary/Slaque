@@ -1,7 +1,7 @@
 import csrfFetch from "./csrf";
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
-const REMOVE_CURRENT_USER = 'session/setCurrentUser';
+const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
 export const setCurrentUser = (user) => ({
     type: SET_CURRENT_USER,
@@ -89,8 +89,6 @@ const sessionReducer = (state = initialState, action) => {
         case SET_CURRENT_USER:
             return { ...state, user: action.payload };
         case REMOVE_CURRENT_USER:
-            debugger
-            // return { ...state, user: null };    
             const newState = {...state}
             newState.user = null
             return newState
