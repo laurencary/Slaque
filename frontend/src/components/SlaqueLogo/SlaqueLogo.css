@@ -7,10 +7,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 
 .logo-text {
     padding-left: .8vw;
     font-size: 28px;
     font-weight: 500;
+    color: inherit;
 }

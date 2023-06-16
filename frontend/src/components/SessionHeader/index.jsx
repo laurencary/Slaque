@@ -8,7 +8,7 @@ const SessionHeader = ({type}) => {
         <>
             <header className="session-header">
                 <div className="left-col"></div>
-                <SlaqueLogo isColorful={true}/>
+                <SlaqueLogo isColorful={true} color="black"/>
                 <div className="right-col"></div>
             </header>
             <h1 className="session-title">{ title }</h1>

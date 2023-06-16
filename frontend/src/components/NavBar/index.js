@@ -61,7 +61,7 @@ const NavBar = () => {
 
     return (
         <ul className="nav-bar">
-            <SlaqueLogo isColorful={false}/>
+            <SlaqueLogo isColorful={false} color="white"/>
             <div id="nav-li-container">
                 {sessionLinksLeft}
                 {sessionLinksRight}

@@ -2,4 +2,52 @@
     padding-top: 128px;
     padding-bottom: 160px;
     position: relative;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    font-family: Slack-Circular-Pro,
+        "Helvetica Neue",
+        Helvetica,
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif
+}
+
+#welcome-header {
+    font-size: 50px;
+    margin-bottom: 24px;
+    font-weight: 600;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+#workspaces-container {
+    color: black
+}
+#workspaces-container ul {
+    background-color: white;
+}
+#workspaces-container li {
+    padding: 16px;
+    font-weight: 500;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+#workspaces-container p{
+    display: flex;
+    align-items: center;
+    padding: 1rem !important;
+    background-color: #ecdeec;
+    font-size: 1.125rem;
+    border-radius: 5px 5px 0 0;
+    min-height: calc(50px + 2rem);
+}
+
+#welcome-wave {
+    margin-right: 4px;
+    height: 56px;
+    aspect-ratio: auto 52 / 56;
+    width: 52px;
 }
