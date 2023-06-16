@@ -26,7 +26,7 @@ const SigninPage = () => {
     }, [errors])
 
     if (sessionUser) return <Redirect to="/welcome" />;
-
+// 
     const handleSubmit = (e) => {
         e.preventDefault();
         return dispatch(sessionActions.login({ email, password }))

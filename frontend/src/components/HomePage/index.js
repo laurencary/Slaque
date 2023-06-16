@@ -1,4 +1,4 @@
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavBar from "../NavBar";
 import './HomePage.css'
