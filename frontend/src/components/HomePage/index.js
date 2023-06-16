@@ -1,7 +1,11 @@
+import { Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import NavBar from "../NavBar";
 import './HomePage.css'
 
 const HomePage = () => {
+    const sessionUser = useSelector(state => state.session.user);
+
     return (
         <>
             <NavBar />

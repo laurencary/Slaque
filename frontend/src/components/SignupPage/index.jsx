@@ -27,7 +27,7 @@ const SignupPage = () => {
     }, [])
 
 
-    if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) return <Redirect to="/welcome" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();

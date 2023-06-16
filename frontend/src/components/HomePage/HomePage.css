@@ -1,8 +1,9 @@
 .billboard {
-    padding-top: 30px;
+    padding-top: 104px;
     margin-left: 4vw;
     margin-right: 4vw;
     padding-bottom: 80px;
+    position: relative;
 }
 
 .yellow-text {

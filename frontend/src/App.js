@@ -4,8 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import SigninPage from "./components/SigninPage";
 import SignupPage from "./components/SignupPage";
 import './reset.css'
-import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
+import Welcome from "./components/Welcome";
 
 function App() {
 	return (
@@ -17,7 +17,7 @@ function App() {
 				<SignupPage />
 			</Route>
 			<Route path="/welcome">
-				<NavBar />
+				<Welcome />
 			</Route>
 			<Route exact path="/">
 				<HomePage />

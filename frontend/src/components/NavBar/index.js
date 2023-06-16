@@ -1,18 +1,11 @@
+import { useEffect, Redirect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link } from "react-router-dom/";
+import { NavLink, Link } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import SlaqueLogo from "../SlaqueLogo";
 import * as sessionActions from '../../store/session';
 import './NavBar.css'
 import DemoButton from "../DemoButton";
-import { useEffect } from "react";
-
-// logged out or logged in w no workspace selected
-//logo
-//github or nothing
-//linkedin or nothing
-//signin or signout
-//signup or createworkspace
 
 const NavBar = () => {
     const dispatch = useDispatch();
@@ -39,11 +32,9 @@ const NavBar = () => {
     } else {
         sessionLinksRight = (
             <div id="nav-right">
-                <div onClick={() => dispatch(sessionActions.logout())} className="link-text button-purple">SIGN OUT</div>
-                <NavLink to="/welcome" className="link-text button-white">CREATE A NEW WORKSPACE</NavLink>
+                <Link to="/" onClick={() => dispatch(sessionActions.logout())} className="link-text button-purple">SIGN OUT</Link>
+                <NavLink to="" className="link-text button-white">CREATE A NEW WORKSPACE</NavLink>
             </div>
-            // signout
-            // create a new workspace
         )
     }
     

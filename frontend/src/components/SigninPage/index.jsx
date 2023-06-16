@@ -25,7 +25,7 @@ const SigninPage = () => {
         errorClass = errors.length === 0 ? "hidden" : "session-errors"
     }, [errors])
 
-    if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) return <Redirect to="/welcome" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();

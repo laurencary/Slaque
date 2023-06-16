@@ -24,6 +24,9 @@
     color: red;
 }
 .demo-button-session {
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
     width: 400px;
     max-width: 400px;
     /* margin-bottom: 20px; */
@@ -39,6 +42,7 @@
     cursor: pointer;
     border: 2px solid rgba(29, 28, 29, .3);
     color: black;
+    vertical-align: center;
 }
 
 .demo-button-session:hover {
