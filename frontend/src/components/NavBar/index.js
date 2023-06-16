@@ -3,7 +3,6 @@ import { NavLink, Link } from "react-router-dom/";
 import ProfileButton from "./ProfileButton";
 import SlaqueLogo from "../SlaqueLogo";
 import * as sessionActions from '../../store/session';
-
 import './NavBar.css'
 import DemoButton from "../DemoButton";
 import { useEffect } from "react";
@@ -32,16 +31,16 @@ const NavBar = () => {
         sessionLinksRight = (
             <div id="nav-left">
                 <></>
-                <DemoButton/>
-                //signin 
-                //sign up
+                <li className="nav-li"><NavLink to="/signin" className="link-text signin">Sign In</NavLink></li>
+                <DemoButton classNm="button-purple signin" />
+                <NavLink to="/get-started/createnew" className="link-text button-white extra">SIGN UP</NavLink>
             </div>
         ) 
     } else {
         sessionLinksRight = (
             <div id="nav-right">
-                <li className="nav-li" ><div onClick={() => dispatch(sessionActions.logout())} className="link-text signout">SIGN OUT</div></li>
-                <li className="nav-li" ><NavLink to="" className="link-text create-workspace">CREATE A NEW WORKSPACE</NavLink></li>
+                <div onClick={() => dispatch(sessionActions.logout())} className="link-text button-purple">SIGN OUT</div>
+                <NavLink to="/welcome" className="link-text button-white">CREATE A NEW WORKSPACE</NavLink>
             </div>
             // signout
             // create a new workspace

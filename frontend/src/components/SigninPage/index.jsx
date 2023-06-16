@@ -50,7 +50,7 @@ const SigninPage = () => {
     return (
         <div className='sign-page'>
             <SessionHeader type="login" />
-            <DemoButton />
+            <DemoButton classNm="demo-button-session" />
             <SessionSplitter />
             <SessionForm 
                 handleSubmit={ handleSubmit } 

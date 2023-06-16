@@ -64,7 +64,7 @@ const SignupPage = () => {
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
             <SessionSplitter />
-            <DemoButton />
+            <DemoButton classNm={"demo-button-session"} />
             <div className="signin-redirect">
                 <p className='signin-redirect-text'>Already using Slaque?</p>
                 <Link to="/signin" className='signin-redirect-link'>Sign in to an existing workspace</Link>

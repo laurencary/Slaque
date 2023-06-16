@@ -23,7 +23,7 @@
 .session-errors {
     color: red;
 }
-.demo-button {
+.demo-button-session {
     width: 400px;
     max-width: 400px;
     /* margin-bottom: 20px; */
@@ -41,7 +41,7 @@
     color: black;
 }
 
-.demo-button:hover {
+.demo-button-session:hover {
     outline: 0;
     box-shadow: 0 0 0 1px #a3a6a9, 0 0 0 3px rgba(163, 166, 168, 0.3);
     /* border-radius: 4px; */
