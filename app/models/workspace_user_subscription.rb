@@ -17,5 +17,5 @@ class WorkspaceUserSubscription < ApplicationRecord
     validates :full_name, presence: true
 
     belongs_to :user
-    belongs_to :workspace	
+    belongs_to :workspace
 end

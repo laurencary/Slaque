@@ -13,14 +13,11 @@ class Workspace < ApplicationRecord
 
 	belongs_to :owner,
 		primary_key: :id,
-		foreign_key: :ownder_id,
+		foreign_key: :owner_id,
 		class_name: :User
 
-	has_many :workspace_subscriptions,
+	has_many :workspace_users,
 		foreign_key: :workspace_id,
 		class_name: :WorkspaceUserSubscription,
 		dependent: :destroy
-	
-	has_many :workspace_users,
-		through: :workspace_subscriptions
 end
