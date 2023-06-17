@@ -16,16 +16,10 @@ const SignupPage = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    let errorClass = "hidden";
-    useEffect(() => {
-        errorClass = errors.length === 0 ? "hidden" : "session-errors"
-    }, [errors])
-
     useEffect(() => {
         document.body.classList.remove('purple')
         document.body.classList.add('white')
     }, [])
-
 
     if (sessionUser) return <Redirect to="/welcome" />;
 
@@ -40,11 +34,7 @@ const SignupPage = () => {
                 } catch {
                     data = await res.text(); // Will hit this case if the server is down
                 }
-                if (data?.errors) {
-                    setErrors(data.errors);
-                    console.log(errors);
-                    errorClass = "session-errors"
-                }
+                if (data?.errors) setErrors(data.errors)
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
             });
@@ -57,16 +47,14 @@ const SignupPage = () => {
         <div className='sign-page'>
             <SessionHeader type="signup" />
             <SessionForm
-                handleSubmit={handleSubmit}
                 email={email}
-                handleSetEmail={handleSetEmail}
                 password={password}
+                errors={errors}
+                handleSubmit={handleSubmit}
+                handleSetEmail={handleSetEmail}
                 handleSetPassword={handleSetPassword}
                 buttonText="Continue"
             />
-            <ul className="session-errors">
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
             <SessionSplitter />
             <DemoButton classNm={"demo-button-session"} />
             <div className="signin-redirect">

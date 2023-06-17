@@ -20,13 +20,8 @@ const SigninPage = () => {
         document.body.classList.add('white')
     }, [])
 
-    let errorClass = "hidden";
-    // useEffect(() => {
-    //     errorClass = errors.length === 0 ? "hidden" : "session-errors"
-    // }, [errors])
-
     if (sessionUser) return <Redirect to="/welcome" />;
-// 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         return dispatch(sessionActions.login({ email, password }))
@@ -38,12 +33,12 @@ const SigninPage = () => {
                 } catch {
                     data = await res.text(); // Will hit this case if the server is down
                 }
-                if (data?.errors) setErrors(data.errors);
+                if (data?.errors) setErrors(data.errors)
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
             });
-    }
-    
+        }
+        
     const handleSetEmail = (e) => setEmail(e.target.value);
     const handleSetPassword = (e) => setPassword(e.target.value);
 
@@ -53,16 +48,14 @@ const SigninPage = () => {
             <DemoButton classNm="demo-button-session" />
             <SessionSplitter />
             <SessionForm 
-                handleSubmit={ handleSubmit } 
                 email={ email }
-                handleSetEmail={ handleSetEmail }
                 password={password}
+                errors={errors}
+                handleSubmit={ handleSubmit } 
+                handleSetEmail={ handleSetEmail }
                 handleSetPassword={handleSetPassword}
                 buttonText="Sign In With Email"
                 />
-            <ul className="session-errors">
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
         </div>
     )
 };

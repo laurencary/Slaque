@@ -11,13 +11,16 @@ input.form-input:focus {
     /* -webkit-appearance: none; */
 }
 
+.input-container {
+    margin-bottom: 20px;
+}
+
 input.form-input {
     padding: 11px 12px 13px;
     height: 44px;
     font-size: 18px;
     line-height: 1.33333333;
     width: 400px;
-    margin-bottom: 20px;
     border-radius: 4px;
     border: 1px solid rgba(29, 28, 29, .3);
     transition: border 80ms ease-out, box-shadow 80ms ease-out;
