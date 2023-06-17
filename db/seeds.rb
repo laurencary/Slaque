@@ -14,22 +14,16 @@ ApplicationRecord.transaction do
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
+    ApplicationRecord.connection.reset_pk_sequence!('workspaces')
+    ApplicationRecord.connection.reset_pk_sequence!('workspace_user_subscriptions')
 
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
-    User.create!(
-        email: 'demo@user.io', 
-        password: 'password'
-    )
+    User.create!(email: 'demo1@user.io', password: 'password')
+    User.create!(email: 'demo2@user.io', password: 'password')
+    User.create!(email: 'austin@user.io', password: 'pwaustin')
+    User.create!(email: 'devon@user.io', password: 'pwdevon')
 
-    # More users
-    10.times do 
-        User.create!({
-        username: Faker::Internet.unique.username(specifier: 3),
-        email: Faker::Internet.unique.email,
-        password: 'password'
-        }) 
-    end
 
     puts "Done!"
 end

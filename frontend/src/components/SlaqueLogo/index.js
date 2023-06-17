@@ -11,7 +11,7 @@ const SlaqueLogo = ({isColorful, color}) => {
 
     return (
         <Link to={home} className="logo-container">
-            <img src={ isColorful ? SlackLogo : SlackLogoYB } className="logo-img" />
+            <img src={ isColorful ? SlackLogo : SlackLogoYB } className="logo-img" alt="Go to home page"/>
             <h1 className="logo-text" style={{color: color}}>slaque</h1>
         </Link>
     )

@@ -21,6 +21,11 @@ class User < ApplicationRecord
 
 	before_validation :ensure_session_token
 
+	has_many :owned_workspaces,
+		foreign_key: :ownder_id,
+		class_name: :Workspace,
+		dependent: :destroy
+
 	def self.find_by_credentials(email, password)
 		return User.find_by(email: email)&.authenticate(password)
 	end
