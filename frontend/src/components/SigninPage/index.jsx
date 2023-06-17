@@ -21,9 +21,9 @@ const SigninPage = () => {
     }, [])
 
     let errorClass = "hidden";
-    useEffect(() => {
-        errorClass = errors.length === 0 ? "hidden" : "session-errors"
-    }, [errors])
+    // useEffect(() => {
+    //     errorClass = errors.length === 0 ? "hidden" : "session-errors"
+    // }, [errors])
 
     if (sessionUser) return <Redirect to="/welcome" />;
 // 
@@ -60,7 +60,7 @@ const SigninPage = () => {
                 handleSetPassword={handleSetPassword}
                 buttonText="Sign In With Email"
                 />
-            <ul className={errorClass}>
+            <ul className="session-errors">
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
         </div>

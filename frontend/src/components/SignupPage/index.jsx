@@ -40,7 +40,11 @@ const SignupPage = () => {
                 } catch {
                     data = await res.text(); // Will hit this case if the server is down
                 }
-                if (data?.errors) setErrors(data.errors);
+                if (data?.errors) {
+                    setErrors(data.errors);
+                    console.log(errors);
+                    errorClass = "session-errors"
+                }
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
             });
@@ -60,7 +64,7 @@ const SignupPage = () => {
                 handleSetPassword={handleSetPassword}
                 buttonText="Continue"
             />
-            <ul className={errorClass}>
+            <ul className="session-errors">
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
             <SessionSplitter />

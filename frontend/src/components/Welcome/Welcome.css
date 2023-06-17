@@ -23,7 +23,11 @@
 }
 
 #workspaces-container {
-    color: black
+    color: black;
+    margin-bottom: 3rem;
+    border: 4px solid rgba(255, 255, 255, .2);
+    border-radius: 9px;
+        
 }
 #workspaces-container ul {
     background-color: white;
@@ -35,14 +39,14 @@
     margin-bottom: 0.5rem;
 }
 
-#workspaces-container p{
+#workspaces-container p {
     display: flex;
     align-items: center;
     padding: 1rem !important;
     background-color: #ecdeec;
     font-size: 1.125rem;
     border-radius: 5px 5px 0 0;
-    min-height: calc(50px + 2rem);
+    min-height: calc(22px + 2rem);
 }
 
 #welcome-wave {
