@@ -11,6 +11,16 @@
     height: 30px;
 }
 
+.right-col {
+    color: rgba(var(--sk_foreground_max_solid, 97, 96, 97), 1);
+    font-size: 13px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+}
+
 .session-title {
     margin: 0 0 10px 0;
     font-size: 48px;
@@ -30,4 +40,15 @@
     margin-bottom: 32px;
     max-width: 700px;
     text-align: center;
+}
+
+#signup-redirect-link {
+    font-weight: 500;
+    color: #1264a3;
+    text-decoration: none;
+}
+
+#signup-redirect-link:hover {
+    color: #0b4c8c;
+    text-decoration: underline;
 }
