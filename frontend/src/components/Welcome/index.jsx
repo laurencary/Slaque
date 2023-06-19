@@ -1,4 +1,3 @@
-import { useEffect, Redirect } from "react";
 import { useSelector } from "react-redux";
 import NavBar from "../NavBar";
 import './Welcome.css'
@@ -14,7 +13,7 @@ const Welcome = () => {
         <>
             <NavBar />
             <div id="welcome-hero">
-                <header id="welcome-header"><img id="welcome-wave" src={wave} />Welcome back</header>
+                <header id="welcome-header"><img id="welcome-wave" src={wave} alt="Welcome wave!"/>Welcome back</header>
                 <div id="workspaces-container">
                     <p>Workspaces for { user === null ? '' : user.email }</p>
                     <ul id="workspaces-welcome-list">
