@@ -1,18 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
-import ProfileButton from "./ProfileButton";
 import SlaqueLogo from "../SlaqueLogo";
 import * as sessionActions from '../../store/session';
-import './NavBar.css'
 import DemoButton from "../DemoButton";
+import './NavBar.css'
 
 const NavBar = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const workspace = false;
-    // console.log(sessionUser);
-    let sessionLinksLeft;
     let sessionLinksRight;
 
     useEffect(() => {
@@ -37,27 +33,13 @@ const NavBar = () => {
             </div>
         )
     }
-    
 
-    if (workspace) {
-        sessionLinksLeft = (
-            // search bar
-            <></>
-        )  
-        sessionLinksRight = (
-            <div id="nav-left">
-                <ProfileButton />
-            </div>
-        ) 
-    } else {
-        //logged out
-        sessionLinksLeft = (
-            <div id="nav-left">
-                <li className="nav-li"><Link to="https://github.com/laurencary" className="link-text">GitHub</Link></li>
-                <li className="nav-li"><Link to="https://www.linkedin.com/in/laurengarmstrong/" className="link-text">LinkedIn</Link></li>
-            </div>
-        )
-    }
+    const sessionLinksLeft = (
+        <div id="nav-left">
+            <li className="nav-li"><Link to="https://github.com/laurencary" className="link-text">GitHub</Link></li>
+            <li className="nav-li"><Link to="https://www.linkedin.com/in/laurengarmstrong/" className="link-text">LinkedIn</Link></li>
+        </div>
+    )
 
     return (
         <ul className="nav-bar">

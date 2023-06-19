@@ -24,7 +24,7 @@ const Welcome = () => {
                     <h1 id="workspaces-for">Workspaces for { user === null ? '' : user.email }</h1>
                     <ul id="workspaces-welcome-list">
                         {userWorkspaces.map((userWorkspace) => (
-                            <WorkspaceItem workspace={userWorkspace}/>
+                            <WorkspaceItem workspace={userWorkspace} userId={user.id}/>
                         ))}
                     </ul>
                 </div>

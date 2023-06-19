@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import './WorkspaceItem.css'
 
-const WorkspaceItem = ({workspace}) => {
+const WorkspaceItem = ({workspace, userId}) => {
     return (
         <li className="workspace-item-container">
             <div className="workspace-item-left">
@@ -13,7 +13,7 @@ const WorkspaceItem = ({workspace}) => {
                 </div>
             </div>
             <div >
-                <NavLink className="workspace-item-right" to="">LAUNCH SLACK</NavLink>
+                <NavLink className="workspace-item-right" to={`/client/${userId}/${workspace.id}`}>LAUNCH SLACK</NavLink>
             </div>
         </li>
     )
