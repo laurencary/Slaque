@@ -5,16 +5,20 @@ import NavBar from "../NavBar";
 import wave from '../../images/waving-hand@2x.gif'
 import WorkspaceItem from "./WorkspaceItem";
 import './Welcome.css'
+import { Redirect } from "react-router-dom";
 
 const Welcome = () => {
     const dispatch = useDispatch();
     const userWorkspaces = useSelector(getUserWorkspaces);
     const user = useSelector(state => state.session.user);
 
+    
     useEffect(() => {
         dispatch(fetchUserWorkspaces());
     }, [dispatch])
-
+    
+    if (!user) return <Redirect to='/' />;
+    
     return (
         <>
             <NavBar />
