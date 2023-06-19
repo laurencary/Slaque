@@ -20,8 +20,9 @@ const SignupPage = () => {
         document.body.classList.remove('purple')
         document.body.classList.add('white')
     }, [])
+    console.log(sessionUser);
 
-    if (sessionUser) return <Redirect to="/welcome" />;
+    if (sessionUser) return <Redirect to={`/client/${sessionUser.id}/get-started/landing`} />;
 
     const handleSubmit = (e) => {
         e.preventDefault();

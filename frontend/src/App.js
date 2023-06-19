@@ -16,7 +16,7 @@ function App() {
 			<Route path="/get-started/createnew">
 				<SignupPage />
 			</Route>
-			<Route path="/welcome">
+			<Route path="/client/:clientId/get-started/landing">
 				<Welcome />
 			</Route>
 			<Route exact path="/">

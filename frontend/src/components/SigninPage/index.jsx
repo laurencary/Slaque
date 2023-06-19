@@ -20,7 +20,7 @@ const SigninPage = () => {
         document.body.classList.add('white')
     }, [])
 
-    if (sessionUser) return <Redirect to="/welcome" />;
+    if (sessionUser) return <Redirect to={`/client/${sessionUser.id}/get-started/landing`} />;
 
     const handleSubmit = (e) => {
         e.preventDefault();

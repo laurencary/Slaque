@@ -11,7 +11,7 @@ const DemoButton = ({ classNm }) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        history.push('/welcome')
+        history.push(`/client/1/get-started/landing`)
         return dispatch(sessionActions.login({ email:'demo1@user.io', password:'password' }))
             .catch(async (res) => {
                 let data;
