@@ -1,12 +1,12 @@
+import { useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserWorkspaces, getUserWorkspaces } from "../../store/workspaceUserSubscriptions";
+import { getUserWorkspaces } from "../../store/workspaceUserSubscriptions";
+import { fetchUser } from "../../store/session";
 import NavBar from "../NavBar";
 import wave from '../../images/waving-hand@2x.gif'
 import WorkspaceItem from "./WorkspaceItem";
 import './Welcome.css'
-import { Redirect } from "react-router-dom";
-import { useEffect } from "react";
-import { fetchUser } from "../../store/session";
 
 const Welcome = () => {
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const Welcome = () => {
 
     
     useEffect(() => {
-        if (Object.values(userWorkspaces).length === 0) {
+        if (userWorkspaces.length === 0) {
             dispatch(fetchUser(user.id))
         }
     }, [])

@@ -5,7 +5,7 @@
     width: 400px;
 }
 
-hr {
+.hr-container hr {
     color: #565456;
     flex-grow: 1;
     margin: 0;
