@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import './SignPage.css';
 import SessionHeader from '../SessionHeader';
 import SessionForm from '../SessionForm';
@@ -20,10 +20,11 @@ const SigninPage = () => {
         document.body.classList.remove('purple')
         document.body.classList.add('white')
     }, [])
+    if (sessionUser) return <Redirect to={`/client/${sessionUser.id}/get-started/landing`} />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        history.push(`/client/${sessionUser.id}/get-started/landing`)
+        // history.push(`/client/${sessionUser.id}/get-started/landing`)
         return dispatch(sessionActions.login({ email, password }))
             .catch(async (res) => {
                 let data;

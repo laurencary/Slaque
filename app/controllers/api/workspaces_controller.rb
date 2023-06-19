@@ -1,16 +1,24 @@
 class Api::WorkspacesController < ApplicationController
-  def index
-  end
+	def index
+	end
 
-  def show
-  end
+	def show
+		@workspace = Workspace.where("id = #{params[:id]}").includes(:workspace_users)
+		# debugger
+		render :show
+	end
 
-  def create
-  end
+	def create
+	end
 
-  def update
-  end
+	def update
+	end
 
-  def delete
-  end
+	def delete
+	end
+
+	private
+	def workspace_params
+		params.permit(:id, :name, :owner_id)
+	end
 end

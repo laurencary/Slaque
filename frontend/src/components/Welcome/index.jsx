@@ -8,12 +8,12 @@ import './Welcome.css'
 
 const Welcome = () => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user);
     const userWorkspaces = useSelector(getUserWorkspaces);
+    const user = useSelector(state => state.session.user);
 
     useEffect(() => {
         dispatch(fetchUserWorkspaces());
-    }, [dispatch, user])
+    }, [dispatch])
 
     return (
         <>
@@ -24,7 +24,7 @@ const Welcome = () => {
                     <h1 id="workspaces-for">Workspaces for { user === null ? '' : user.email }</h1>
                     <ul id="workspaces-welcome-list">
                         {userWorkspaces.map((userWorkspace) => (
-                            <WorkspaceItem workspace={userWorkspace} userId={user.id}/>
+                            <WorkspaceItem key={userWorkspace.id} workspace={userWorkspace} />
                         ))}
                     </ul>
                 </div>

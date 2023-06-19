@@ -8,7 +8,6 @@ export const receiveUserWorkspaces = (userWorkspaces) => ({
 })
 
 export const getUserWorkspaces = (state) => {
-    console.log(state);
     return state.userWorkspaces ? Object.values(state.userWorkspaces) : []
 }
 

@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from '../../store/session';
-import { useHistory } from "react-router-dom";
 // import './DemoButton.css'
 
 const DemoButton = ({ classNm }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const [errors, setErrors] = useState([]);
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        history.push(`/client/1/get-started/landing`)
         return dispatch(sessionActions.login({ email:'demo1@user.io', password:'password' }))
             .catch(async (res) => {
                 let data;

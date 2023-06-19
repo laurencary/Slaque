@@ -1,7 +1,13 @@
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+
 import NavBar from "../NavBar";
 import './HomePage.css'
 
 const HomePage = () => {
+    const sessionUser = useSelector(state => state.session.user);
+    if (sessionUser) return <Redirect to={`/client/${sessionUser.id}/get-started/landing`} />;
+
     return (
         <>
             <NavBar />
