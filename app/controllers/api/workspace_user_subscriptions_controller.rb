@@ -1,16 +1,32 @@
 class Api::WorkspaceUserSubscriptionsController < ApplicationController
-  def index
-  end
+	def index
+		# debugger
+		# @workspace_user_subscriptions = WorkspaceUserSubscription.where("user_id = 4").includes(:workspace)
+		@workspace_user_subscriptions = WorkspaceUserSubscription.where("user_id = #{current_user.id}").includes(:workspace)
+		render :index
+	end
 
-  def show
-  end
+	def show
+	end
 
-  def create
-  end
+	def create
+	end
 
-  def update
-  end
+	def update
+	end
 
-  def delete
-  end
+	def delete
+	end
+
+	private
+	def wus_params
+		params.require(:workspace_user_subscriptions).permit(
+		:user_id, 
+		:workspace_id, 
+		:full_name, 
+		:display_name,
+		:title,
+		:pronunciation
+		)
+	end
 end
