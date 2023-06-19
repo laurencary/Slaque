@@ -1,16 +1,28 @@
 import csrfFetch from "./csrf";
+import { receiveUserWorkspaces } from "./workspaceUserSubscriptions";
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
-export const setCurrentUser = (user) => ({
+export const setCurrentUser = (user) => {
+    return {
     type: SET_CURRENT_USER,
     payload: user
-})
+    }
+}
 
 export const removeCurrentUser = () => ({
     type: REMOVE_CURRENT_USER,
 })
+
+export const fetchUser = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/users/${userId}`)
+
+    const data = await response.json();
+    dispatch(setCurrentUser(data.user));
+    dispatch(receiveUserWorkspaces(data.userWorkspaces));
+    return response;
+}
 
 export const restoreSession = () => async (dispatch) => {
     const response = await csrfFetch('/api/session');
@@ -20,6 +32,7 @@ export const restoreSession = () => async (dispatch) => {
     console.log(data.user);
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
+    dispatch(receiveUserWorkspaces(data.userWorkspaces));
     return response;
 }
 
@@ -47,8 +60,10 @@ export const signup = (user) => async (dispatch) => {
     });
 
     const data = await response.json();
-    storeCurrentUser(user);
+    storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
+    dispatch(receiveUserWorkspaces(data.userWorkspaces));
+
     return response;
 }
 
@@ -63,8 +78,9 @@ export const login = (user) => async (dispatch) => {
     });
 
     const data = await response.json();
-    storeCurrentUser(user);
+    storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
+    dispatch(receiveUserWorkspaces(data.userWorkspaces));
     return response;
 }
 
@@ -72,7 +88,6 @@ export const logout = () => async (dispatch) => {
     const response = await csrfFetch('/api/session', {
         method: 'DELETE'
     });
-    // debugger
     storeCurrentUser(null);
     dispatch(removeCurrentUser());
     return response;
@@ -87,6 +102,7 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CURRENT_USER:
+            // debugger
             return { ...state, user: action.payload };
         case REMOVE_CURRENT_USER:
             const newState = {...state}

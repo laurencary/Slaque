@@ -4,7 +4,7 @@ class Api::SessionsController < ApplicationController
 			@user = current_user
 			render 'api/users/show'
 		else
-			render json: { user: nil }
+			render json: { user: nil, userWorkspaces: nil }
 		end
 	end
 
@@ -27,9 +27,3 @@ class Api::SessionsController < ApplicationController
 	end
 end
 
-
-# loginRequestOptions = {
-#     method: 'POST',
-#     headers: { 'Content-Type': 'application/json' },
-#     body: JSON.stringify({ email: 'usr@email.io', password: 'starwars' })
-#   }
