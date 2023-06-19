@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_17_215521) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_220822) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_215521) do
   create_table "workspace_user_subscriptions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "workspace_id", null: false
-    t.string "full_name"
+    t.string "full_name", null: false
     t.string "display_name"
     t.string "title"
     t.string "pronunciation"

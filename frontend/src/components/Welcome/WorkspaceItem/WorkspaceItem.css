@@ -1,0 +1,59 @@
+.workspace-item-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workspace-item-container:hover{
+    background-color: rgba(245, 245, 245, .5);
+}
+
+.img-placeholder {
+    height: 75px;
+    width: 75px;
+    margin-right: 1rem;
+    border-radius: 5px;
+    background-color: lightgray;
+}
+
+.workspace-item-left {
+    display: flex;
+    flex-direction: row;
+}
+
+.workspace-item-details {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.workspace-item-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.workspace-item-members {
+    color: #696969;
+    font-size: .875rem;
+    line-height: 20px;
+}
+
+.workspace-item-right {
+    background-color: #611f69;
+    color: white;
+    text-decoration: none;
+    font-size: .875rem;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: Slack-Circular-Pro, "Helvetica Neue", Helvetica, "Segoe UI", Tahoma, Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: .9px;
+}
+
+.workspace-item-right:hover {
+    background-color: #4a154b;
+}

@@ -30,8 +30,8 @@ ApplicationRecord.transaction do
 
     puts "Creating workspaces..."
 
-    Workspace.create!(name: 'Bay Area Ultimate', owner_id: 4)
     Workspace.create!(name: 'App Academy', owner_id: 3)
+    Workspace.create!(name: 'Bay Area Ultimate', owner_id: 4)
 
     puts "Creating workspace user subscriptions..."
 
