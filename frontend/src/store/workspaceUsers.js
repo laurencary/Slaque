@@ -1,20 +1,23 @@
+import { receiveCurrentWorkspace } from "./currentWorkspace";
+
 export const RECEIVE_WORKSPACE_USERS = '/workspaceUsers/RECEIVE_WORKSPACE_USERS';
 
-export const receiveWorkspaceUsers = (payload) => ({
+export const receiveWorkspaceUsers = (workspaceUsers) => ({
     type: RECEIVE_WORKSPACE_USERS,
-    payload
+    workspaceUsers
 })
 
 export const getWorkspaceUsers = (state) => {
     return state.workspaceUsers ? Object.values(state.workspaceUsers) : []
 }
 
-export const fetchUserWorkspaces = (workspaceId) => async (dispatch) => {
+export const fetchWorkspaceUsers = (workspaceId) => async (dispatch) => {
     const res = await fetch(`/api/workspaces/${workspaceId}`)
 
     if (res.ok) {
         const payload = await res.json();
-        dispatch(receiveWorkspaceUsers(payload));
+        dispatch(receiveWorkspaceUsers(payload.workspaceUsers));
+        dispatch(receiveCurrentWorkspace(payload.currentWorkspace));
     }
 }
 
@@ -23,7 +26,7 @@ const workspaceUsersReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_WORKSPACE_USERS:
-            return { ...action.payload.workspaceUsers }
+            return { ...action.workspaceUsers }
 
         default:
             return state;

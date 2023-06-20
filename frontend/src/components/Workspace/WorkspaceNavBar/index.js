@@ -1,6 +1,7 @@
 import ProfileButton from "./ProfileButton";
 
 const WorkspaceNavBar = () => {
+ 
     return (
         <div className="workspace-nav-bar">
             <div className="workspace-nav-bar-right"></div>

@@ -11,10 +11,7 @@ import './Welcome.css'
 const Welcome = () => {
     const dispatch = useDispatch();
     const userWorkspaces = useSelector(getUserWorkspaces);
-
-    // if (Object.values)
     const user = useSelector(state => state.session.user);
-
     
     useEffect(() => {
         if (userWorkspaces.length === 0) {

@@ -5,6 +5,7 @@ import { getWorkspaceUsers } from "../../store/workspaceUsers";
 import WorkspaceNavBar from "./WorkspaceNavBar";
 import { fetchUser } from "../../store/session";
 import { getUserWorkspaces } from "../../store/workspaceUserSubscriptions";
+import { fetchWorkspaceUsers } from "../../store/workspaceUsers";
 import './Workspace.css'
 
 const Workspace = () => {
@@ -13,10 +14,12 @@ const Workspace = () => {
     const user = useSelector(state => state.session.user);
     const {workspaceId} = useParams();
     const workspace = useSelector(state => state.userWorkspaces[workspaceId])
+    const workspaceUsers = useSelector(getWorkspaceUsers);
     
     useEffect(() => {
         if (userWorkspaces.length === 0 || !workspace.name) {
             dispatch(fetchUser(user.id));
+            dispatch(fetchWorkspaceUsers(workspaceId))
         }
     }, [])
 
