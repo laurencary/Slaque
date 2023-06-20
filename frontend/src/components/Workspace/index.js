@@ -23,6 +23,12 @@ const Workspace = () => {
         }
     }, [])
 
+    useEffect(() => {
+        if (Object.values(workspaceUsers).length === 0) {
+            dispatch(fetchWorkspaceUsers(workspaceId))
+        }
+    })
+
     if (!user) return <Redirect to='/' />;
     
     // const workspaceUsers = useSelector(getWorkspaceUsers);

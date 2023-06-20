@@ -1,6 +1,6 @@
 json.currentWorkspace do
     json.currentWorkspaceId @workspace[0].id
-    json.workspace_subscription_id @workspace[0].workspace_users.find(current_user.id).id
+    json.workspace_subscription_id @workspace[0].workspace_users.where("user_id = #{current_user.id}")[0].id
 end
 
 json.workspaceUsers do 
