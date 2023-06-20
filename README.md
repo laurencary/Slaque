@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+# RUN THIS EVERY TIME I GENERATE A NEW gemfile.lock
+```bundle lock --add-platform x86_64-linux```

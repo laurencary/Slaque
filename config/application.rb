@@ -44,5 +44,7 @@ module Slaque
     initializer(:remove_extra_routes, after: :add_routing_paths) { |app|
       app.routes_reloader.paths.delete_if {|path| path =~ /actionmailbox/ }
     }
+
+    config.railties_order = [:all, :main_app]
   end
 end
