@@ -18,4 +18,22 @@ class WorkspaceUserSubscription < ApplicationRecord
 
     belongs_to :user
     belongs_to :workspace
+
+    has_many :direct_message_subscriptions,
+        foreign_key: :workspace_user_id,
+        class_name: :DirectMessageSubscription,
+        dependent: :destroy
+
+    has_many :channel_subscriptions,
+        foreign_key: :workspace_user_id,
+        class_name: :ChannelSubscription,
+        dependent: :destroy
+    
+    has_many :direct_messages,
+        through: :direct_message_subscriptions,
+        source: :direct_message
+
+    has_many :channels,
+        through: :channel_subscriptions,
+        source: :channel
 end

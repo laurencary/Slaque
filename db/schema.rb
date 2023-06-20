@@ -10,9 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_17_220822) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_20_203659) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channel_subscriptions", force: :cascade do |t|
+    t.bigint "workspace_user_id", null: false
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_channel_subscriptions_on_channel_id"
+    t.index ["workspace_user_id"], name: "index_channel_subscriptions_on_workspace_user_id"
+  end
+
+  create_table "channels", force: :cascade do |t|
+    t.bigint "owner_id", null: false
+    t.bigint "workspace_id", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_channels_on_owner_id"
+    t.index ["workspace_id", "name"], name: "index_channels_on_workspace_id_and_name"
+    t.index ["workspace_id"], name: "index_channels_on_workspace_id"
+  end
+
+  create_table "direct_message_subscriptions", force: :cascade do |t|
+    t.bigint "workspace_user_id", null: false
+    t.bigint "direct_message_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["direct_message_id"], name: "index_direct_message_subscriptions_on_direct_message_id"
+    t.index ["workspace_user_id"], name: "index_direct_message_subscriptions_on_workspace_user_id"
+  end
+
+  create_table "direct_messages", force: :cascade do |t|
+    t.bigint "workspace_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workspace_id"], name: "index_direct_messages_on_workspace_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "workspace_author_id", null: false
+    t.text "content", null: false
+    t.boolean "edited", default: false, null: false
+    t.jsonb "read_by_workspace_users", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "messageable_type"
+    t.bigint "messageable_id"
+    t.index ["messageable_type", "messageable_id"], name: "index_messages_on_messageable"
+    t.index ["workspace_author_id"], name: "index_messages_on_workspace_author_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
@@ -47,6 +97,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_220822) do
     t.index ["owner_id"], name: "index_workspaces_on_owner_id"
   end
 
+  add_foreign_key "channel_subscriptions", "channels"
+  add_foreign_key "channel_subscriptions", "workspace_user_subscriptions", column: "workspace_user_id"
+  add_foreign_key "channels", "users", column: "owner_id"
+  add_foreign_key "channels", "workspaces"
+  add_foreign_key "direct_message_subscriptions", "direct_messages"
+  add_foreign_key "direct_message_subscriptions", "workspace_user_subscriptions", column: "workspace_user_id"
+  add_foreign_key "direct_messages", "workspaces"
+  add_foreign_key "messages", "workspace_user_subscriptions", column: "workspace_author_id"
   add_foreign_key "workspace_user_subscriptions", "users"
   add_foreign_key "workspace_user_subscriptions", "workspaces"
   add_foreign_key "workspaces", "users", column: "owner_id"

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 		resources :users, only: [:create, :show]
 		resources :workspaces, only: [:index ,:show ,:create ,:update ,:delete]
 		resources :workspace_user_subscriptions, only: [:index ,:show ,:create ,:update ,:delete]
-
 		resource :session, only: [:show, :create, :destroy]
 	end
 	get '*path', to: "static_pages#frontend_index"

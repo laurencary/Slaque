@@ -20,4 +20,12 @@ class Workspace < ApplicationRecord
 		foreign_key: :workspace_id,
 		class_name: :WorkspaceUserSubscription,
 		dependent: :destroy
+
+	has_many :channels,
+		foreign_key: :workspace_id,
+		dependent: :destroy
+
+	has_many :direct_messages,
+		foreign_key: :workspace_id,
+		dependent: :destroy
 end

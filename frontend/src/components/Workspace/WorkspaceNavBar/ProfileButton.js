@@ -7,8 +7,9 @@ const ProfileButton = () => {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const profile = useSelector(getCurrentWorkspaceProfile);
+    console.log(profile);
 
-    return (
+    return profile ? (
         <div onClick={() => setShowMenu(!showMenu)}>
             <i style={{ color: "navy", backgroundColor: "white", fontSize: "40px" }} className="fa-solid fa-user"></i>
             <ul className={showMenu ? "profile-button-menu" : "hidden"}>
@@ -20,7 +21,7 @@ const ProfileButton = () => {
                     Sign out of App Academy</li>
             </ul>
         </div>
-    )
+    ) : null
 }
 
 export default ProfileButton;

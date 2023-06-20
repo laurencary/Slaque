@@ -119,6 +119,7 @@
 
 .profile-menu-li:hover {
     background-color: #1164A3;
+    cursor: pointer;
 }
 
 .profile-menu-li {
