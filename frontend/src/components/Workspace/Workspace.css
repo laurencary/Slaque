@@ -76,6 +76,11 @@
     font-weight: 600;
 }
 
+.sidebar-team-menu:hover {
+    background-color: rgb(70, 70, 70);
+    border-radius: 4px;
+}
+
 .workspace-nav-bar-search {
     height: 26px;
     width: 60vw;
