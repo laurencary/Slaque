@@ -1,3 +1,4 @@
+import { receiveChannels } from "./channels";
 import { receiveCurrentWorkspace } from "./currentWorkspace";
 
 export const RECEIVE_WORKSPACE_USERS = '/workspaceUsers/RECEIVE_WORKSPACE_USERS';
@@ -18,6 +19,7 @@ export const fetchWorkspaceUsers = (workspaceId) => async (dispatch) => {
         const payload = await res.json();
         dispatch(receiveWorkspaceUsers(payload.workspaceUsers));
         dispatch(receiveCurrentWorkspace(payload.currentWorkspace));
+        dispatch(receiveChannels(payload.channels));
     }
 }
 

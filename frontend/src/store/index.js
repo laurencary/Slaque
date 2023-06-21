@@ -4,12 +4,14 @@ import sessionReducer from './session';
 import userWorkspacesReducer from './workspaceUserSubscriptions';
 import workspaceUsersReducer from './workspaceUsers';
 import currentWorkspaceReducer from './currentWorkspace';
+import channelsReducer from './channels';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     userWorkspaces: userWorkspacesReducer,
     workspaceUsers: workspaceUsersReducer,
-    currentWorkspace: currentWorkspaceReducer
+    currentWorkspace: currentWorkspaceReducer,
+    channels: channelsReducer
 });
 
 let enhancer;
