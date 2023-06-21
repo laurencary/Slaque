@@ -23,6 +23,7 @@ function App() {
 			<Route path="/client/:clientId/:workspaceId">
 				<Workspace />
 			</Route>
+			
 			<Route exact path="/">
 				<HomePage />
 			</Route>
