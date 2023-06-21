@@ -65,20 +65,20 @@ ApplicationRecord.transaction do
     Channel.create!(owner_id: 7, workspace_id: 2, name: "south-bay-league", description: "Update and sub requests for South Bay Ultimate Leagues")
     
     puts "Create channel subscriptions..."
-    ChannelSubscription.create!(workspace_user_id: 1, channel_id: 1)
-    ChannelSubscription.create!(workspace_user_id: 1, channel_id: 2)
-    ChannelSubscription.create!(workspace_user_id: 2, channel_id: 2)
-    ChannelSubscription.create!(workspace_user_id: 3, channel_id: 1)
-    ChannelSubscription.create!(workspace_user_id: 3, channel_id: 2)
-    ChannelSubscription.create!(workspace_user_id: 4, channel_id: 1)
-    ChannelSubscription.create!(workspace_user_id: 4, channel_id: 2)
-    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 3)
-    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 4)
-    ChannelSubscription.create!(workspace_user_id: 6, channel_id: 3)
-    ChannelSubscription.create!(workspace_user_id: 6, channel_id: 5)
-    ChannelSubscription.create!(workspace_user_id: 7, channel_id: 3)
-    ChannelSubscription.create!(workspace_user_id: 7, channel_id: 5)
-    ChannelSubscription.create!(workspace_user_id: 8, channel_id: 4)
+    ChannelSubscription.create!(workspace_user_id: 1, channel_id: 1) # help-requests
+    ChannelSubscription.create!(workspace_user_id: 3, channel_id: 1) # help-requests
+    ChannelSubscription.create!(workspace_user_id: 4, channel_id: 1) # help-requests
+    ChannelSubscription.create!(workspace_user_id: 1, channel_id: 2) # cohort
+    ChannelSubscription.create!(workspace_user_id: 2, channel_id: 2) # cohort
+    ChannelSubscription.create!(workspace_user_id: 3, channel_id: 2) # cohort
+    ChannelSubscription.create!(workspace_user_id: 4, channel_id: 2) # cohort
+    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 3) # BA general
+    ChannelSubscription.create!(workspace_user_id: 6, channel_id: 3) # BA general
+    ChannelSubscription.create!(workspace_user_id: 7, channel_id: 3) # BA general
+    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 4) # fab
+    ChannelSubscription.create!(workspace_user_id: 8, channel_id: 4) # fab
+    ChannelSubscription.create!(workspace_user_id: 6, channel_id: 5) # sbleague
+    ChannelSubscription.create!(workspace_user_id: 7, channel_id: 5) # sbleague
     
     puts "Creating direct messages..."
     DirectMessage.create!(workspace_id: 1)
@@ -104,79 +104,79 @@ ApplicationRecord.transaction do
         content: "Can someone help me with my polymorphic associations?", 
         messageable_id: 1, 
         messageable_type: "Channel", 
-        read_by_workspace_users: { 4=> true, 3 => true}, 
+        unread_by_workspace_users: { 1 => true }, 
         edited: false)
     Message.create!(workspace_author_id: 3, 
         content: "Yeah, definitely. Let's hop on zoom!", 
         messageable_id: 1, 
         messageable_type:"Channel", 
-        read_by_workspace_users: { 3=> true}, 
+        unread_by_workspace_users: { 4 => true, 1 => true }, 
         edited: false)
     Message.create!(workspace_author_id: 3, 
         content: "Don't put off tonight's homework - it's super helpful for the assessment", 
         messageable_id: 2, 
         messageable_type:"Channel", 
-        read_by_workspace_users: { 3=> true, 2 => true }, 
+        unread_by_workspace_users: { 1 => true, 4 => true }, 
         edited: true)
     Message.create!(workspace_author_id: 2, 
         content: "Thanks for the reminder", 
         messageable_id: 2, 
         messageable_type:"Channel", 
-        read_by_workspace_users: { 2=> true }, 
+        unread_by_workspace_users: { 3=> true, 1 => true, 4 => true }, 
         edited: false)
     Message.create!(workspace_author_id: 7, 
         content: "Anybody missing a waterbottle? Black found after last night game", 
         messageable_id: 3, 
         messageable_type:"Channel", 
-        read_by_workspace_users: { 7=> true, 6=> true }, 
+        unread_by_workspace_users: { 5=> true }, 
         edited: false)
     Message.create!(workspace_author_id: 6,
         content: "Oh that is mine!", 
         messageable_id: 3, 
         messageable_type:"Channel", 
-        read_by_workspace_users: { 6=> true}, 
+        unread_by_workspace_users: { 5=> true, 7 => true }, 
         edited: false)
     Message.create!(workspace_author_id: 5,
         content: "Practice tonight at 6pm!", 
         messageable_id: 4, 
         messageable_type:"Channel", 
-        read_by_workspace_users: { 5=> true}, 
+        unread_by_workspace_users: { }, 
         edited: false)
     Message.create!(workspace_author_id: 7,
         content: "Games are on for tonight.", 
         messageable_id: 5, 
         messageable_type:"Channel", 
-        read_by_workspace_users: { 7=> true }, 
+        unread_by_workspace_users: { 6=> true }, 
         edited: false)
     Message.create!(workspace_author_id: 4,
-        content: "Hey - nice to see you two on Slaque!", 
+        content: "Hey - nice to see you on Slaque!", 
         messageable_id: 1, 
         messageable_type:"DirectMessage", 
-        read_by_workspace_users: { 4=> true, 1=> true }, 
+        unread_by_workspace_users: {  }, 
         edited: false)
     Message.create!(workspace_author_id: 1,
         content: "Welcome to direct messaging", 
         messageable_id: 2, 
         messageable_type:"DirectMessage", 
-        read_by_workspace_users: { 1=> true, 2 => true }, 
+        unread_by_workspace_users: { 4=> true }, 
         edited: false)
     Message.create!(workspace_author_id: 2,
         content: "It's pretty neat! Let's try it out", 
         messageable_id: 2, 
         messageable_type:"DirectMessage", 
-        read_by_workspace_users: { 2=> true }, 
+        unread_by_workspace_users: { 4=> true, 1 => true }, 
         edited: false)
     Message.create!(workspace_author_id: 8,
         content: "Hey - want to carpool to practice?", 
         messageable_id: 3, 
         messageable_type:"DirectMessage", 
-        read_by_workspace_users: { 8=> true }, 
+        unread_by_workspace_users: { 5 => true }, 
         edited: false)
     Message.create!(workspace_author_id: 6,
         content: "Are tonight's games going to be cancelled?", 
         messageable_id: 4, 
         messageable_type:"DirectMessage", 
-        read_by_workspace_users: { 6=> true, 5=> true }, 
+        unread_by_workspace_users: { 8 => true }, 
         edited: false)
 
     puts "Done!"

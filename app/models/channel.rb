@@ -35,6 +35,6 @@ class Channel < ApplicationRecord
 		dependent: :destroy
 
 	def has_unread_message?(workspace_user_id)
-		self.messages.any? { |message| !message.read_by_workspace_users.has_key?(workspace_user_id.to_s) }
+		self.messages.any? { |message| message.unread_by_workspace_users.has_key?(workspace_user_id.to_s) }
 	end
 end
