@@ -1,5 +1,5 @@
-# workspace_user = @workspace[0].workspace_users.where("user_id = #{current_user.id}")[0]
-workspace_user = @workspace[0].workspace_users.where("user_id = 3")[0]
+workspace_user = @workspace[0].workspace_users.where("user_id = #{current_user.id}")[0]
+# workspace_user = @workspace[0].workspace_users.where("user_id = 3")[0]
 
 json.currentWorkspace do
     json.currentWorkspaceId @workspace[0].id

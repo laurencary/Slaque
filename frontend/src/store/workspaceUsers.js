@@ -2,10 +2,15 @@ import { receiveChannels } from "./channels";
 import { receiveCurrentWorkspace } from "./currentWorkspace";
 
 export const RECEIVE_WORKSPACE_USERS = '/workspaceUsers/RECEIVE_WORKSPACE_USERS';
+export const REMOVE_CURRENT_WORKSPACE = '/REMOVE_CURRENT_WORKSPACE';
 
 export const receiveWorkspaceUsers = (workspaceUsers) => ({
     type: RECEIVE_WORKSPACE_USERS,
     workspaceUsers
+})
+
+export const removeCurrentWorkspace = () => ({
+    type: REMOVE_CURRENT_WORKSPACE
 })
 
 export const getWorkspaceUsers = (state) => {
@@ -29,7 +34,8 @@ const workspaceUsersReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_WORKSPACE_USERS:
             return { ...action.workspaceUsers }
-
+        case REMOVE_CURRENT_WORKSPACE:
+            return {}
         default:
             return state;
     }

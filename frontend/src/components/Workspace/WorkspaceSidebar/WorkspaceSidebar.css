@@ -1,0 +1,126 @@
+.sidebar-header {
+    line-height: 1.33334;
+    min-height: 50px;
+    align-items: center;
+    background: var(--p-channel_sidebar__column-bg);
+    display: flex;
+    position: relative;
+    border-color: rgb(43, 42, 47) !important;
+    border-bottom: 1px solid #0000001a;
+    padding-left: 8px;
+}
+
+.sidebar-team-menu-icon, .sidebar-channel-icon, .sidebar-static-item-text:hover .sidebar-channel-menu-icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: var(--s, inherit);
+    height: 1em;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    width: 1em;
+}
+
+
+.sidebar-team-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #121016;
+    ;
+    color: white;
+    padding: 4px 4px 4px 8px;
+    font-size: 18px;
+    font-stretch: condensed;
+    font-weight: 600;
+}
+
+.sidebar-team-menu:hover {
+    background-color: rgb(70, 70, 70);
+    border-radius: 4px;
+}
+
+.workspace-sidebar {
+    grid-area: workspace-sidebar;
+    height: 100%;
+    border-right: 1px solid #0000001a;
+    border-color: rgb(43, 42, 47) !important;
+}
+
+.sidebar-static-item, .sidebar-list-item {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    font-size: 15px;
+}
+
+.sidebar-static-item {
+    cursor: auto;
+    margin: 0 8px;
+    margin-top: 10px;
+    padding: 0 16px;
+    /* width: auto; */
+}
+
+.sidebar-static-item-text {
+    line-height: 26px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 4px;
+    margin-left: -1px;
+}
+
+.sidebar-static-item-text:hover {
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: rgb(31, 31, 32);
+}
+
+.sidebar-list-item {
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px 0 16px;
+    line-height: 16px;
+    /* width: 100%; */
+}
+
+.sidebar-list-item-container {
+    padding: 0 8px;
+}
+
+.sidebar-list-item:hover, .sidebar-messeagable-arrow-container:hover {
+    border-radius: 6px;
+    background-color: rgb(31, 31, 32);
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.sidebar-messeagable-arrow-container {
+    height: 26px;
+    width: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -4px;
+}
+
+.sidebar-messeagable-arrow {
+    height: 46%;
+}
+
+.sidebar-channel-icon {
+    margin-right: 11px;
+}
+
+.show-messageable {
+    transform: rotate(0.25turn);
+}
+
+.sidebar-static-item-text {
+    display: flex;
+    align-items: center;
+}

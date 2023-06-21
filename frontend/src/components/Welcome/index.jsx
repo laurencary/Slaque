@@ -7,6 +7,7 @@ import NavBar from "../NavBar";
 import wave from '../../images/waving-hand@2x.gif'
 import WorkspaceItem from "./WorkspaceItem";
 import './Welcome.css'
+import { removeCurrentWorkspace } from "../../store/currentWorkspace";
 
 const Welcome = () => {
     const dispatch = useDispatch();
@@ -17,6 +18,10 @@ const Welcome = () => {
         if (userWorkspaces.length === 0) {
             dispatch(fetchUser(user.id))
         }
+    }, [])
+
+    useEffect(() => {
+        dispatch(removeCurrentWorkspace());
     }, [])
     
     if (!user) return <Redirect to='/' />;

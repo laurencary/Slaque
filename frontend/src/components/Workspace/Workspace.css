@@ -31,54 +31,9 @@
     box-shadow: 0 1px 0 0 rgba(209, 210, 211, 0.1);
 }
 
-.workspace-sidebar {
-    grid-area: workspace-sidebar;
-    /* background-color: darkgreen; */
-}
-
 .workspace-primary-view {
     grid-area: workspace-primary-view;
     /* background-color: darkslategrey; */
-}
-
-.sidebar-header {
-    line-height: 1.33334;
-    min-height: 50px;
-    align-items: center;
-    background: var(--p-channel_sidebar__column-bg);
-    display: flex;
-    position: relative;
-    border-color: rgb(43, 42, 47) !important;
-    border-bottom: 1px solid #0000001a;
-    padding-left: 8px;
-}
-
-.sidebar-team-menu-icon {
-    display: inline-flex;
-    align-items: center;
-    flex-shrink: 0;
-    font-size: var(--s, inherit);
-    height: 1em;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    width: 1em;
-}
-
-.sidebar-team-menu {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: black;
-    color: white;
-    padding: 4px 4px 4px 8px;
-    font-size: 18px;
-    font-stretch: condensed;
-    font-weight: 600;
-}
-
-.sidebar-team-menu:hover {
-    background-color: rgb(70, 70, 70);
-    border-radius: 4px;
 }
 
 .workspace-nav-bar-search {

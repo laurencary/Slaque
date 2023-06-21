@@ -7,7 +7,7 @@ const ProfileButton = () => {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const profile = useSelector(getCurrentWorkspaceProfile);
-    console.log(profile);
+    // console.log(profile);
 
     return profile ? (
         <div onClick={() => setShowMenu(!showMenu)}>
