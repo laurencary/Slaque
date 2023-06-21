@@ -1,5 +1,5 @@
 workspace_user = @workspace[0].workspace_users.where("user_id = #{current_user.id}")[0]
-# workspace_user = @workspace[0].workspace_users.where("user_id = 3")[0]
+# workspace_user = @workspace[0].workspace_users.where("user_id = 1")[0]
 
 json.currentWorkspace do
     json.currentWorkspaceId @workspace[0].id
@@ -18,6 +18,7 @@ json.channels do
     workspace_user.channels.each do |channel|
         json.set! channel.id do
             json.extract! channel, :id, :name, :description
+            json.workspaceUsers channel.workspace_users.map { |user| user.id }
             json.unreadMessages channel.has_unread_message?(workspace_user.id)
         end
     end
@@ -27,6 +28,14 @@ end
 
 # end
 
-# json.directMessages do
-# end
+json.directMessages do    
+    workspace_user.direct_messages.each do |dm|
+        json.set! dm.id do 
+            json.id dm.id
+            json.name dm.getDirectMessageName
+            json.workspaceUsers dm.workspace_users.map { |user| user.id }
+            json.unreadMessageCount dm.unread_message_count(workspace_user.id)
+        end
+    end
+end
 

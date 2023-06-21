@@ -1,5 +1,6 @@
 import { receiveChannels } from "./channels";
 import { receiveCurrentWorkspace } from "./currentWorkspace";
+import { receiveDirectMessages } from "./directMessages";
 
 export const RECEIVE_WORKSPACE_USERS = '/workspaceUsers/RECEIVE_WORKSPACE_USERS';
 export const REMOVE_CURRENT_WORKSPACE = '/REMOVE_CURRENT_WORKSPACE';
@@ -25,6 +26,7 @@ export const fetchWorkspaceUsers = (workspaceId) => async (dispatch) => {
         dispatch(receiveWorkspaceUsers(payload.workspaceUsers));
         dispatch(receiveCurrentWorkspace(payload.currentWorkspace));
         dispatch(receiveChannels(payload.channels));
+        dispatch(receiveDirectMessages(payload.directMessages));
     }
 }
 

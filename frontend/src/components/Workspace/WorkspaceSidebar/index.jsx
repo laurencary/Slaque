@@ -29,7 +29,7 @@ const WorkspaceSidebar = () => {
             <div id="sidebar-list">
                 <MessageableItem messageableType={"Channels"} />
                 {channels.map((channel) => (
-                    <div className="sidebar-list-item-container">
+                    <div key={channel.id} className="sidebar-list-item-container">
                         <div className="sidebar-list-item">
                             <div className="sidebar-channel-icon">
                                 <HiOutlineHashtag className={ channel.unreadMessages ? "bold" : ""} />

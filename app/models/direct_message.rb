@@ -14,7 +14,7 @@ class DirectMessage < ApplicationRecord
 
 	has_many :direct_message_subscriptions,
 		foreign_key: :direct_message_id,
-		class_name: :DirectMessage
+		class_name: :DirectMessageSubscription
 
 	has_many :workspace_users,
 		through: :direct_message_subscriptions,
@@ -23,4 +23,14 @@ class DirectMessage < ApplicationRecord
 	has_many :messages,
 		as: :messageable,
 		dependent: :destroy
+
+	def getDirectMessageName
+		users = self.workspace_users.map { |user| user.full_name }
+		users.sort.join(', ')
+	end
+
+	def unread_message_count(workspace_user_id)
+		self.messages.count { |message| message.unread_by_workspace_users.has_key?(workspace_user_id.to_s) }
+	end
+
 end

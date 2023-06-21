@@ -5,13 +5,15 @@ import userWorkspacesReducer from './workspaceUserSubscriptions';
 import workspaceUsersReducer from './workspaceUsers';
 import currentWorkspaceReducer from './currentWorkspace';
 import channelsReducer from './channels';
+import directMessagesReducer from './directMessages';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     userWorkspaces: userWorkspacesReducer,
     workspaceUsers: workspaceUsersReducer,
     currentWorkspace: currentWorkspaceReducer,
-    channels: channelsReducer
+    channels: channelsReducer,
+    directMessages: directMessagesReducer
 });
 
 let enhancer;

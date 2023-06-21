@@ -90,7 +90,6 @@ ApplicationRecord.transaction do
     DirectMessageSubscription.create!(workspace_user_id: 1, direct_message_id: 1)
     DirectMessageSubscription.create!(workspace_user_id: 2, direct_message_id: 1)
     DirectMessageSubscription.create!(workspace_user_id: 4, direct_message_id: 1)
-    DirectMessageSubscription.create!(workspace_user_id: 4, direct_message_id: 1)
     DirectMessageSubscription.create!(workspace_user_id: 1, direct_message_id: 2)
     DirectMessageSubscription.create!(workspace_user_id: 2, direct_message_id: 2)
     DirectMessageSubscription.create!(workspace_user_id: 5, direct_message_id: 3)
@@ -154,17 +153,17 @@ ApplicationRecord.transaction do
         messageable_type:"DirectMessage", 
         unread_by_workspace_users: {  }, 
         edited: false)
-    Message.create!(workspace_author_id: 1,
+    Message.create!(workspace_author_id: 4,
         content: "Welcome to direct messaging", 
         messageable_id: 2, 
         messageable_type:"DirectMessage", 
-        unread_by_workspace_users: { 4=> true }, 
+        unread_by_workspace_users: { 1 => true }, 
         edited: false)
     Message.create!(workspace_author_id: 2,
         content: "It's pretty neat! Let's try it out", 
         messageable_id: 2, 
         messageable_type:"DirectMessage", 
-        unread_by_workspace_users: { 4=> true, 1 => true }, 
+        unread_by_workspace_users: { 1 => true }, 
         edited: false)
     Message.create!(workspace_author_id: 8,
         content: "Hey - want to carpool to practice?", 
@@ -176,7 +175,7 @@ ApplicationRecord.transaction do
         content: "Are tonight's games going to be cancelled?", 
         messageable_id: 4, 
         messageable_type:"DirectMessage", 
-        unread_by_workspace_users: { 8 => true }, 
+        unread_by_workspace_users: { 7 => true }, 
         edited: false)
 
     puts "Done!"
