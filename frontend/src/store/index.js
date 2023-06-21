@@ -6,6 +6,7 @@ import workspaceUsersReducer from './workspaceUsers';
 import currentWorkspaceReducer from './currentWorkspace';
 import channelsReducer from './channels';
 import directMessagesReducer from './directMessages';
+import messagesReducer from './messages';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     workspaceUsers: workspaceUsersReducer,
     currentWorkspace: currentWorkspaceReducer,
     channels: channelsReducer,
-    directMessages: directMessagesReducer
+    directMessages: directMessagesReducer,
+    messages: messagesReducer
 });
 
 let enhancer;
