@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, Redirect } from "react-router-dom"
+import { useParams, Redirect, Route } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import WorkspaceNavBar from "./WorkspaceNavBar";
 import { fetchUser } from "../../store/session";
@@ -8,6 +8,7 @@ import { fetchWorkspaceUsers, getWorkspaceUsers } from "../../store/workspaceUse
 import './Workspace.css'
 import WorkspaceSidebar from "./WorkspaceSidebar";
 import { getChannels } from "../../store/channels";
+import WorkspacePrimaryView from "./WorkspacePrimaryView";
 
 const Workspace = () => {
     const dispatch = useDispatch();
@@ -39,10 +40,7 @@ const Workspace = () => {
         <div id="workspace-layout">
             <WorkspaceNavBar />
             <WorkspaceSidebar />
-            {/* <Route path="/client/:clientId/:workspaceId/:messageId">
-                <WorkspacePrimary />
-            </Route> */}
-            <div className="workspace-primary-view"></div>
+            <WorkspacePrimaryView />
         </div>
     ) : null
 }

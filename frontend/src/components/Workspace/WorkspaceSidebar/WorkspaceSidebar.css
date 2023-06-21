@@ -157,4 +157,9 @@
     white-space: nowrap;
     max-width: 262px;
     text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+a {
+    all: unset;
 }

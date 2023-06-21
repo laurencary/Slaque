@@ -15,7 +15,17 @@ export const getMessages = (state) => {
 }
 
 export const fetchMessages = (messageableId, messageableType) => async (dispatch) => {
-    const res = await fetch(`/api/${messageableType}/${messageableId}`)
+    let start;
+    if (messageableType === "channel") {
+        start = 1;
+    } else {
+        messageableType = "direct_message";
+        start = 2;
+    }
+
+    messageableId = messageableId.slice(start, 100) * 1
+
+    const res = await fetch(`/api/${messageableType}s/${messageableId}`)
 
     if (res.ok) {
         const messages = await res.json();

@@ -1,0 +1,8 @@
+.h1-only {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    line-height: 80px;
+}
+
