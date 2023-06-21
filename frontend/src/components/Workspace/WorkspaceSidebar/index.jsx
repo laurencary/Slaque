@@ -5,14 +5,16 @@ import { getChannels } from "../../../store/channels";
 import './WorkspaceSidebar.css'
 import { HiOutlineHashtag } from "react-icons/hi";
 import MessageableItem from "./MessageableItem";
+import { getDirectMessages } from "../../../store/directMessages";
 
 const WorkspaceSidebar = () => {
     const dispatch = useDispatch();
     const { workspaceId } = useParams();
     const workspace = useSelector(state => state.userWorkspaces[workspaceId]);
     const channels = useSelector(getChannels);
-    const [showChannels, setShowChannels] = useState(true)
-    const [showDirectMessages, setShowDirectMessages] = useState(true)
+    const directMessages = useSelector(getDirectMessages);
+    const [showChannels, setShowChannels] = useState(true);
+    const [showDirectMessages, setShowDirectMessages] = useState(true);
 
     return (
         <div className="workspace-sidebar">
@@ -39,6 +41,19 @@ const WorkspaceSidebar = () => {
                     </div>
                 ))}
                 <MessageableItem messageableType={"Direct messages"}/>
+                {directMessages.map((directMessage) => (
+                    <div key={directMessage.id} className="sidebar-list-item-container">
+                        <div className="sidebar-direct-message">
+                            <div className="sidebar-list-item">
+                                <div className="sidebar-direct-message-icon"></div>
+                                <div className={directMessage.unreadMessageCount > 0 ? "bold dm-name" : "dm-name"}>{directMessage.name}</div>
+                            </div>
+                            <div className="sidebar-unread-count">
+                                <p>{directMessage.unreadMessageCount > 0 ? directMessage.unreadMessageCount : ''}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )

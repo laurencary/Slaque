@@ -10,7 +10,7 @@
     padding-left: 8px;
 }
 
-.sidebar-team-menu-icon, .sidebar-channel-icon, .sidebar-static-item-text:hover .sidebar-channel-menu-icon {
+.sidebar-team-menu-icon, .sidebar-channel-icon, .sidebar-direct-message-icon, .sidebar-static-item-text:hover .sidebar-channel-menu-icon {
     display: inline-flex;
     align-items: center;
     flex-shrink: 0;
@@ -21,13 +21,19 @@
     width: 1em;
 }
 
+.sidebar-direct-message-icon {
+    height: 20px;
+    width: 20px;
+    background-color: grey;
+    margin-left: -1.5px;
+    margin-right: 6px;
+}
 
 .sidebar-team-menu {
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: #121016;
-    ;
     color: white;
     padding: 4px 4px 4px 8px;
     font-size: 18px;
@@ -43,8 +49,8 @@
 .workspace-sidebar {
     grid-area: workspace-sidebar;
     height: 100%;
-    border-right: 1px solid #0000001a;
     border-color: rgb(43, 42, 47) !important;
+    border-right: 1px solid #0000001a;
 }
 
 .sidebar-static-item, .sidebar-list-item {
@@ -59,7 +65,6 @@
     margin: 0 8px;
     margin-top: 10px;
     padding: 0 16px;
-    /* width: auto; */
 }
 
 .sidebar-static-item-text {
@@ -83,14 +88,13 @@
     flex-direction: row;
     padding: 0 10px 0 16px;
     line-height: 16px;
-    /* width: 100%; */
 }
 
 .sidebar-list-item-container {
     padding: 0 8px;
 }
 
-.sidebar-list-item:hover, .sidebar-messeagable-arrow-container:hover {
+.sidebar-list-item:hover,.sidebar-direct-message:hover, .sidebar-messeagable-arrow-container:hover {
     border-radius: 6px;
     background-color: rgb(31, 31, 32);
 }
@@ -123,4 +127,34 @@
 .sidebar-static-item-text {
     display: flex;
     align-items: center;
+}
+
+.sidebar-direct-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 8px;
+}
+
+.sidebar-unread-count {
+    padding: 0 9px;
+    line-height: 16px;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-right: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dm-name {
+    overflow: hidden;
+    display: inline-block;
+    height: 20px;
+    white-space: nowrap;
+    max-width: 262px;
+    text-overflow: ellipsis;
 }
