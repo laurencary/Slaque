@@ -24,10 +24,6 @@ json.channels do
     end
 end
 
-# json.ChannelSubscriptions do
-
-# end
-
 json.directMessages do    
     workspace_user.direct_messages.each do |dm|
         json.set! dm.id do 

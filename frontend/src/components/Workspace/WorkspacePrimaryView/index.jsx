@@ -1,5 +1,7 @@
 const WorkspacePrimaryView = () => {
-    return <></>
+    return (
+        <></>
+    )
 }
 
 export default WorkspacePrimaryView;

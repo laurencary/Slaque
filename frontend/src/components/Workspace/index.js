@@ -39,6 +39,9 @@ const Workspace = () => {
         <div id="workspace-layout">
             <WorkspaceNavBar />
             <WorkspaceSidebar />
+            {/* <Route path="/client/:clientId/:workspaceId/:messageId">
+                <WorkspacePrimary />
+            </Route> */}
             <div className="workspace-primary-view"></div>
         </div>
     ) : null
