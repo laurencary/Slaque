@@ -23,6 +23,7 @@
     height: 49px;
     border-bottom: 1px solid rgb(43, 42, 47) !important;
     position: fixed;
+    width: 100%;
 }
 
 .primary-header-name {
@@ -30,7 +31,11 @@
     font-weight: bold;
 }
 
-.primary-messages {
+.message-details {
     position: relative;
     top: 50px;
+}
+
+.message-details-text-container {
+    display: block
 }

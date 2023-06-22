@@ -17,7 +17,7 @@ end
 json.channels do
     workspace_user.channels.each do |channel|
         json.set! channel.id do
-            json.extract! channel, :id, :name, :description
+            json.extract! channel, :id, :name, :description, :owner_id
             json.workspaceUsers channel.workspace_users.map { |user| user.id }
             json.unreadMessages channel.has_unread_message?(workspace_user.id)
         end

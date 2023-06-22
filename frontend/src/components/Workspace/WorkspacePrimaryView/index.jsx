@@ -5,13 +5,13 @@ import { fetchMessages, getMessages } from "../../../store/messages";
 import { HiOutlineHashtag } from "react-icons/hi";
 import { MdSend } from "react-icons/md";
 import './WorkspacePrimaryView.css'
+import DirectMessageTopDetails from "./DirectMessageTopDetails";
 
 
 const WorkspacePrimaryView = () => {
     let { messageableId } = useParams();
     const dispatch = useDispatch();
     const messageableType = messageableId.includes("c") ? "channel" : "directMessage";
-    const workspaceUsers = useSelector(getWorkspaceUsers)
     const messages = useSelector(getMessages);
     const messageName = useSelector(state => {
         if (messageableType === "channel") {
@@ -30,6 +30,7 @@ const WorkspacePrimaryView = () => {
         }
     })
 
+    
     const messageMembersArr = useSelector(state => {
         if (messageableType === "channel") {
             return state.channels[messageableId.slice(1, 100) * 1].workspaceUsers
@@ -37,10 +38,14 @@ const WorkspacePrimaryView = () => {
             return state.directMessages[messageableId.slice(2, 100) * 1].workspaceUsers
         }
     })
+    
+    useEffect(() => {
+        dispatch(fetchMessages(messageableId, messageableType));
+    }, [dispatch, messageableId])
 
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
-    }, [messageableId])
+    }, [])
 
 
     return (
@@ -60,15 +65,10 @@ const WorkspacePrimaryView = () => {
                 </div>
             </div>
             <div className="message-details">
-                <div className="message-details-user-photos"></div>
-                <div className="message-details-text-container">
-                    <p>This is the very beginning of your direct message history with </p>
-                    {messageMembersArr.map((member, index) => (
-                        <>
-                            <span></span>
-                        </>
-                    ))}
-                </div>
+                {messageableType === 'channel' ? 
+                    '' : 
+                    <DirectMessageTopDetails messageMembersArr={messageMembersArr}/>
+                }
             </div>
             <div className="primary-messages">
                 {messages.map((message) => (
