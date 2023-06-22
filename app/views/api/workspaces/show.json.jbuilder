@@ -28,7 +28,7 @@ json.directMessages do
     workspace_user.direct_messages.each do |dm|
         json.set! dm.id do 
             json.id dm.id
-            json.name dm.getDirectMessageName
+            json.name dm.getDirectMessageName(workspace_user.id)
             json.workspaceUsers dm.workspace_users.map { |user| user.id }
             json.unreadMessageCount dm.unread_message_count(workspace_user.id)
         end

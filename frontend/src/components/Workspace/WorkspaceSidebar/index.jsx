@@ -52,7 +52,7 @@ const WorkspaceSidebar = () => {
                             <div className="sidebar-direct-message">
                                 <div className="sidebar-list-item">
                                     <div className="sidebar-direct-message-icon"></div>
-                                    <div className={directMessage.unreadMessageCount > 0 ? "bold dm-name" : "dm-name"}>{directMessage.name}</div>
+                                    <div className={directMessage.unreadMessageCount > 0 ? "bold dm-name" : "dm-name"}>{directMessage.name.join(', ')}</div>
                                 </div>
                                 <div className="sidebar-unread-count">
                                     <p>{directMessage.unreadMessageCount > 0 ? directMessage.unreadMessageCount : ''}</p>

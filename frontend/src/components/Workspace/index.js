@@ -18,7 +18,7 @@ const Workspace = () => {
     const {workspaceId} = useParams();
     const workspace = useSelector(state => state.userWorkspaces[workspaceId])
     const channels = useSelector(getChannels);
-
+    const { messageableId } = useParams();
     
     useEffect(() => {
         if (userWorkspaces.length === 0 || !workspace.name) {
@@ -40,7 +40,13 @@ const Workspace = () => {
         <div id="workspace-layout">
             <WorkspaceNavBar />
             <WorkspaceSidebar />
-            <WorkspacePrimaryView />
+            {messageableId ? <WorkspacePrimaryView /> : 
+                <h1 className="workspace-primary-view h1-only">
+                    Please select a channel or direct message.
+                    <br></br>
+                    Happy Slaquing!
+                </h1>}
+            
         </div>
     ) : null
 }

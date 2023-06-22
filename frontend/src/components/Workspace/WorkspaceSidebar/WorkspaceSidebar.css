@@ -1,6 +1,6 @@
 .sidebar-header {
     line-height: 1.33334;
-    min-height: 50px;
+    min-height: 49px;
     align-items: center;
     background: var(--p-channel_sidebar__column-bg);
     display: flex;
@@ -153,7 +153,7 @@
 .dm-name {
     overflow: hidden;
     display: inline-block;
-    height: 20px;
+    /* height: 20px; */
     white-space: nowrap;
     max-width: 262px;
     text-overflow: ellipsis;
