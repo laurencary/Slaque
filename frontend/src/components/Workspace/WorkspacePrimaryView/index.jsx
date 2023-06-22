@@ -1,28 +1,38 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMessages, getMessages } from "../../../store/messages";
+import { createMessage, fetchMessages, getMessages } from "../../../store/messages";
 import { HiOutlineHashtag } from "react-icons/hi";
-import { MdSend } from "react-icons/md";
 import './WorkspacePrimaryView.css'
 import DirectMessageTopDetails from "./DirectMessageTopDetails";
 import ChannelTopDetails from "./ChannelTopDetails";
 
 
 const WorkspacePrimaryView = () => {
-    let { messageableId } = useParams();
+    const { messageableCode, clientId } = useParams();
     const dispatch = useDispatch();
-    const messageableType = messageableId.includes("c") ? "channel" : "directMessage";
+    const messageableType = messageableCode.includes("c") ? "channel" : "directMessage";
     const messages = useSelector(getMessages);
+    const messageableId = messageableType === "channel" ? 
+        messageableCode.slice(1, 100) * 1 : messageableCode.slice(2, 100) * 1
     const messageName = useSelector(state => {
         // debugger
         if (messageableType === "channel") {
-            return state.channels[messageableId.slice(1, 100) * 1].name
+            return state.channels[messageableId].name
         } else {
-            const userNameArr = state.directMessages[messageableId.slice(2, 100) * 1].name
+            const userNameArr = state.directMessages[messageableId].name
             return userNameArr;
         }
     })
+
+    const placeholderMessage = () => {
+        if (messageableType === "channel") {
+            return "Message #" + messageName
+        } else {
+            return "Message " + messageName
+        }
+    }
+    const [messageContent, setMessageContent] = useState(placeholderMessage());
  
     let messageDetailsName;
     if (messageableType === "channel") {
@@ -38,28 +48,40 @@ const WorkspacePrimaryView = () => {
     
     const messageMembersArr = useSelector(state => {
         if (messageableType === "channel") {
-            return state.channels[messageableId.slice(1, 100) * 1].workspaceUsers
+            return state.channels[messageableId].workspaceUsers
         } else {
-            return state.directMessages[messageableId.slice(2, 100) * 1].workspaceUsers
+            return state.directMessages[messageableId].workspaceUsers
         }
     })
 
-    const placeholderMessage = () => {
-        if (messageableType === "channel") {
-            return "Message #" + messageName
-        } else {
-            return "Message " + messageName
-        }
-    }
     
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
-    }, [messageableId])
+    }, [dispatch, messageableId, messageableType])
 
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
     },[])
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let unread_by_workspace_users = {};
+        for (const id of messageMembersArr) {
+            if (id !== clientId) {
+                unread_by_workspace_users[id] = true
+            }
+        }
+
+        const newMessage = {
+            workspace_author_id: clientId,
+            content: messageContent,
+            edited: false,
+            unread_by_workspace_users,
+            messageableId,
+            messageableType: messageableType === "channel" ? "channel" : "direct_message"
+        }
+        dispatch(createMessage(newMessage))
+    }
 
     return (
         <div className="workspace-primary-view">
@@ -99,11 +121,13 @@ const WorkspacePrimaryView = () => {
             </div>
             <div className="create-message-container">
                 <div className="formatting-options"></div>
-                <div className="message-input" 
-                    contentEditable="true"
-                    data-placeholder={placeholderMessage()}>
-                    
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <textarea className="message-textarea"
+                        placeholder={messageContent}
+                        onChange={(e) => setMessageContent(e.target.value)}>
+                    </textarea>
+                    <button disabled={messageContent === placeholderMessage() && messageContent !== ""}>Send</button>
+                </form>
                 <div className="bottom-message-options"></div>
             </div>
         </div>  

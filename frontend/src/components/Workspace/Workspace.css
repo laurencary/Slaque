@@ -9,7 +9,7 @@
     grid-template-rows: auto;
     overflow: visible;
     position: relative;
-    grid-template-columns: 326px auto;
+    grid-template-columns: 25vw auto;
     grid-template-rows: 44px auto;
     grid-template-areas: 'workspace-nav-bar workspace-nav-bar'
     'workspace-sidebar workspace-primary-view';
@@ -48,7 +48,7 @@
 }
 .workspace-nav-bar-left {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     width: 20vw;
     padding-right: 8px;
 }

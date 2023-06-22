@@ -3,7 +3,10 @@ class Api::MessagesController < ApplicationController
 		@message = Message.new(message_params)
 
 		if @message.save
-			render: 'api/'
+			render :show
+		else
+			render json: { errors: @messages.errors.full_messages }, status: :unprocessable_entity 
+		end
 	end
 
 	def update

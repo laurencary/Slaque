@@ -90,6 +90,10 @@ div.message-author-photo.img-placeholder {
     position: absolute;
     bottom: 0px;
     border-radius: 8px;
+    padding: 0 20px 20px 20px;
+    display: block;
+    overflow: hidden;
+    width: 72vw
 }
 
 .message-details-channel-title {
@@ -101,4 +105,19 @@ div.message-author-photo.img-placeholder {
 
 .messageable-details {
     margin: 88px 20px 16px 20px;
+}
+
+.message-p {
+    padding: 8px 12px;
+}
+
+.message-input-container {
+    border-left: 4px solid #0000;
+    border-radius: 6px/4px;
+    border-right: 4px solid #0000;
+}
+
+.message-textarea {
+    height: auto;
+    width: 100%;
 }
