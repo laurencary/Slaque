@@ -22,4 +22,12 @@ class Message < ApplicationRecord
 
 	belongs_to :messageable,
 		polymorphic: true
+
+	def get_display_time
+		if self.created_at.today?
+			return self.created_at.strftime "%l:%M %p"			
+		else
+			return self.created_at.strftime "%B %d %l:%M %p"	
+		end
+	end
 end

@@ -13,7 +13,7 @@ const ChannelTopDetails = ({messageableId}) => {
             </div>
             <div className="message-details-text-container">
                 <span>{workspaceUser.displayName ? workspaceUser.displayName : workspaceUser.fullName}</span>
-                <span> created this channel on {}. This is the very beginning of the {} channel.</span>
+                <span> created this channel on {channel.createdAt}. This is the very beginning of the {} channel.</span>
             </div>
         </>
     )
