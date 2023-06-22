@@ -34,6 +34,7 @@
 .workspace-primary-view {
     grid-area: workspace-primary-view;
     border-left: 1px solid rgb(43, 42, 47) !important;
+    height: 700px;
 }
 
 .workspace-nav-bar-search {

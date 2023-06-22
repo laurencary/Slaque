@@ -17,9 +17,13 @@ const DirectMessageTopDetails = ({ messageMembersArr }) => {
 
     return (
         <>
-            <div className="message-details-user-photos"></div>
+            <div className="message-details-user-photos">
+                {messageMembersArr.filter(id => id !== currentWorkspaceUserId).map((workspaceUserId) => (
+                    <div className="img-placeholder"></div>
+                ))}
+            </div>
             <div className="message-details-text-container">
-                <p>This is the very beginning of your direct message history with </p>
+                <span>This is the very beginning of your direct message history with </span>
                 {messageMembersArr.filter(id => id !== currentWorkspaceUserId).map((workspaceUserId, index) => (
                     <span key={workspaceUserId}>
                         {workspaceUsers[workspaceUserId].fullName}

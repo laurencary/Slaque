@@ -41,7 +41,7 @@ const WorkspacePrimaryView = () => {
     
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
-    }, [dispatch, messageableId])
+    }, [messageableId])
 
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
@@ -64,7 +64,7 @@ const WorkspacePrimaryView = () => {
                     <span>{messageMembersArr.length}</span>
                 </div>
             </div>
-            <div className="message-details">
+            <div className="messageable-details">
                 {messageableType === 'channel' ? 
                     '' : 
                     <DirectMessageTopDetails messageMembersArr={messageMembersArr}/>
@@ -73,13 +73,13 @@ const WorkspacePrimaryView = () => {
             <div className="primary-messages">
                 {messages.map((message) => (
                     <div key={message.id} className="message-item">  
-                        <div className="message-author-photo"></div>
+                        <div className="message-author-photo img-placeholder"></div>
                         <div className="message-details">
                             <div className="message-header">
                                 <p className="message-author">{message.authorName}</p>
                                 <p className="message-time">{message.createdAt}</p>
                             </div>
-                            <p>{message.content}</p>
+                            <p className="message-content">{message.content}</p>
                         </div>
                     </div>
                 ))}
