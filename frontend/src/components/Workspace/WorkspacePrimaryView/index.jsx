@@ -6,6 +6,7 @@ import { HiOutlineHashtag } from "react-icons/hi";
 import { MdSend } from "react-icons/md";
 import './WorkspacePrimaryView.css'
 import DirectMessageTopDetails from "./DirectMessageTopDetails";
+import ChannelTopDetails from "./ChannelTopDetails";
 
 
 const WorkspacePrimaryView = () => {
@@ -17,6 +18,7 @@ const WorkspacePrimaryView = () => {
         if (messageableType === "channel") {
             return state.channels[messageableId.slice(1,100) * 1].name
         } else {
+            console.log(messages);
             const userNameArr = state.directMessages[messageableId.slice(2, 100) * 1].name
             let name;
             if (userNameArr.length < 4) {
@@ -45,10 +47,10 @@ const WorkspacePrimaryView = () => {
 
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
-    }, [])
+    },[])
 
 
-    return (
+    return messages.length > 0 ? (
         <div className="workspace-primary-view">
             <div className="primary-header-container">
                 <header className="primary-header-name">
@@ -66,7 +68,7 @@ const WorkspacePrimaryView = () => {
             </div>
             <div className="messageable-details">
                 {messageableType === 'channel' ? 
-                    '' : 
+                    <ChannelTopDetails /> : 
                     <DirectMessageTopDetails messageMembersArr={messageMembersArr}/>
                 }
             </div>
@@ -85,13 +87,10 @@ const WorkspacePrimaryView = () => {
                 ))}
             </div>
             <div className="create-message-container">
-                {/* <form>
-                    <textarea placeholder={ 'Message ' + messageName }></textarea>
-                    <button>{MdSend}</button>
-                </form> */}
+                <div contentEditable="true">{"Message users"}</div>
             </div>
         </div>  
-    )
+    ) : <></>
 }
 
 export default WorkspacePrimaryView;
