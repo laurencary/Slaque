@@ -65,20 +65,20 @@ const WorkspacePrimaryView = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let unread_by_workspace_users = {};
+        let unreadByWorkspaceUsers = {};
         for (const id of messageMembersArr) {
-            if (id !== clientId) {
-                unread_by_workspace_users[id] = true
+            if (id !== clientId * 1) {
+                unreadByWorkspaceUsers[id] = true
             }
         }
 
         const newMessage = {
-            workspace_author_id: clientId,
+            workspaceAuthorId: clientId,
             content: messageContent,
             edited: false,
-            unread_by_workspace_users,
+            unreadByWorkspaceUsers,
             messageableId,
-            messageableType: messageableType === "channel" ? "channel" : "direct_message"
+            messageableType: messageableType === "channel" ? "Channel" : "DirectMessage"
         }
         dispatch(createMessage(newMessage))
     }

@@ -2,7 +2,7 @@ import { HiOutlineHashtag } from "react-icons/hi";
 import { useSelector } from "react-redux";
 
 const ChannelTopDetails = ({messageableId}) => {
-    const channel = useSelector(state => state.channels[messageableId.slice(1, 100) * 1]);
+    const channel = useSelector(state => state.channels[messageableId]);
     const workspaceUser = useSelector(state => state.workspaceUsers[channel.ownerId]);
 
     return (
