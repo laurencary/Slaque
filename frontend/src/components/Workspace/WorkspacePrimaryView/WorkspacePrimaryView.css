@@ -89,4 +89,16 @@ div.message-author-photo.img-placeholder {
 .create-message-container {
     position: absolute;
     bottom: 0px;
+    border-radius: 8px;
+}
+
+.message-details-channel-title {
+    display: flex;
+    font-size: 28px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.messageable-details {
+    margin: 88px 20px 16px 20px;
 }

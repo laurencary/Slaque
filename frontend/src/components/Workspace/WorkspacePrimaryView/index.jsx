@@ -15,22 +15,25 @@ const WorkspacePrimaryView = () => {
     const messageableType = messageableId.includes("c") ? "channel" : "directMessage";
     const messages = useSelector(getMessages);
     const messageName = useSelector(state => {
+        // debugger
         if (messageableType === "channel") {
-            return state.channels[messageableId.slice(1,100) * 1].name
+            return state.channels[messageableId.slice(1, 100) * 1].name
         } else {
-            console.log(messages);
             const userNameArr = state.directMessages[messageableId.slice(2, 100) * 1].name
-            let name;
-            if (userNameArr.length < 4) {
-                name = userNameArr.join(', ');
-                return name
-            } else {
-                const name = userNameArr.slice(0, 2).join(', ')
-                name = name + ', ' + (userNameArr.length - 2).toString() + ' others'
-                return name
-            }
+            return userNameArr;
         }
     })
+ 
+    let messageDetailsName;
+    if (messageableType === "channel") {
+        messageDetailsName = messageName;
+    } else if (messageName.length > 3) {
+        let name = messageName.slice(0, 2).join(', ')
+        name = name + ', ' + (messageName.length - 2).toString() + ' others'
+        messageDetailsName = name;
+    } else {
+        messageDetailsName = messageName.join(', ')
+    }
 
     
     const messageMembersArr = useSelector(state => {
@@ -40,6 +43,14 @@ const WorkspacePrimaryView = () => {
             return state.directMessages[messageableId.slice(2, 100) * 1].workspaceUsers
         }
     })
+
+    const placeholderMessage = () => {
+        if (messageableType === "channel") {
+            return "Message #" + messageName
+        } else {
+            return "Message " + messageName
+        }
+    }
     
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
@@ -50,12 +61,12 @@ const WorkspacePrimaryView = () => {
     },[])
 
 
-    return messages.length > 0 ? (
+    return (
         <div className="workspace-primary-view">
             <div className="primary-header-container">
                 <header className="primary-header-name">
                     { messageableType === "channel" ? <HiOutlineHashtag /> : <></> }
-                    {messageName}
+                    {messageDetailsName}
                     <span className="sidebar-team-menu-icon">
                         <svg viewBox="0 0 20 20" >
                             <path fill="currentColor" d="M5.72 7.47a.75.75 0 0 1 1.06 0L10 10.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-3.75 3.75a.75.75 0 0 1-1.06 0L5.72 8.53a.75.75 0 0 1 0-1.06Z"></path>
@@ -68,7 +79,7 @@ const WorkspacePrimaryView = () => {
             </div>
             <div className="messageable-details">
                 {messageableType === 'channel' ? 
-                    <ChannelTopDetails /> : 
+                    <ChannelTopDetails messageableId={messageableId}/> : 
                     <DirectMessageTopDetails messageMembersArr={messageMembersArr}/>
                 }
             </div>
@@ -87,10 +98,16 @@ const WorkspacePrimaryView = () => {
                 ))}
             </div>
             <div className="create-message-container">
-                <div contentEditable="true">{"Message users"}</div>
+                <div className="formatting-options"></div>
+                <div className="message-input" 
+                    contentEditable="true"
+                    data-placeholder={placeholderMessage()}>
+                    
+                </div>
+                <div className="bottom-message-options"></div>
             </div>
         </div>  
-    ) : <></>
+    ) 
 }
 
 export default WorkspacePrimaryView;
