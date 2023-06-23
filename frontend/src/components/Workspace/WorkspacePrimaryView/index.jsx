@@ -25,14 +25,7 @@ const WorkspacePrimaryView = () => {
         }
     })
 
-    const placeholderMessage = () => {
-        if (messageableType === "channel") {
-            return "Message #" + messageName
-        } else {
-            return "Message " + messageName
-        }
-    }
-    const [messageContent, setMessageContent] = useState(placeholderMessage());
+    const [messageContent, setMessageContent] = useState('');
  
     let messageDetailsName;
     if (messageableType === "channel") {
@@ -71,6 +64,7 @@ const WorkspacePrimaryView = () => {
                 unreadByWorkspaceUsers[id] = true
             }
         }
+        setMessageContent('')
 
         const newMessage = {
             workspaceAuthorId: clientId,
@@ -80,7 +74,7 @@ const WorkspacePrimaryView = () => {
             messageableId,
             messageableType: messageableType === "channel" ? "Channel" : "DirectMessage"
         }
-        dispatch(createMessage(newMessage))
+        dispatch(createMessage(newMessage));
     }
 
     return (
@@ -99,36 +93,39 @@ const WorkspacePrimaryView = () => {
                     <span>{messageMembersArr.length}</span>
                 </div>
             </div>
-            <div className="messageable-details">
-                {messageableType === 'channel' ? 
-                    <ChannelTopDetails messageableId={messageableId}/> : 
-                    <DirectMessageTopDetails messageMembersArr={messageMembersArr}/>
-                }
-            </div>
-            <div className="primary-messages">
-                {messages.map((message) => (
-                    <div key={message.id} className="message-item">  
-                        <div className="message-author-photo img-placeholder"></div>
-                        <div className="message-details">
-                            <div className="message-header">
-                                <p className="message-author">{message.authorName}</p>
-                                <p className="message-time">{message.createdAt}</p>
+            <div className="message-scroll-container">
+                <div className="messageable-details">
+                    {messageableType === 'channel' ? 
+                        <ChannelTopDetails messageableId={messageableId}/> : 
+                        <DirectMessageTopDetails messageMembersArr={messageMembersArr}/>
+                    }
+                </div>
+                <div className="primary-messages">
+                    {messages.map((message) => (
+                        <div key={message.id} className="message-item">  
+                            <div className="message-author-photo img-placeholder"></div>
+                            <div className="message-details">
+                                <div className="message-header">
+                                    <p className="message-author">{message.authorName}</p>
+                                    <p className="message-time">{message.createdAt}</p>
+                                </div>
+                                <p className="message-content">{message.content}</p>
                             </div>
-                            <p className="message-content">{message.content}</p>
                         </div>
-                    </div>
-                ))}
-            </div>
-            <div className="create-message-container">
-                <div className="formatting-options"></div>
-                <form onSubmit={handleSubmit}>
-                    <textarea className="message-textarea"
-                        placeholder={messageContent}
-                        onChange={(e) => setMessageContent(e.target.value)}>
-                    </textarea>
-                    <button disabled={messageContent === placeholderMessage() && messageContent !== ""}>Send</button>
-                </form>
-                <div className="bottom-message-options"></div>
+                    ))}
+                </div>
+                <div className="create-message-container">
+                    <div className="formatting-options"></div>
+                    <form onSubmit={handleSubmit}>
+                        <textarea className="message-textarea"
+                            placeholder={messageableType === "channel" ? "Message #" + messageName : "Message " + messageName.join(", ")}
+                            value={messageContent}
+                            onChange={(e) => setMessageContent(e.target.value)}>
+                        </textarea>
+                        <button disabled={messageContent === "" || messageContent.includes(messageName)}>Send</button>
+                    </form>
+                    <div className="bottom-message-options"></div>
+                </div>
             </div>
         </div>  
     ) 

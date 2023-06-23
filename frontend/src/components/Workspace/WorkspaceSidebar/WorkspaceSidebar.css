@@ -51,6 +51,10 @@
     height: 100%;
     border-color: rgb(43, 42, 47) !important;
     border-right: 1px solid #0000001a;
+    overflow: auto;
+    position: fixed;
+    top: 40px;
+    width: 326px;
 }
 
 .sidebar-static-item, .sidebar-list-item {
