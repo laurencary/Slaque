@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserWorkspaces } from "../../store/workspaceUserSubscriptions";
+import { getUserWorkspaces } from "../../store/userWorkspaces";
 import { fetchUser } from "../../store/session";
 import NavBar from "../NavBar";
 import wave from '../../images/waving-hand@2x.gif'

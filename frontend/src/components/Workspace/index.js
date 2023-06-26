@@ -3,8 +3,8 @@ import { useParams, Redirect, Route } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import WorkspaceNavBar from "./WorkspaceNavBar";
 import { fetchUser } from "../../store/session";
-import { getUserWorkspaces } from "../../store/workspaceUserSubscriptions";
-import { fetchWorkspaceUsers, getWorkspaceUsers } from "../../store/workspaceUsers";
+import { getUserWorkspaces } from "../../store/userWorkspaces";
+import { fetchCurrentWorkspace } from "../../store/currentWorkspace";
 import './Workspace.css'
 import WorkspaceSidebar from "./WorkspaceSidebar";
 import { getChannels } from "../../store/channels";
@@ -15,7 +15,6 @@ const Workspace = () => {
     const dispatch = useDispatch();
     const userWorkspaces = useSelector(getUserWorkspaces);
     const user = useSelector(state => state.session.user);
-    const workspaceUsers = useSelector(getWorkspaceUsers)
     const {workspaceId} = useParams();
     const workspace = useSelector(state => state.userWorkspaces[workspaceId])
     const channels = useSelector(getChannels);
@@ -25,13 +24,23 @@ const Workspace = () => {
     useEffect(() => {
         if (userWorkspaces.length === 0 || !workspace.name) {
             dispatch(fetchUser(user.id));
-            dispatch(fetchWorkspaceUsers(workspaceId))
+            dispatch(fetchCurrentWorkspace(workspaceId))
+            // const subscription = consumer.subscriptions.create(
+            //     { channel: 'RoomsChannel', id: roomId }
+            // );
+
+            // return () => subscription?.unsubscribe();
         }
     }, [])
 
     useEffect(() => {
         if (channels.length === 0) {
-            dispatch(fetchWorkspaceUsers(workspaceId))
+            dispatch(fetchCurrentWorkspace(workspaceId))
+            // const subscription = consumer.subscriptions.create(
+            //     { channel: 'WorkspacesChannel', id: roomId }
+            // );
+
+            // return () => subscription?.unsubscribe();
         }
     }, [])
 

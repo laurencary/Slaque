@@ -24,14 +24,30 @@
 .primary-header-container {
     justify-content: space-between;
     padding: 0 16px 0 20px;
-    height: 49px;
+    height: 50px;
     border-bottom: 1px solid rgb(43, 42, 47) !important;
-    position: fixed;
     width: calc(100vw - 326px);
     box-sizing: border-box;
-    top: 41px;
     z-index: 400;
     opacity: 1;
+}
+
+.workspace-body-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.message-scroll-container {
+    overflow-y: scroll;
+    position: absolute;
+    overflow-x: hidden;
+    width: 100%;
+    scroll-snap-align: end;
+    height: 100%
 }
 
 .primary-header-name {
@@ -40,7 +56,6 @@
 }
 
 .primary-messages {
-    overflow: auto;
     padding: 8px 0;
 }
 
@@ -103,6 +118,8 @@ div.message-author-photo.img-placeholder {
     flex-direction: column;
     width: calc(100vw - 326px);
     box-sizing: border-box;
+    z-index: 2;
+    background-color: #121016;
 }
 
 .create-message-container {
@@ -122,7 +139,7 @@ div.message-author-photo.img-placeholder {
 }
 
 .messageable-details {
-    margin: 88px 0 16px 0px;
+    margin: 48px 0 16px 0px;
     padding: 8px 20px;
 }
 

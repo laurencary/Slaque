@@ -6,6 +6,11 @@ class Api::MessagesController < ApplicationController
 		@message.unread_by_workspace_users = params[:message][:unread_by_workspace_users]
 
 		if @message.save
+			if @message.messageable_type == "channel"
+				ChannelsChannel.broadcast_to(@message.messageble, @message)
+			else
+				DirectMessagesChannel.broadcast_to(@message.messageble, @message)
+			end
 			render :show
 		else
 			# debugger

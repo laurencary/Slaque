@@ -1,5 +1,5 @@
 import csrfFetch from "./csrf";
-import { receiveUserWorkspaces } from "./workspaceUserSubscriptions";
+import { receiveUserWorkspaces } from "./userWorkspaces";
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
