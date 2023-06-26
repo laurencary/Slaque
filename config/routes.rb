@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
 	# post 'api/test', to: 'application#test'
 
+	mount ActionCable.server => '/cable'
+
 	namespace :api, defaults: { format: :json } do
 		resources :users, only: [:create, :show]
 		resources :workspaces, only: [:index ,:show ,:create ,:update ,:delete]

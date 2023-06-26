@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMessages, getMessages } from "../../../store/messages";
+import { fetchMessages, receiveMessage } from "../../../store/messages";
 import { HiOutlineHashtag } from "react-icons/hi";
 import './WorkspacePrimaryView.css'
 import DirectMessageTopDetails from "./DirectMessageTopDetails";
 import ChannelTopDetails from "./ChannelTopDetails";
 import MessagesView from "./MessagesView";
 import MessageContentInput from "../MessageContentInput";
+import consumer from '../../../consumer';
+import { fetchCurrentWorkspace } from "../../../store/currentWorkspace";
 
-
-const WorkspacePrimaryView = () => {
+const WorkspacePrimaryView = ({workspaceId}) => {
     const { messageableCode } = useParams();
     const dispatch = useDispatch();
     const messageableType = messageableCode.includes("c") ? "channel" : "directMessage";
@@ -50,10 +51,35 @@ const WorkspacePrimaryView = () => {
     
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
+        dispatch(fetchCurrentWorkspace(workspaceId))
+        if (messageableType === "channel") {
+            const subscription = consumer.subscriptions.create(
+                { channel: 'ChannelsChannel', id: messageableId },
+                {
+                    received: (message) => {
+                        dispatch(receiveMessage(message));
+                    }
+                }
+            );
+
+            return () => subscription?.unsubscribe();
+        }
     }, [dispatch, messageableId, messageableType])
 
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
+        if (messageableType === "channel") {
+            const subscription = consumer.subscriptions.create(
+                { channel: 'ChannelsChannel', id: messageableId },
+                {
+                    received: (message) => {
+                        dispatch(receiveMessage(message));
+                    }
+                }
+            );
+
+            return () => subscription?.unsubscribe();
+        }
     },[])
 
 

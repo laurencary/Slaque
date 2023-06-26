@@ -22,6 +22,10 @@ class ApplicationController < ActionController::API
         @current_user = nil
     end
 
+    def from_template(template, locals = {})
+        JSON.parse(self.class.render(:json, template: template, locals: locals))
+    end
+
     # def test
     #     if params.has_key?(:login)
     #         login!(User.first)

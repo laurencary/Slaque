@@ -26,7 +26,7 @@ const Workspace = () => {
             dispatch(fetchUser(user.id));
             dispatch(fetchCurrentWorkspace(workspaceId))
             // const subscription = consumer.subscriptions.create(
-            //     { channel: 'RoomsChannel', id: roomId }
+            //     { channel: 'ChannelsChannel', id: workspaceId }
             // );
 
             // return () => subscription?.unsubscribe();
@@ -35,9 +35,9 @@ const Workspace = () => {
 
     useEffect(() => {
         if (channels.length === 0) {
-            dispatch(fetchCurrentWorkspace(workspaceId))
+            // dispatch(fetchCurrentWorkspace(workspaceId))
             // const subscription = consumer.subscriptions.create(
-            //     { channel: 'WorkspacesChannel', id: roomId }
+            //     { channel: 'ChannelsChannel', id: workspaceId }
             // );
 
             // return () => subscription?.unsubscribe();
@@ -46,12 +46,11 @@ const Workspace = () => {
 
     if (!user) return <Redirect to='/' />;
     
-    // const workspaceUsers = useSelector(getWorkspaceUsers);
     return userWorkspaces.length ? (
         <div id="workspace-layout">
             <WorkspaceNavBar />
             <WorkspaceSidebar />
-            {messageableCode && channels.length > 0 && directMessages.length > 0 ? <WorkspacePrimaryView /> : 
+            {messageableCode && channels.length > 0 && directMessages.length > 0 ? <WorkspacePrimaryView workspaceId={workspaceId}/> : 
                 <h1 className="workspace-primary-view h1-only">
                     Please select a channel or direct message.
                     <br></br>

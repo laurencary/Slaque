@@ -3,6 +3,7 @@ import csrfFetch from "./csrf";
 export const RECEIVE_MESSAGES = '/messagesReducer/RECEIVE_MESSAGES';
 export const RECEIVE_MESSAGE = '/messagesReducer/RECEIVE_MESSAGE';
 export const REMOVE_CURRENT_WORKSPACE = '/REMOVE_CURRENT_WORKSPACE';
+export const MARK_MESSAGE_READ = '/messagesReducer/MARK_MESSAGE_READ';
 
 export const receiveMessages = (messages) => ({
     type: RECEIVE_MESSAGES,
@@ -41,11 +42,6 @@ export const createMessage = (message) => async (dispatch) => {
         },
         body: JSON.stringify(message)
     })
-
-    if (res.ok) {
-        const message = await res.json();
-        dispatch(receiveMessage(message));
-    }
 }
 
 const messagesReducer = (state = {}, action) => {

@@ -1,3 +1,6 @@
+# json.channel
+# json.partial!
+
 @channel[0].messages.each do |message|
     json.set! message.id do
         json.extract! message, :id, :workspace_author_id, :content, :edited

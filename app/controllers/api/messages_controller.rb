@@ -6,17 +6,31 @@ class Api::MessagesController < ApplicationController
 		@message.unread_by_workspace_users = params[:message][:unread_by_workspace_users]
 
 		if @message.save
-			if @message.messageable_type == "channel"
-				ChannelsChannel.broadcast_to(@message.messageble, @message)
+			if @message.messageable_type == "Channel"
+				puts "CURRENT_USER ID: " + current_user.id.to_s
+				ChannelsChannel.broadcast_to(@message.messageable, 
+					from_template('api/messages/show', message: @message))
 			else
-				DirectMessagesChannel.broadcast_to(@message.messageble, @message)
+				DirectMessagesChannel.broadcast_to(@message.messageable, message: @message)
 			end
-			render :show
 		else
 			# debugger
 			render json: { errors: @message.errors.full_messages }, status: :unprocessable_entity 
 		end
 	end
+
+	def markRead
+		@message = Message.find(params[:id])
+		@message.delete(current_user.id)
+		if @message.messageable_type == "Channel"
+			@channel = @message.messageable
+			render '/api/channels/mark_read'
+		else
+			@direct_message = @message.messageable
+			render '/api/direct_messages/mark_read'			
+		end
+	end
+
 
 	def update
 		@message = Message.find(params[:id])
