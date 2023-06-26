@@ -10,7 +10,7 @@
     padding-left: 8px;
 }
 
-.sidebar-team-menu-icon, .sidebar-channel-icon, .sidebar-direct-message-icon, .sidebar-static-item-text:hover .sidebar-channel-menu-icon {
+.sidebar-team-menu-icon, .sidebar-channel-icon, .sidebar-direct-message-icon, .sidebar-static-item-text:hover .sidebar-channel-menu-icon, .create-message-send-icon {
     display: inline-flex;
     align-items: center;
     flex-shrink: 0;

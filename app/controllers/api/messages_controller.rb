@@ -8,12 +8,20 @@ class Api::MessagesController < ApplicationController
 		if @message.save
 			render :show
 		else
-			debugger
+			# debugger
 			render json: { errors: @message.errors.full_messages }, status: :unprocessable_entity 
 		end
 	end
 
 	def update
+		@message = Message.find(params[:id])
+
+		if @message.update
+			render :show
+		else
+			debugger
+			render json: { errors: @message.errors.full_messages }, status: :unprocessable_entity 
+		end
 	end
 
 	private

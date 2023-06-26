@@ -92,33 +92,33 @@ ApplicationRecord.transaction do
 
     puts "Create channels..."
 
-    Channel.create!(owner_id: 12, workspace_id: 1, name: "ozians", description: "Post questions here and get help from the App Academy family")
+    Channel.create!(owner_id: 12, workspace_id: 1, name: "ozians")
     Channel.create!(owner_id: 5, workspace_id: 1, name: "munckinland")
     Channel.create!(owner_id: 8, workspace_id: 1, name: "shiz-university")
-    Channel.create!(owner_id: 13, workspace_id: 1, name: "popular-girls", description: "Fab channel for 2023")
-    Channel.create!(owner_id: 7, workspace_id: 1, name: "ozdust-ballroom-party", description: "Update and sub requests for South Bay Ultimate Leagues")
-    Channel.create!(owner_id: 29, workspace_id: 2, name: "scranton-branch", description: "Update and sub requests for South Bay Ultimate Leagues")
-    Channel.create!(owner_id: 29, workspace_id: 2, name: "everyone-except-toby", description: "Update and sub requests for South Bay Ultimate Leagues")
-    Channel.create!(owner_id: 17, workspace_id: 2, name: "finer-things-club", description: "Update and sub requests for South Bay Ultimate Leagues")
-    Channel.create!(owner_id: 30, workspace_id: 2, name: "sales", description: "Update and sub requests for South Bay Ultimate Leagues")
-    Channel.create!(owner_id: 15, workspace_id: 2, name: "accounting", description: "Update and sub requests for South Bay Ultimate Leagues")
-    Channel.create!(owner_id: 31, workspace_id: 2, name: "creeds-notes", description: "Update and sub requests for South Bay Ultimate Leagues")
+    Channel.create!(owner_id: 13, workspace_id: 1, name: "popular-girls")
+    Channel.create!(owner_id: 7, workspace_id: 1, name: "ozdust-ballroom-party")
+    Channel.create!(owner_id: 29, workspace_id: 2, name: "scranton-branch")
+    Channel.create!(owner_id: 29, workspace_id: 2, name: "everyone-except-toby")
+    Channel.create!(owner_id: 17, workspace_id: 2, name: "finer-things-club")
+    Channel.create!(owner_id: 30, workspace_id: 2, name: "sales")
+    Channel.create!(owner_id: 15, workspace_id: 2, name: "accounting")
+    Channel.create!(owner_id: 31, workspace_id: 2, name: "creeds-notes")
     
     puts "Create channel subscriptions..."
-    ChannelSubscription.create!(workspace_user_id: 1, channel_id: 1) # help-requests
-    ChannelSubscription.create!(workspace_user_id: 3, channel_id: 1) # help-requests
-    ChannelSubscription.create!(workspace_user_id: 4, channel_id: 1) # help-requests
-    ChannelSubscription.create!(workspace_user_id: 1, channel_id: 2) # cohort
-    ChannelSubscription.create!(workspace_user_id: 2, channel_id: 2) # cohort
-    ChannelSubscription.create!(workspace_user_id: 3, channel_id: 2) # cohort
-    ChannelSubscription.create!(workspace_user_id: 4, channel_id: 2) # cohort
-    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 3) # BA general
-    ChannelSubscription.create!(workspace_user_id: 6, channel_id: 3) # BA general
-    ChannelSubscription.create!(workspace_user_id: 7, channel_id: 3) # BA general
-    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 4) # fab
-    ChannelSubscription.create!(workspace_user_id: 8, channel_id: 4) # fab
-    ChannelSubscription.create!(workspace_user_id: 6, channel_id: 5) # sbleague
-    ChannelSubscription.create!(workspace_user_id: 7, channel_id: 5) # sbleague
+    ChannelSubscription.create!(workspace_user_id: 1, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 2, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 3, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 4, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 6, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 7, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 8, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 9, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 10, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 11, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 12, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 13, channel_id: 1)
+
     
     puts "Creating direct messages..."
     DirectMessage.create!(workspace_id: 1)

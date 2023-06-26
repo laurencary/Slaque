@@ -21,6 +21,9 @@ function App() {
 			<Route path="/client/:clientId/get-started/landing">
 				<Welcome />
 			</Route>
+			<Route path="/client/:clientId/:workspaceId/create-direct-message">
+				<Workspace />
+			</Route>
 			<Route path="/client/:clientId/:workspaceId/:messageableCode">
 				<Workspace />
 			</Route>

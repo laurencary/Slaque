@@ -103,6 +103,13 @@ const WorkspacePrimaryView = () => {
                 <div className="primary-messages">
                     {messages.map((message) => (
                         <div key={message.id} className="message-item">  
+                            <div className="message-item-actions-container">
+                                <div className="message-item-actions">
+                                    <svg viewBox="0 0 20 20">
+                                        <path fill="currentColor" fill-rule="evenodd" d="M10 5.5A1.75 1.75 0 1 1 10 2a1.75 1.75 0 0 1 0 3.5Zm0 6.25a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5Zm-1.75 4.5a1.75 1.75 0 1 0 3.5 0 1.75 1.75 0 0 0-3.5 0Z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
                             <div className="message-author-photo img-placeholder"></div>
                             <div className="message-details">
                                 <div className="message-header">
@@ -114,17 +121,35 @@ const WorkspacePrimaryView = () => {
                         </div>
                     ))}
                 </div>
-                <div className="create-message-container">
-                    <div className="formatting-options"></div>
-                    <form onSubmit={handleSubmit}>
-                        <textarea className="message-textarea"
-                            placeholder={messageableType === "channel" ? "Message #" + messageName : "Message " + messageName.join(", ")}
-                            value={messageContent}
-                            onChange={(e) => setMessageContent(e.target.value)}>
-                        </textarea>
-                        <button disabled={messageContent === "" || messageContent.includes(messageName)}>Send</button>
-                    </form>
-                    <div className="bottom-message-options"></div>
+                <div className="create-message-footer">
+                    <div className="create-message-container">
+                        <div className="top-message-options"><strong>B</strong> I</div>
+                        <div className="content-editable-container">
+                            {/* <p className="create-message-content" contentEditable="true">{messageableType === "channel" ? "Message #" + messageName : "Message " + messageName.join(", ")}</p> */}
+                            <form onSubmit={handleSubmit}>
+                                <textarea className="message-textarea"
+                                    placeholder={messageableType === "channel" ? "Message #" + messageName : "Message " + messageName.join(", ")}
+                                    value={messageContent}
+                                    onChange={(e) => setMessageContent(e.target.value)}>
+                                </textarea>
+                            </form>
+                        </div>
+                        <div className="bottom-message-options">
+                            <div className="bottom-left-options">@</div>
+                            <div className="bottom-right-options">
+                                <div className="bottom-buttons-container">
+                                    <span>
+                                        <button onClick={handleSubmit} className="create-message-send-button" disabled={messageContent === "" || messageContent.includes(messageName)}>
+                                            <svg viewBox="0 0 20 20" className="create-message-send-icon">
+                                                <path fill="currentColor" d="M1.5 2.25a.755.755 0 0 1 1-.71l15.596 7.807a.73.73 0 0 1 0 1.306L2.5 18.46l-.076.018a.749.749 0 0 1-.924-.728v-4.54c0-1.21.97-2.229 2.21-2.25l6.54-.17c.27-.01.75-.24.75-.79s-.5-.79-.75-.79l-6.54-.17A2.253 2.253 0 0 1 1.5 6.789v-4.54Z"></path>
+                                            </svg>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="notifications-footer"></div>
                 </div>
             </div>
         </div>  

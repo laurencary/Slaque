@@ -13,6 +13,8 @@
     grid-template-rows: 44px auto;
     grid-template-areas: 'workspace-nav-bar workspace-nav-bar'
     'workspace-sidebar workspace-primary-view';
+    height: 100vh;
+    width: 100vw;
 }
 
 #workspace-layout div {
@@ -29,12 +31,13 @@
     align-items: center;
     background: #121016;
     box-shadow: 0 1px 0 0 rgba(209, 210, 211, 0.1);
+    height: 40px;
 }
 
 .workspace-primary-view {
     grid-area: workspace-primary-view;
     border-left: 1px solid rgb(43, 42, 47) !important;
-    height: 700px;
+    /* height: 700px; */
     display: flex;
     flex-direction: column;
 }
