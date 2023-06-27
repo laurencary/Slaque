@@ -35,6 +35,7 @@ class DirectMessage < ApplicationRecord
 	end
 
 	def unread_message_count(workspace_user_id)
+		# debugger
 		self.messages.count { |message| message.unread_by_workspace_users.has_key?(workspace_user_id.to_s) }
 	end
 

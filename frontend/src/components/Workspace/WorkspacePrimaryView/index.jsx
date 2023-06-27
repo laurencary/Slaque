@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMessages, receiveMessage } from "../../../store/messages";
+import { fetchMessages, receiveMessage, updateMessageUnreads } from "../../../store/messages";
 import { HiOutlineHashtag } from "react-icons/hi";
 import './WorkspacePrimaryView.css'
 import DirectMessageTopDetails from "./DirectMessageTopDetails";
@@ -112,7 +112,7 @@ const WorkspacePrimaryView = ({workspaceId}) => {
                             <DirectMessageTopDetails messageMembersArr={messageMembersArr}/>
                         }
                     </div>
-                    <MessagesView />
+                    <MessagesView messageableId={messageableId}/>
                     <div ref={messagesEndRef} />
                 </div>
                 <div className="create-message-footer">

@@ -1,0 +1,19 @@
+.new-messages-line {
+    color: #de4e2b;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+.new-messages-line p {
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.new-messages-line hr {
+    background-image: linear-gradient(90deg, #de4e2b 0, #de4e2b);
+    height: 1px;
+    border: none;
+    width: 100%;
+    padding-right: 5px;
+}

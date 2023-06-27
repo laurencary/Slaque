@@ -1,9 +1,11 @@
+import { markChannelRead } from "./channels";
+import { markDirectMessageRead } from "./directMessages";
 import csrfFetch from "./csrf";
 
 export const RECEIVE_MESSAGES = '/messagesReducer/RECEIVE_MESSAGES';
 export const RECEIVE_MESSAGE = '/messagesReducer/RECEIVE_MESSAGE';
 export const REMOVE_CURRENT_WORKSPACE = '/REMOVE_CURRENT_WORKSPACE';
-export const MARK_MESSAGE_READ = '/messagesReducer/MARK_MESSAGE_READ';
+export const MARK_MESSAGE_READ = '/MARK_MESSAGE_READ';
 
 export const receiveMessages = (messages) => ({
     type: RECEIVE_MESSAGES,
@@ -42,6 +44,18 @@ export const createMessage = (message) => async (dispatch) => {
         },
         body: JSON.stringify(message)
     })
+}
+
+export const updateMessageUnreads = (message, messageableId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/messages/${message.id}/mark_read`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    })
+    // debugger
+    message.messageableType === "channel" ? 
+        dispatch(markChannelRead(messageableId)) : dispatch(markDirectMessageRead(messageableId))
 }
 
 const messagesReducer = (state = {}, action) => {

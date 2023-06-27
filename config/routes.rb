@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 		resources :channels, only: [:create, :index, :show, :update]
 		resources :direct_messages, only: [:create, :index, :show, :update]
 		resources :messages, only: [:create, :index, :show, :update]
+
+		patch '/messages/:id/mark_read', :to => 'messages#mark_read'
+
 		resource :session, only: [:show, :create, :destroy]
 
 	end

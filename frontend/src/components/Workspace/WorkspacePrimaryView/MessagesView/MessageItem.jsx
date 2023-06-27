@@ -7,7 +7,7 @@ const MessageItem = ({ message }) => {
     const [showActionModal, setShowActionModal] = useState(false)
 
     return (
-        <div key={message.id} className="message-item"
+        <div className="message-item"
             onMouseEnter={() => setShowActions(workspaceUserId === message.workspaceAuthorId ? true : false)}
             onMouseLeave={() => setShowActions(false)}
             >

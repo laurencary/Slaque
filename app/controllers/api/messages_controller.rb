@@ -19,16 +19,13 @@ class Api::MessagesController < ApplicationController
 		end
 	end
 
-	def markRead
+	def mark_read
 		@message = Message.find(params[:id])
-		@message.delete(current_user.id)
-		if @message.messageable_type == "Channel"
-			@channel = @message.messageable
-			render '/api/channels/mark_read'
-		else
-			@direct_message = @message.messageable
-			render '/api/direct_messages/mark_read'			
-		end
+		unreads = @message.unread_by_workspace_users
+		# debugger
+		unreads.delete(current_user.id.to_s)
+		@message.update(unread_by_workspace_users: unreads == nil ? {} : unreads)
+		render json: {}, status: 200
 	end
 
 
