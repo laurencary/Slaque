@@ -35,7 +35,7 @@ const Workspace = () => {
 
     useEffect(() => {
         if (channels.length === 0) {
-            // dispatch(fetchCurrentWorkspace(workspaceId))
+            dispatch(fetchCurrentWorkspace(workspaceId))
             // const subscription = consumer.subscriptions.create(
             //     { channel: 'ChannelsChannel', id: workspaceId }
             // );

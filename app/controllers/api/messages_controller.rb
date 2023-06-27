@@ -7,11 +7,11 @@ class Api::MessagesController < ApplicationController
 
 		if @message.save
 			if @message.messageable_type == "Channel"
-				puts "CURRENT_USER ID: " + current_user.id.to_s
 				ChannelsChannel.broadcast_to(@message.messageable, 
 					from_template('api/messages/show', message: @message))
 			else
-				DirectMessagesChannel.broadcast_to(@message.messageable, message: @message)
+				DirectMessagesChannel.broadcast_to(@message.messageable, 
+					from_template('api/messages/show', message: @message))
 			end
 		else
 			# debugger

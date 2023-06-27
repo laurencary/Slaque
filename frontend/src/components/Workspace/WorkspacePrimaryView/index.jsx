@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMessages, receiveMessage } from "../../../store/messages";
@@ -13,6 +13,7 @@ import { fetchCurrentWorkspace } from "../../../store/currentWorkspace";
 
 const WorkspacePrimaryView = ({workspaceId}) => {
     const { messageableCode } = useParams();
+    const messagesEndRef = useRef(null)
     const dispatch = useDispatch();
     const messageableType = messageableCode.includes("c") ? "channel" : "directMessage";
     const messageableId = messageableType === "channel" ? 
@@ -27,7 +28,11 @@ const WorkspacePrimaryView = ({workspaceId}) => {
         }
     })
 
- 
+    const scrollToBottom = () => {
+        console.log("scrolling");
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
     let messageDetailsName;
     if (messageableType === "channel") {
         messageDetailsName = messageName;
@@ -38,7 +43,6 @@ const WorkspacePrimaryView = ({workspaceId}) => {
     } else {
         messageDetailsName = messageName.join(', ')
     }
-
     
     const messageMembersArr = useSelector(state => {
         if (messageableType === "channel") {
@@ -52,34 +56,35 @@ const WorkspacePrimaryView = ({workspaceId}) => {
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
         dispatch(fetchCurrentWorkspace(workspaceId))
-        if (messageableType === "channel") {
-            const subscription = consumer.subscriptions.create(
-                { channel: 'ChannelsChannel', id: messageableId },
-                {
-                    received: (message) => {
-                        dispatch(receiveMessage(message));
-                    }
-                }
-            );
+        const subscriptionChannel = messageableType === "channel" ? "ChannelsChannel" : "DirectMessagesChannel"
 
-            return () => subscription?.unsubscribe();
-        }
+        const subscription = consumer.subscriptions.create(
+            { channel: subscriptionChannel, id: messageableId },
+            {
+                received: (message) => {
+                    dispatch(receiveMessage(message));
+                }
+            }
+        );
+        scrollToBottom()
+        return () => subscription?.unsubscribe();
+
     }, [dispatch, messageableId, messageableType])
 
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
-        if (messageableType === "channel") {
-            const subscription = consumer.subscriptions.create(
-                { channel: 'ChannelsChannel', id: messageableId },
-                {
-                    received: (message) => {
-                        dispatch(receiveMessage(message));
-                    }
-                }
-            );
+        const subscriptionChannel = messageableType === "channel" ? "ChannelsChannel" : "DirectMessagesChannel"
 
-            return () => subscription?.unsubscribe();
-        }
+        const subscription = consumer.subscriptions.create(
+            { channel: subscriptionChannel, id: messageableId },
+            {
+                received: (message) => {
+                    dispatch(receiveMessage(message));
+                }
+            }
+        );
+        scrollToBottom()
+        return () => subscription?.unsubscribe();
     },[])
 
 
@@ -108,6 +113,7 @@ const WorkspacePrimaryView = ({workspaceId}) => {
                         }
                     </div>
                     <MessagesView />
+                    <div ref={messagesEndRef} />
                 </div>
                 <div className="create-message-footer">
                     <MessageContentInput messageableId={messageableId}
