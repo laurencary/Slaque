@@ -66,6 +66,7 @@ ApplicationRecord.transaction do
     
     User.create!(email: 'demo1@user.io', password: 'password')            #32
     User.create!(email: 'demo2@user.io', password: 'password')            #33
+    User.create!(email: 'ryan@user.io', password: 'pwryan')               #34
     
 
     puts "Creating workspaces..."
@@ -75,34 +76,58 @@ ApplicationRecord.transaction do
 
     puts "Creating workspace user subscriptions..."
 
-    WorkspaceUserSubscription.create!(user_id: 1, workspace_id: 1, full_name: 'Elphaba Thropp')
-    WorkspaceUserSubscription.create!(user_id: 2, workspace_id: 1, full_name: 'Nessarose Thropp')
-    WorkspaceUserSubscription.create!(user_id: 3, workspace_id: 1, full_name: 'Shell Thropp')
-    WorkspaceUserSubscription.create!(user_id: 4, workspace_id: 1, full_name: 'Melena Throp')
-    WorkspaceUserSubscription.create!(user_id: 5, workspace_id: 1, full_name: 'Boq')
-    WorkspaceUserSubscription.create!(user_id: 6, workspace_id: 1, full_name: 'Doctor Dillamond')
-    WorkspaceUserSubscription.create!(user_id: 7, workspace_id: 1, full_name: 'Fiyero Tigelaar')
-    WorkspaceUserSubscription.create!(user_id: 8, workspace_id: 1, full_name: 'Madame Morrible')
-    WorkspaceUserSubscription.create!(user_id: 9, workspace_id: 1, full_name: 'Milla')
-    WorkspaceUserSubscription.create!(user_id: 10, workspace_id: 1, full_name: 'Pfanne')
-    WorkspaceUserSubscription.create!(user_id: 11, workspace_id: 1, full_name: 'Shenshen')
-    WorkspaceUserSubscription.create!(user_id: 12, workspace_id: 1, full_name: 'Wizard of Oz')
-    WorkspaceUserSubscription.create!(user_id: 13, workspace_id: 1, full_name: 'Galinda Upland')
+    WorkspaceUserSubscription.create!(user_id: 1, workspace_id: 2, full_name: 'Elphaba Thropp', display_name: 'Elphaba', title: 'Wicked Witch', pronunciation: 'el-fuh-baa')
+    WorkspaceUserSubscription.create!(user_id: 2, workspace_id: 2, full_name: 'Nessarose Thropp', display_name: 'Nessa')
+    WorkspaceUserSubscription.create!(user_id: 3, workspace_id: 2, full_name: 'Shell Thropp')
+    WorkspaceUserSubscription.create!(user_id: 4, workspace_id: 2, full_name: 'Melena Throp')
+    WorkspaceUserSubscription.create!(user_id: 5, workspace_id: 2, full_name: 'Boq')
+    WorkspaceUserSubscription.create!(user_id: 6, workspace_id: 2, full_name: 'Doctor Dillamond', display_name: 'The OG GOAT', title: 'Professor')
+    WorkspaceUserSubscription.create!(user_id: 7, workspace_id: 2, full_name: 'Fiyero Tigelaar', display_name: 'Fiyero')
+    WorkspaceUserSubscription.create!(user_id: 8, workspace_id: 2, full_name: 'Madame Morrible', title: 'Headmistress')
+    WorkspaceUserSubscription.create!(user_id: 9, workspace_id: 2, full_name: 'Milla')
+    WorkspaceUserSubscription.create!(user_id: 10, workspace_id: 2, full_name: 'Pfanne', pronunciation: 'fane')
+    WorkspaceUserSubscription.create!(user_id: 11, workspace_id: 2, full_name: 'Shenshen')
+    WorkspaceUserSubscription.create!(user_id: 12, workspace_id: 2, full_name: 'Wizard of Oz', display_name: 'Wonderful')
+    WorkspaceUserSubscription.create!(user_id: 13, workspace_id: 2, full_name: 'Galinda Upland', display_name: 'Glinda', title: 'The Good Witch')
+    WorkspaceUserSubscription.create!(user_id: 32, workspace_id: 2, full_name: 'Demo 1')
+    WorkspaceUserSubscription.create!(user_id: 33, workspace_id: 2, full_name: 'Demo 2')
 
+    WorkspaceUserSubscription.create!(user_id: 14, workspace_id: 1, display_name: 'Jimothy', full_name: 'Jim Halpert', title: 'Salesman')
+    WorkspaceUserSubscription.create!(user_id: 15, workspace_id: 1, full_name: 'Angela Martin', title: 'Accountant')
+    WorkspaceUserSubscription.create!(user_id: 16, workspace_id: 1, full_name: 'Pam Beesley', title: 'Receptionist')
+    WorkspaceUserSubscription.create!(user_id: 17, workspace_id: 1, full_name: 'Oscar Martinez', title: 'Accountant')
+    WorkspaceUserSubscription.create!(user_id: 18, workspace_id: 1, full_name: 'Phyllis Lapin', title: 'Salesman')
+    WorkspaceUserSubscription.create!(user_id: 19, workspace_id: 1, full_name: 'Toby Flenderson', title: 'Human Resources Manager')
+    WorkspaceUserSubscription.create!(user_id: 20, workspace_id: 1, full_name: 'Kevin Malone', title: 'Accountant')
+    WorkspaceUserSubscription.create!(user_id: 21, workspace_id: 1, full_name: 'Stanley Hudson', title: 'Salesman')
+    WorkspaceUserSubscription.create!(user_id: 22, workspace_id: 1, full_name: 'Meredith Palmer', title: 'Supplier Relations')
+    WorkspaceUserSubscription.create!(user_id: 23, workspace_id: 1, full_name: 'Kelly Kapoor', title: 'Customer Service Specialist')
+    WorkspaceUserSubscription.create!(user_id: 24, workspace_id: 1, full_name: 'Darryl Philben', title: 'Warehouse Specialist')
+    WorkspaceUserSubscription.create!(user_id: 25, workspace_id: 1, full_name: 'Roy Anderson', title: 'Warehouse Specialist')
+    WorkspaceUserSubscription.create!(user_id: 26, workspace_id: 1, full_name: 'Lonny Collins', title: 'Warehouse Specialist')
+    WorkspaceUserSubscription.create!(user_id: 27, workspace_id: 1, full_name: 'David Wallace', title: 'CEO')
+    WorkspaceUserSubscription.create!(user_id: 28, workspace_id: 1, full_name: 'Jan Levinson', title: 'VP of Northeaster nSales')
+    WorkspaceUserSubscription.create!(user_id: 29, workspace_id: 1, display_name: 'Michael Scarn', full_name: 'Michael Scott', title: 'Regional Manager')
+    WorkspaceUserSubscription.create!(user_id: 30, workspace_id: 1, full_name: 'Dwight Shrute', title: 'Assistant to the Manager, Salesman')
+    WorkspaceUserSubscription.create!(user_id: 31, workspace_id: 1, full_name: 'Creed Bratton', title: 'Quality Assurance')
+    WorkspaceUserSubscription.create!(user_id: 32, workspace_id: 1, full_name: 'Demo 1', title: 'Thanks for checking out Slaque!')
+    WorkspaceUserSubscription.create!(user_id: 33, workspace_id: 1, full_name: 'Demo 2', title: 'Thanks for checking out Slaque!')
+    WorkspaceUserSubscription.create!(user_id: 34, workspace_id: 1, full_name: 'Ryan Howard', title: 'temp')
+    
 
     puts "Create channels..."
 
-    Channel.create!(owner_id: 12, workspace_id: 1, name: "ozians")
-    Channel.create!(owner_id: 5, workspace_id: 1, name: "munckinland")
-    Channel.create!(owner_id: 8, workspace_id: 1, name: "shiz-university")
-    Channel.create!(owner_id: 13, workspace_id: 1, name: "popular-girls")
-    Channel.create!(owner_id: 7, workspace_id: 1, name: "ozdust-ballroom-party")
-    Channel.create!(owner_id: 29, workspace_id: 2, name: "scranton-branch")
-    Channel.create!(owner_id: 29, workspace_id: 2, name: "everyone-except-toby")
-    Channel.create!(owner_id: 17, workspace_id: 2, name: "finer-things-club")
-    Channel.create!(owner_id: 30, workspace_id: 2, name: "sales")
-    Channel.create!(owner_id: 15, workspace_id: 2, name: "accounting")
-    Channel.create!(owner_id: 31, workspace_id: 2, name: "creeds-notes")
+    Channel.create!(owner_id: 12, workspace_id: 2, name: "ozians")                  #1
+    Channel.create!(owner_id: 5, workspace_id: 2, name: "munckinland")              #2
+    Channel.create!(owner_id: 8, workspace_id: 2, name: "shiz-university")          #3
+    Channel.create!(owner_id: 13, workspace_id: 2, name: "popular-girls")           #4
+    Channel.create!(owner_id: 7, workspace_id: 2, name: "ozdust-ballroom-party")    #5
+    Channel.create!(owner_id: 29, workspace_id: 1, name: "scranton-branch")         #6
+    Channel.create!(owner_id: 29, workspace_id: 1, name: "everyone-except-toby")    #7
+    Channel.create!(owner_id: 17, workspace_id: 1, name: "finer-things-club")       #8
+    Channel.create!(owner_id: 30, workspace_id: 1, name: "sales")                   #9
+    Channel.create!(owner_id: 15, workspace_id: 1, name: "accounting")              #10
+    Channel.create!(owner_id: 31, workspace_id: 1, name: "creeds-thoughts")         #11
     
     puts "Create channel subscriptions..."
     ChannelSubscription.create!(workspace_user_id: 1, channel_id: 1)
@@ -118,25 +143,113 @@ ApplicationRecord.transaction do
     ChannelSubscription.create!(workspace_user_id: 11, channel_id: 1)
     ChannelSubscription.create!(workspace_user_id: 12, channel_id: 1)
     ChannelSubscription.create!(workspace_user_id: 13, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 14, channel_id: 1)
+    ChannelSubscription.create!(workspace_user_id: 15, channel_id: 1)
+
+    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 2)
+    ChannelSubscription.create!(workspace_user_id: 8, channel_id: 2)
+    ChannelSubscription.create!(workspace_user_id: 9, channel_id: 2)
+    ChannelSubscription.create!(workspace_user_id: 10, channel_id: 2)
+    ChannelSubscription.create!(workspace_user_id: 11, channel_id: 2)
+    ChannelSubscription.create!(workspace_user_id: 13, channel_id: 2)
+    ChannelSubscription.create!(workspace_user_id: 14, channel_id: 2)
+    ChannelSubscription.create!(workspace_user_id: 15, channel_id: 2)
+
+    ChannelSubscription.create!(workspace_user_id: 1, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 2, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 6, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 7, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 8, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 9, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 10, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 11, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 13, channel_id: 3)
+    ChannelSubscription.create!(workspace_user_id: 14, channel_id: 3)
+    
+    ChannelSubscription.create!(workspace_user_id: 9, channel_id: 4)
+    ChannelSubscription.create!(workspace_user_id: 10, channel_id: 4)
+    ChannelSubscription.create!(workspace_user_id: 13, channel_id: 4)
+    ChannelSubscription.create!(workspace_user_id: 14, channel_id: 4)
+
+    ChannelSubscription.create!(workspace_user_id: 1, channel_id: 5)
+    ChannelSubscription.create!(workspace_user_id: 2, channel_id: 5)
+    ChannelSubscription.create!(workspace_user_id: 5, channel_id: 5)
+    ChannelSubscription.create!(workspace_user_id: 7, channel_id: 5)
+    ChannelSubscription.create!(workspace_user_id: 9, channel_id: 5)
+    ChannelSubscription.create!(workspace_user_id: 10, channel_id: 5)
+    ChannelSubscription.create!(workspace_user_id: 11, channel_id: 5)
+    ChannelSubscription.create!(workspace_user_id: 13, channel_id: 5)
+    ChannelSubscription.create!(workspace_user_id: 15, channel_id: 5)
+
+    ChannelSubscription.create!(workspace_user_id: 16, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 17, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 18, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 19, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 20, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 21, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 22, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 23, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 24, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 25, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 26, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 27, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 28, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 29, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 30, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 31, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 32, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 33, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 34, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 35, channel_id: 6)
+    ChannelSubscription.create!(workspace_user_id: 36, channel_id: 6)
+
+    ChannelSubscription.create!(workspace_user_id: 16, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 17, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 18, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 19, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 20, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 22, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 23, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 24, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 25, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 26, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 27, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 28, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 31, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 32, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 33, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 34, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 35, channel_id: 7)
+    ChannelSubscription.create!(workspace_user_id: 36, channel_id: 7)
+
+    ChannelSubscription.create!(workspace_user_id: 18, channel_id: 8)
+    ChannelSubscription.create!(workspace_user_id: 19, channel_id: 8)
+    ChannelSubscription.create!(workspace_user_id: 21, channel_id: 8)
+
+    ChannelSubscription.create!(workspace_user_id: 16, channel_id: 9)
+    ChannelSubscription.create!(workspace_user_id: 20, channel_id: 9)
+    ChannelSubscription.create!(workspace_user_id: 23, channel_id: 9)
+    ChannelSubscription.create!(workspace_user_id: 31, channel_id: 9)
+    ChannelSubscription.create!(workspace_user_id: 32, channel_id: 9)
+    ChannelSubscription.create!(workspace_user_id: 35, channel_id: 9)
+
+    ChannelSubscription.create!(workspace_user_id: 17, channel_id: 10)
+    ChannelSubscription.create!(workspace_user_id: 19, channel_id: 10)
+    ChannelSubscription.create!(workspace_user_id: 22, channel_id: 10)
+    ChannelSubscription.create!(workspace_user_id: 34, channel_id: 10)
+
+    ChannelSubscription.create!(workspace_user_id: 33, channel_id: 11)
+    ChannelSubscription.create!(workspace_user_id: 36, channel_id: 11)
 
     
     puts "Creating direct messages..."
     DirectMessage.create!(workspace_id: 1)
-    DirectMessage.create!(workspace_id: 1)
-    DirectMessage.create!(workspace_id: 2)
-    DirectMessage.create!(workspace_id: 2)
+
 
     puts "Creating direct message subscriptions..."
     DirectMessageSubscription.create!(workspace_user_id: 1, direct_message_id: 1)
-    DirectMessageSubscription.create!(workspace_user_id: 2, direct_message_id: 1)
-    DirectMessageSubscription.create!(workspace_user_id: 4, direct_message_id: 1)
-    DirectMessageSubscription.create!(workspace_user_id: 1, direct_message_id: 2)
-    DirectMessageSubscription.create!(workspace_user_id: 2, direct_message_id: 2)
-    DirectMessageSubscription.create!(workspace_user_id: 5, direct_message_id: 3)
-    DirectMessageSubscription.create!(workspace_user_id: 8, direct_message_id: 3)
-    DirectMessageSubscription.create!(workspace_user_id: 5, direct_message_id: 4)
-    DirectMessageSubscription.create!(workspace_user_id: 6, direct_message_id: 4)
-    DirectMessageSubscription.create!(workspace_user_id: 7, direct_message_id: 4)
+
 
     puts "Creating messages"
     Message.create!(workspace_author_id: 4, 
@@ -145,78 +258,7 @@ ApplicationRecord.transaction do
         messageable_type: "Channel", 
         unread_by_workspace_users: { 1 => true }, 
         edited: false)
-    Message.create!(workspace_author_id: 3, 
-        content: "Yeah, definitely. Let's hop on zoom!", 
-        messageable_id: 1, 
-        messageable_type:"Channel", 
-        unread_by_workspace_users: { 4 => true, 1 => true }, 
-        edited: false)
-    Message.create!(workspace_author_id: 3, 
-        content: "Don't put off tonight's homework - it's super helpful for the assessment", 
-        messageable_id: 2, 
-        messageable_type:"Channel", 
-        unread_by_workspace_users: { 1 => true, 4 => true }, 
-        edited: true)
-    Message.create!(workspace_author_id: 2, 
-        content: "Thanks for the reminder", 
-        messageable_id: 2, 
-        messageable_type:"Channel", 
-        unread_by_workspace_users: { 3=> true, 1 => true, 4 => true }, 
-        edited: false)
-    Message.create!(workspace_author_id: 7, 
-        content: "Anybody missing a waterbottle? Black found after last night game", 
-        messageable_id: 3, 
-        messageable_type:"Channel", 
-        unread_by_workspace_users: { 5=> true }, 
-        edited: false)
-    Message.create!(workspace_author_id: 6,
-        content: "Oh that is mine!", 
-        messageable_id: 3, 
-        messageable_type:"Channel", 
-        unread_by_workspace_users: { 5=> true, 7 => true }, 
-        edited: false)
-    Message.create!(workspace_author_id: 5,
-        content: "Practice tonight at 6pm!", 
-        messageable_id: 4, 
-        messageable_type:"Channel", 
-        unread_by_workspace_users: { }, 
-        edited: false)
-    Message.create!(workspace_author_id: 7,
-        content: "Games are on for tonight.", 
-        messageable_id: 5, 
-        messageable_type:"Channel", 
-        unread_by_workspace_users: { 6=> true }, 
-        edited: false)
-    Message.create!(workspace_author_id: 4,
-        content: "Hey - nice to see you on Slaque!", 
-        messageable_id: 1, 
-        messageable_type:"DirectMessage", 
-        unread_by_workspace_users: {  }, 
-        edited: false)
-    Message.create!(workspace_author_id: 4,
-        content: "Welcome to direct messaging", 
-        messageable_id: 2, 
-        messageable_type:"DirectMessage", 
-        unread_by_workspace_users: { 1 => true }, 
-        edited: false)
-    Message.create!(workspace_author_id: 2,
-        content: "It's pretty neat! Let's try it out", 
-        messageable_id: 2, 
-        messageable_type:"DirectMessage", 
-        unread_by_workspace_users: { 1 => true }, 
-        edited: false)
-    Message.create!(workspace_author_id: 8,
-        content: "Hey - want to carpool to practice?", 
-        messageable_id: 3, 
-        messageable_type:"DirectMessage", 
-        unread_by_workspace_users: { 5 => true }, 
-        edited: false)
-    Message.create!(workspace_author_id: 6,
-        content: "Are tonight's games going to be cancelled?", 
-        messageable_id: 4, 
-        messageable_type:"DirectMessage", 
-        unread_by_workspace_users: { 7 => true }, 
-        edited: false)
+    
 
     puts "Done!"
 end
