@@ -5,10 +5,11 @@ import MessageItem from "./MessageItem";
 import './MessagesView.css'
 
 const MessagesView = ({ messageableId }) => {
+    const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId)
     const messages = useSelector(getMessages);
     const dispatch = useDispatch();
-    const unreadMessages = messages.filter(message => message.unread)
-    const readMessages = messages.filter(message => !message.unread)
+    const unreadMessages = messages.filter(message => message.unread && message.workspaceAuthorId !== workspaceUserId)
+    const readMessages = messages.filter(message => message.workspaceAuthorId === workspaceUserId  || !message.unread)
 
     useEffect(() => {
         console.log("working");
@@ -27,8 +28,8 @@ const MessagesView = ({ messageableId }) => {
     return (
         <div className="primary-messages">
             {readMessages.map((message) => (
-                <div key={message.id}>
-                    <MessageItem key={message.id} message={message} />
+                <div key={`m${message.id}`}>
+                    <MessageItem message={message} />
                 </div>
             ))}
             { Object.values(unreadMessages).length > 0 ? 

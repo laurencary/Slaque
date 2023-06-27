@@ -34,7 +34,7 @@ const WorkspaceSidebar = () => {
             <div id="sidebar-list">
                 <MessageableItem messageableType={"Channels"} />
                 {channels.map((channel) => (
-                    <div key={channel.id} className="sidebar-list-item-container">
+                    <div key={`c${channel.id}`} className="sidebar-list-item-container">
                         <NavLink to={`/client/${user.id}/${workspace.id}/c${channel.id}`}>
                             <div className="sidebar-list-item">
                                 <div className="sidebar-channel-icon">
@@ -47,7 +47,7 @@ const WorkspaceSidebar = () => {
                 ))}
                 <MessageableItem messageableType={"Direct messages"}/>
                 {directMessages.map((directMessage) => (
-                    <div key={directMessage.id} className="sidebar-list-item-container">
+                    <div key={`d${directMessage.id}`} className="sidebar-list-item-container">
                         <NavLink to={`/client/${user.id}/${workspace.id}/dm${directMessage.id}`}>
                             <div className="sidebar-direct-message">
                                 <div className="sidebar-list-item">
