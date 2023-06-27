@@ -33,7 +33,13 @@ class Api::MessagesController < ApplicationController
 		@message = Message.find(params[:id])
 
 		if @message.update
-			render :show
+			if @message.messageable_type == "Channel"
+				ChannelsChannel.broadcast_to(@message.messageable, 
+					from_template('api/messages/show', message: @message))
+			else
+				DirectMessagesChannel.broadcast_to(@message.messageable, 
+					from_template('api/messages/show', message: @message))
+			end
 		else
 			debugger
 			render json: { errors: @message.errors.full_messages }, status: :unprocessable_entity 

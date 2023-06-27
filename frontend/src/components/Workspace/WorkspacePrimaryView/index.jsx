@@ -29,7 +29,6 @@ const WorkspacePrimaryView = ({workspaceId}) => {
     })
 
     const scrollToBottom = () => {
-        console.log("scrolling");
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
     }
 

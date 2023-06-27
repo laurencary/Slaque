@@ -12,14 +12,12 @@ const MessagesView = ({ messageableId }) => {
     const readMessages = messages.filter(message => message.workspaceAuthorId === workspaceUserId  || !message.unread)
 
     useEffect(() => {
-        console.log("working");
         unreadMessages.forEach((message) => {
             dispatch(updateMessageUnreads(message, messageableId));
         })
     }, [messageableId])
 
     useEffect(() => {
-        console.log("working");
         unreadMessages.forEach((message) => {
             dispatch(updateMessageUnreads(message, messageableId));
         })
