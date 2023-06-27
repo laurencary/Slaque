@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Modal } from "../../../../context/Modal";
+import MessageActionsModal from "./MessageActionsModal";
 
 const MessageItem = ({ message }) => {
     const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId)
@@ -26,6 +28,11 @@ const MessageItem = ({ message }) => {
                     </svg>
                 </div>
             </div>
+            {showActionModal && (
+                <Modal onClose={() => setShowActionModal(false)}>
+                    <MessageActionsModal messageId={message.id}/>
+                </Modal>
+            )}
         </div>
     )
 }

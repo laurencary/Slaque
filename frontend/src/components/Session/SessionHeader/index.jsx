@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import SlaqueLogo from '../SlaqueLogo'
+import SlaqueLogo from '../../SlaqueLogo'
 import './SessionHeader.css'
 
 const SessionHeader = ({type}) => {

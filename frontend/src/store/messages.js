@@ -4,6 +4,7 @@ import csrfFetch from "./csrf";
 
 export const RECEIVE_MESSAGES = '/messagesReducer/RECEIVE_MESSAGES';
 export const RECEIVE_MESSAGE = '/messagesReducer/RECEIVE_MESSAGE';
+export const REMOVE_MESSAGE = '/messagesReducer/REMOVE_MESSAGE';
 export const REMOVE_CURRENT_WORKSPACE = '/REMOVE_CURRENT_WORKSPACE';
 export const MARK_MESSAGE_READ = '/MARK_MESSAGE_READ';
 
@@ -15,6 +16,11 @@ export const receiveMessages = (messages) => ({
 export const receiveMessage = (message) => ({
     type: RECEIVE_MESSAGE,
     message
+})
+
+export const removeMessage = (messageId) => ({
+    type: REMOVE_MESSAGE,
+    messageId
 })
 
 export const removeCurrentWorkspace = () => ({
@@ -58,13 +64,24 @@ export const updateMessageUnreads = (message, messageableId) => async (dispatch)
         dispatch(markChannelRead(messageableId)) : dispatch(markDirectMessageRead(messageableId))
 }
 
+export const deleteMessage = (messageId) => {
+    const res = csrfFetch(`/api/messages/${messageId}`, {
+        method: 'DELETE'
+    })
+}
+
 const messagesReducer = (state = {}, action) => {
     const newState = {...state}
     switch (action.type) {
         case RECEIVE_MESSAGES:
             return { ...action.messages }
         case RECEIVE_MESSAGE:
-            newState[action.message.id] = action.message
+            // newState[action.id] = action.message
+            // return newState;
+            const { message } = action;
+            return { ...state, [message.id]: message };
+        case REMOVE_MESSAGE: 
+            delete newState[action.messageId];
             return newState;
         case REMOVE_CURRENT_WORKSPACE:
             return {}

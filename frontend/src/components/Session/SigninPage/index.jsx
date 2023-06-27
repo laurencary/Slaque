@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import * as sessionActions from '../../store/session';
+import * as sessionActions from '../../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
-import '../SigninPage/SignPage.css';
+import { useHistory, Redirect } from 'react-router-dom';
+import './SignPage.css';
 import SessionHeader from '../SessionHeader';
 import SessionForm from '../SessionForm';
-import DemoButton from '../DemoButton';
+import DemoButton from '../../DemoButton';
 import SessionSplitter from '../SessionSplitter';
 
-
-const SignupPage = () => {
+const SigninPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -20,12 +20,12 @@ const SignupPage = () => {
         document.body.classList.remove('purple')
         document.body.classList.add('white')
     }, [])
-
     if (sessionUser) return <Redirect to={`/client/${sessionUser.id}/get-started/landing`} />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        return dispatch(sessionActions.signup({ email, password }))
+        // history.push(`/client/${sessionUser.id}/get-started/landing`)
+        return dispatch(sessionActions.login({ email, password }))
             .catch(async (res) => {
                 let data;
                 try {
@@ -38,31 +38,27 @@ const SignupPage = () => {
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
             });
-    }
-
+        }
+        
     const handleSetEmail = (e) => setEmail(e.target.value);
     const handleSetPassword = (e) => setPassword(e.target.value);
 
     return (
         <div className='sign-page'>
-            <SessionHeader type="signup" />
-            <SessionForm
-                email={email}
+            <SessionHeader type="login" />
+            <DemoButton classNm="demo-button-session" />
+            <SessionSplitter />
+            <SessionForm 
+                email={ email }
                 password={password}
                 errors={errors}
-                handleSubmit={handleSubmit}
-                handleSetEmail={handleSetEmail}
+                handleSubmit={ handleSubmit } 
+                handleSetEmail={ handleSetEmail }
                 handleSetPassword={handleSetPassword}
-                buttonText="Continue"
-            />
-            <SessionSplitter />
-            <DemoButton classNm={"demo-button-session"} />
-            <div className="signin-redirect">
-                <p className='signin-redirect-text'>Already using Slaque?</p>
-                <Link to="/signin" className='signin-redirect-link'>Sign in to an existing workspace</Link>
-            </div>
+                buttonText="Sign In With Email"
+                />
         </div>
     )
 };
 
-export default SignupPage
+export default SigninPage

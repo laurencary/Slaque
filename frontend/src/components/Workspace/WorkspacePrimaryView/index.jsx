@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMessages, receiveMessage, updateMessageUnreads } from "../../../store/messages";
+import { fetchMessages, receiveMessage, removeMessage } from "../../../store/messages";
 import { HiOutlineHashtag } from "react-icons/hi";
 import './WorkspacePrimaryView.css'
 import DirectMessageTopDetails from "./DirectMessageTopDetails";
 import ChannelTopDetails from "./ChannelTopDetails";
 import MessagesView from "./MessagesView";
-import MessageContentInput from "../MessageContentInput";
+import MessageContentInput from "./MessagesView/MessageContentInput";
 import consumer from '../../../consumer';
 import { fetchCurrentWorkspace } from "../../../store/currentWorkspace";
 
@@ -60,8 +60,17 @@ const WorkspacePrimaryView = ({workspaceId}) => {
         const subscription = consumer.subscriptions.create(
             { channel: subscriptionChannel, id: messageableId },
             {
-                received: (message) => {
-                    dispatch(receiveMessage(message));
+                received: ({type, message, id}) => {
+                    switch (type) {
+                        case 'RECEIVE_MESSAGE':
+                            dispatch(receiveMessage(message));
+                            break;
+                        case 'DESTROY_MESSAGE':
+                            dispatch(removeMessage(id));
+                        default:
+                            console.log('Unhandled broadcast: ', type);
+                            break;
+                    }
                 }
             }
         );
@@ -77,8 +86,17 @@ const WorkspacePrimaryView = ({workspaceId}) => {
         const subscription = consumer.subscriptions.create(
             { channel: subscriptionChannel, id: messageableId },
             {
-                received: (message) => {
-                    dispatch(receiveMessage(message));
+                received: ({type, message, id}) => {
+                    switch (type) {
+                        case 'RECEIVE_MESSAGE':
+                            dispatch(receiveMessage(message));
+                            break;
+                        case 'DESTROY_MESSAGE':
+                            dispatch(removeMessage(id));
+                        default:
+                            console.log('Unhandled broadcast: ', type);
+                            break;
+                    }
                 }
             }
         );

@@ -10,11 +10,11 @@ Rails.application.routes.draw do
 
 	namespace :api, defaults: { format: :json } do
 		resources :users, only: [:create, :show]
-		resources :workspaces, only: [:index ,:show ,:create ,:update ,:delete]
-		resources :workspace_user_subscriptions, only: [:index ,:show ,:create ,:update ,:delete]
+		resources :workspaces, only: [:index ,:show ,:create ,:update ,:destroy]
+		resources :workspace_user_subscriptions, only: [:index ,:show ,:create ,:update ,:destroy]
 		resources :channels, only: [:create, :index, :show, :update]
 		resources :direct_messages, only: [:create, :index, :show, :update]
-		resources :messages, only: [:create, :index, :show, :update]
+		resources :messages, only: [:create, :index, :show, :update, :destroy]
 
 		patch '/messages/:id/mark_read', :to => 'messages#mark_read'
 

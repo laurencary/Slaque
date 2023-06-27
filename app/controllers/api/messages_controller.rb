@@ -8,10 +8,12 @@ class Api::MessagesController < ApplicationController
 		if @message.save
 			if @message.messageable_type == "Channel"
 				ChannelsChannel.broadcast_to(@message.messageable, 
-					from_template('api/messages/show', message: @message))
+					type: 'RECEIVE_MESSAGE',
+					**from_template('api/messages/show', message: @message))
 			else
 				DirectMessagesChannel.broadcast_to(@message.messageable, 
-					from_template('api/messages/show', message: @message))
+					type: 'RECEIVE_MESSAGE',
+					**from_template('api/messages/show', message: @message))
 			end
 		else
 			# debugger
@@ -35,14 +37,30 @@ class Api::MessagesController < ApplicationController
 		if @message.update
 			if @message.messageable_type == "Channel"
 				ChannelsChannel.broadcast_to(@message.messageable, 
-					from_template('api/messages/show', message: @message))
+					type: 'RECEIVE_MESSAGE',
+					**from_template('api/messages/show', message: @message))
 			else
 				DirectMessagesChannel.broadcast_to(@message.messageable, 
-					from_template('api/messages/show', message: @message))
+					type: 'RECEIVE_MESSAGE',
+					**from_template('api/messages/show', message: @message))
 			end
 		else
 			debugger
 			render json: { errors: @message.errors.full_messages }, status: :unprocessable_entity 
+		end
+	end
+
+	def destroy
+		@message = Message.find(params[:id])
+		@message.destroy
+		if @message.messageable_type == "Channel"
+			ChannelsChannel.broadcast_to(@message.messageable, 
+				type: 'DESTROY_MESSAGE',
+				id: @message.id)
+		else
+			DirectMessagesChannel.broadcast_to(@message.messageable, 
+				type: 'DESTROY_MESSAGE',
+				id: @message.id)
 		end
 	end
 

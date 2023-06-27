@@ -1,8 +1,8 @@
 // import SessionPage from "./components/SessionPage";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import SigninPage from "./components/SigninPage";
-import SignupPage from "./components/SignupPage";
+import SigninPage from "./components/Session/SigninPage";
+import SignupPage from "./components/Session/SignupPage";
 import HomePage from "./components/HomePage";
 import Welcome from "./components/Welcome";
 import Workspace from "./components/Workspace";

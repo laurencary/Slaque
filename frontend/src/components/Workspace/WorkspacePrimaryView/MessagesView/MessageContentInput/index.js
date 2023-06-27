@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch } from "react-redux";
-import { createMessage } from "../../../store/messages";
+import { createMessage } from "../../../../../store/messages";
 
 
 const MessageContentInput = ({ messageableId, messageableType, messageMembersArr, messageName }) => {
