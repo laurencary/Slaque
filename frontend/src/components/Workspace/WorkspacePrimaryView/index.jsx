@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMessages, receiveMessage, removeMessage } from "../../../store/messages";
+import { fetchMessages, receiveMessage, removeMessage, getMessages } from "../../../store/messages";
 import { HiOutlineHashtag } from "react-icons/hi";
 import './WorkspacePrimaryView.css'
 import DirectMessageTopDetails from "./DirectMessageTopDetails";
@@ -12,6 +12,7 @@ import consumer from '../../../consumer';
 import { fetchCurrentWorkspace } from "../../../store/currentWorkspace";
 
 const WorkspacePrimaryView = ({workspaceId}) => {
+    const messages = useSelector(getMessages);
     const { messageableCode } = useParams();
     const messagesEndRef = useRef(null)
     const dispatch = useDispatch();
@@ -129,14 +130,17 @@ const WorkspacePrimaryView = ({workspaceId}) => {
                             <DirectMessageTopDetails messageMembersArr={messageMembersArr} messageableId={messageableId} />
                         }
                     </div>
-                    <MessagesView messageableId={messageableId}/>
+                    {   Object.values(messages).length === 0 ?
+                        <></> : <MessagesView messageableId={messageableId} messageableType={messageableType}/> }
                     <div ref={messagesEndRef} />
                 </div>
                 <div className="create-message-footer">
                     <MessageContentInput messageableId={messageableId}
                         messageableType={messageableType}
                         messageMembersArr={messageMembersArr}
-                        messageName={messageName}/>
+                        defaultVal={messageableType === "channel" ? "Message #" + messageName : "Message " + messageName.join(", ")}
+                        content={''}
+                        isCreate={true}/>
                     <div className="notifications-footer"></div>
                 </div>
             </div>

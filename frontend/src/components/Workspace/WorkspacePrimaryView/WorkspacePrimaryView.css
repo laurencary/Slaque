@@ -211,7 +211,7 @@ div.message-author-photo.img-placeholder {
 
 .message-item-actions-container {
     position: relative;
-    right: -5px;
+    right: 12px;
     top: -27px;
     z-index: 1;
     display: inline-flex;

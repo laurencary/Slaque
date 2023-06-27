@@ -31,6 +31,7 @@ export const getMessages = (state) => {
     return state.messages ? Object.values(state.messages) : []
 }
 
+
 export const fetchMessages = (messageableId, messageableType) => async (dispatch) => {
     const type = messageableType === "channel" ? "channel" : "direct_message"
 
