@@ -34,7 +34,7 @@ class Api::MessagesController < ApplicationController
 	def update
 		@message = Message.find(params[:id])
 
-		if @message.update
+		if @message.update(message_params)
 			if @message.messageable_type == "Channel"
 				ChannelsChannel.broadcast_to(@message.messageable, 
 					type: 'RECEIVE_MESSAGE',

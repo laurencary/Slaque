@@ -140,7 +140,9 @@ const WorkspacePrimaryView = ({workspaceId}) => {
                         messageMembersArr={messageMembersArr}
                         defaultVal={messageableType === "channel" ? "Message #" + messageName : "Message " + messageName.join(", ")}
                         content={''}
-                        isCreate={true}/>
+                        isCreate={true}
+                        message={{}}
+                        setShowEditContent={{}}/>
                     <div className="notifications-footer"></div>
                 </div>
             </div>

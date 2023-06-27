@@ -53,6 +53,16 @@ export const createMessage = (message) => async (dispatch) => {
     })
 }
 
+export const updateMessage = (message) => async (dispatch) => {
+    const res = await csrfFetch(`/api/messages/${message.id}`, {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(message)
+    })
+}
+
 export const updateMessageUnreads = (message, messageableId) => async (dispatch) => {
     const res = await csrfFetch(`/api/messages/${message.id}/mark_read`, {
         method: "PATCH",

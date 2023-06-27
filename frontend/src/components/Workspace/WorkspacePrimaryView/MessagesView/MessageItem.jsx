@@ -21,7 +21,9 @@ const MessageItem = ({ message, messageableId, messageableType }) => {
                     messageMembersArr={{}}
                     defaultVal={message.content}
                     content={message.content} 
-                    isCreate={false}/> :
+                    isCreate={false}
+                    message={message}
+                    setShowEditContent={setShowEditContent}/> :
                 <div className="message-details">
                     
                     <div className="message-header">
