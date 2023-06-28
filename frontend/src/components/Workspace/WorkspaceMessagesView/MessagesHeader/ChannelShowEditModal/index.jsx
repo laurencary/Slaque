@@ -31,7 +31,9 @@ const MessageShowEditModal = ({ setShow, messageDetailsName, messageableId, mess
                 messageDetailsName={messageDetailsName}
                 setShow={setShow}
             />}
-            {showMembers && <MembersSection />
+            {showMembers && <MembersSection 
+                channel={channel}
+                />
 
             }
         </div>
