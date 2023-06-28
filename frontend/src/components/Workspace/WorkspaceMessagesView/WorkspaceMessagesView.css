@@ -53,6 +53,14 @@
 .primary-header-name {
     font-size: 18px;
     font-weight: bold;
+    border-radius: 6px;
+    font-weight: 900;
+    padding: 6px 8px;
+}
+
+.primary-header-name:hover {
+    background-color: #2c2931;
+    cursor: pointer;
 }
 
 .primary-messages {

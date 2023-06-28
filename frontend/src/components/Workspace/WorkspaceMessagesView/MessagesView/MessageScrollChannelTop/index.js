@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { HiOutlineHashtag } from "react-icons/hi";
 import { useSelector } from "react-redux";
 

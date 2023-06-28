@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Modal } from "../../../../context/Modal";
-import MessageActionsModal from "./MessageActionsModal";
-import MessageContentInput from "./MessageContentInput";
+import { Modal } from "../../../../../context/Modal";
+import MessageActionsModal from "../MessageActionsModal";
+import MessageContentInput from "../MessageContentInput";
 
 const MessageItem = ({ message, messageableId, messageableType }) => {
     const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId)
@@ -30,7 +30,7 @@ const MessageItem = ({ message, messageableId, messageableType }) => {
                         <p className="message-author">{message.authorName}</p>
                         <p className="message-time">{message.displayTime}</p>
                     </div>
-                    <p className="message-content">{message.content}</p>
+                    <p className="message-content">{message.content}<span id="edited-span">{message.edited ? " (edited)" : ""}</span></p>
                 </div>
             }
             <div className={showActions && !showEditContent ? "message-item-actions-container" : "hidden"}>

@@ -8,7 +8,7 @@ import { fetchCurrentWorkspace } from "../../store/currentWorkspace";
 import './Workspace.css'
 import WorkspaceSidebar from "./WorkspaceSidebar";
 import { getChannels } from "../../store/channels";
-import WorkspacePrimaryView from "./WorkspacePrimaryView";
+import WorkspaceMessagesView from "./WorkspaceMessagesView";
 import { getDirectMessages } from "../../store/directMessages";
 
 const Workspace = () => {
@@ -35,7 +35,7 @@ const Workspace = () => {
 
     useEffect(() => {
         if (channels.length === 0) {
-            dispatch(fetchCurrentWorkspace(workspaceId))
+            // dispatch(fetchCurrentWorkspace(workspaceId))
             // const subscription = consumer.subscriptions.create(
             //     { channel: 'ChannelsChannel', id: workspaceId }
             // );
@@ -50,7 +50,7 @@ const Workspace = () => {
         <div id="workspace-layout">
             <WorkspaceNavBar />
             <WorkspaceSidebar />
-            {messageableCode && channels.length > 0 && directMessages.length > 0 ? <WorkspacePrimaryView workspaceId={workspaceId}/> : 
+            {messageableCode && channels.length > 0 && directMessages.length > 0 ? <WorkspaceMessagesView workspaceId={workspaceId}/> : 
                 <h1 className="workspace-primary-view h1-only">
                     Please select a channel or direct message.
                     <br></br>

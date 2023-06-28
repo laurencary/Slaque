@@ -6,7 +6,6 @@ import SignupPage from "./components/Session/SignupPage";
 import HomePage from "./components/HomePage";
 import Welcome from "./components/Welcome";
 import Workspace from "./components/Workspace";
-import WorkspacePrimaryView from "./components/Workspace/WorkspacePrimaryView";
 import './reset.css'
 
 function App() {

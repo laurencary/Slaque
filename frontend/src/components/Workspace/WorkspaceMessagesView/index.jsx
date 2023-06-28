@@ -3,18 +3,13 @@ import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMessages, receiveMessage, removeMessage, getMessages } from "../../../store/messages";
 import { HiOutlineHashtag } from "react-icons/hi";
-import './WorkspacePrimaryView.css'
-import DirectMessageTopDetails from "./DirectMessageTopDetails";
-import ChannelTopDetails from "./ChannelTopDetails";
 import MessagesView from "./MessagesView";
 import MessageContentInput from "./MessagesView/MessageContentInput";
 import consumer from '../../../consumer';
-import { fetchCurrentWorkspace } from "../../../store/currentWorkspace";
+import './WorkspaceMessagesView.css'
 
 const WorkspacePrimaryView = ({workspaceId}) => {
-    const messages = useSelector(getMessages);
     const { messageableCode } = useParams();
-    const messagesEndRef = useRef(null)
     const dispatch = useDispatch();
     const messageableType = messageableCode.includes("c") ? "channel" : "directMessage";
     const messageableId = messageableType === "channel" ? 
@@ -29,9 +24,6 @@ const WorkspacePrimaryView = ({workspaceId}) => {
         }
     })
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    }
 
     let messageDetailsName;
     if (messageableType === "channel") {
@@ -75,7 +67,6 @@ const WorkspacePrimaryView = ({workspaceId}) => {
                 }
             }
         );
-        scrollToBottom()
         return () => subscription?.unsubscribe();
 
     }, [dispatch, messageableId, messageableType])
@@ -101,7 +92,6 @@ const WorkspacePrimaryView = ({workspaceId}) => {
                 }
             }
         );
-        scrollToBottom()
         return () => subscription?.unsubscribe();
     },[])
 
@@ -123,17 +113,9 @@ const WorkspacePrimaryView = ({workspaceId}) => {
                 </div>
             </div>
             <div className="workspace-body-container">
-                <div className="message-scroll-container">
-                    <div className="messageable-details">
-                        {messageableType === 'channel' ? 
-                            <ChannelTopDetails messageableId={messageableId}/> : 
-                            <DirectMessageTopDetails messageMembersArr={messageMembersArr} messageableId={messageableId} />
-                        }
-                    </div>
-                    {   Object.values(messages).length === 0 ?
-                        <></> : <MessagesView messageableId={messageableId} messageableType={messageableType}/> }
-                    <div ref={messagesEndRef} />
-                </div>
+                <MessagesView messageableId={messageableId} 
+                    messageableType={messageableType} 
+                    messageMembersArr={messageMembersArr} /> 
                 <div className="create-message-footer">
                     <MessageContentInput messageableId={messageableId}
                         messageableType={messageableType}
