@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMessages, receiveMessage, removeMessage, getMessages } from "../../../store/messages";
-import { HiOutlineHashtag } from "react-icons/hi";
+import { fetchMessages, receiveMessage, removeMessage } from "../../../store/messages";
+import MessagesHeader from "./MessagesHeader";
 import MessagesView from "./MessagesView";
 import MessageContentInput from "./MessagesView/MessageContentInput";
 import consumer from '../../../consumer';
@@ -98,20 +98,10 @@ const WorkspacePrimaryView = ({workspaceId}) => {
 
     return (
         <div className="workspace-primary-view">
-            <div className="primary-header-container">
-                <header className="primary-header-name">
-                    { messageableType === "channel" ? <HiOutlineHashtag /> : <></> }
-                    {messageDetailsName}
-                    <span className="sidebar-team-menu-icon">
-                        <svg viewBox="0 0 20 20" >
-                            <path fill="currentColor" d="M5.72 7.47a.75.75 0 0 1 1.06 0L10 10.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-3.75 3.75a.75.75 0 0 1-1.06 0L5.72 8.53a.75.75 0 0 1 0-1.06Z"></path>
-                        </svg>
-                    </span>
-                </header>
-                <div className="primary-header-users">
-                    <span>{messageMembersArr.length}</span>
-                </div>
-            </div>
+            <MessagesHeader messageableType={messageableType}
+                messageableId={messageableId}
+                messageDetailsName={messageDetailsName}
+                messageMembersArr={messageMembersArr} /> 
             <div className="workspace-body-container">
                 <MessagesView messageableId={messageableId} 
                     messageableType={messageableType} 

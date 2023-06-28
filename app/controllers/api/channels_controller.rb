@@ -18,6 +18,16 @@ class Api::ChannelsController < ApplicationController
 	end
 
 	def update
+		@channel = Channel.find(params[:id])
+
+		if @channel.update(channel_params)
+			render :show
+		end
+	end
+
+	def destroy
+		@channel = Channel.find(params[:id])
+		@channel.destroy
 	end
 
 	private

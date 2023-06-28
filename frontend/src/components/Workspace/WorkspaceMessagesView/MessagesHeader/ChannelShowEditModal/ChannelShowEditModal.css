@@ -1,0 +1,154 @@
+.edit-message-modal {
+    background-color: rgb(39, 39, 39);
+    display: flex;
+    flex-direction: column;
+    height: min(85vh, 820px);
+    max-width: 580px;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px var(--saf-0), 0 18px 48px 0 #00000059;
+    z-index: 400;
+    width: 500px;
+}   
+
+.about-content-container, .delete-channel-button, .edit-channel-name {
+    border: 1px solid grey;
+    border-radius: 12px;
+    margin: 16px 28px;
+    background-color: rgb(24, 24, 24);
+}
+
+.name-header, .description-header, .created-by-header, .leave-channel-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font: 15px;
+    font-weight: 500;
+    line-height: 1.46;
+}
+
+.delete-channel-button, .leave-channel-button {
+    color: red;
+    font-weight: 700;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.delete-channel-button {
+    display: flex;
+    flex-direction: row;
+    width: 89%;
+}
+.delete-channel-button:hover {
+    cursor: pointer;
+    color: grey;
+    background-color: rgb(75, 74, 74);
+}
+
+.edit-button {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.38463;
+    color: #1d9bd1;
+}
+
+.edit-button:hover {
+    text-decoration: underline;
+}
+
+.description-container, .created-by-container, .leave-channel-container, .edit-channel-name,
+.delete-channel-button {
+    padding: 16px 20px;
+}
+
+.unstyled-button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    line-height: inherit;
+    margin: 0;
+    overflow: initial;
+    padding: 0;
+    text-align: initial;
+    vertical-align: initial;
+}
+
+.created-by-container {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.description-placeholder {
+    color: rgb(123, 121, 121);
+}
+
+.edit-modal-text {
+    text-align: left;
+    word-break: break-word;
+    line-height: 1.46;
+    font-weight: 400;
+}
+
+.cancel-button {
+    font-size: 15px;
+    height: 36px;
+    min-width: 80px;
+    padding: 0 12px 1px;
+    background: black;
+    box-shadow: none;
+    color: #fff;
+    font-weight: 700;
+    transition: all 80ms linear;
+    border: white;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    outline: none;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.cancel-button:hover {
+    background-color: grey;
+}
+
+.neg-padding {
+    padding: 0;
+}
+
+.description-textarea {
+    width: 100%;
+}
+
+.edit-channel-message {
+    text-align: left;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.38461538;
+    margin-left: 6px;
+}
+
+.show-page-tabs {
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+}
+
+.tab {
+    padding: 9px 0 9px 0;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.38463;
+    margin: 0 20px 0 8px;
+}
+
+.tab span {
+    font-weight: 400;
+    padding-left: 5px;
+}
+
+.selected-tab {
+    box-shadow: inset 0 -2px 0 0 #007a5a;
+}
