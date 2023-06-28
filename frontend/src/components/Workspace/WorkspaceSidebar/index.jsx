@@ -10,14 +10,13 @@ import { NavLink } from "react-router-dom";
 
 const WorkspaceSidebar = () => {
     const dispatch = useDispatch();
-    const { workspaceId } = useParams();
+    const { workspaceId, messageableCode } = useParams();
     const workspace = useSelector(state => state.userWorkspaces[workspaceId]);
     const channels = useSelector(getChannels);
     const directMessages = useSelector(getDirectMessages);
     const user = useSelector(state => state.session.user);
     const [showChannels, setShowChannels] = useState(true);
     const [showDirectMessages, setShowDirectMessages] = useState(true);
-    const [selected, setSelected] = useState('')
 
     return (
         <div className="workspace-sidebar">
@@ -32,11 +31,11 @@ const WorkspaceSidebar = () => {
                 </div>
             </header>
             <div id="sidebar-list">
-                <MessageableItem messageableType={"Channels"} />
-                {channels.map((channel) => (
+                <MessageableItem messageableType={"Channels"} show={showChannels} setShow={setShowChannels}/>
+                {showChannels && channels.map((channel) => (
                     <div key={`c${channel.id}`} className="sidebar-list-item-container">
                         <NavLink to={`/client/${user.id}/${workspace.id}/c${channel.id}`}>
-                            <div className="sidebar-list-item">
+                            <div className={messageableCode == `c${channel.id}` ? "selected sidebar-list-item" : "sidebar-list-item" }>
                                 <div className="sidebar-channel-icon">
                                     <HiOutlineHashtag className={ channel.unreadMessages ? "bold" : ""} />
                                 </div>
@@ -45,12 +44,12 @@ const WorkspaceSidebar = () => {
                         </NavLink>
                     </div>
                 ))}
-                <MessageableItem messageableType={"Direct messages"}/>
-                {directMessages.map((directMessage) => (
+                <MessageableItem messageableType={"Direct messages"} show={showDirectMessages} setShow={setShowDirectMessages}/>
+                {showDirectMessages && directMessages.map((directMessage) => (
                     <div key={`d${directMessage.id}`} className="sidebar-list-item-container">
                         <NavLink to={`/client/${user.id}/${workspace.id}/dm${directMessage.id}`}>
                             <div className="sidebar-direct-message">
-                                <div className="sidebar-list-item">
+                                <div className={messageableCode == `dm${directMessage.id}` ? "selected sidebar-list-item" : "sidebar-list-item"}>
                                     <div className="sidebar-direct-message-icon"></div>
                                     <div className={directMessage.unreadMessageCount > 0 ? "bold dm-name" : "dm-name"}>{directMessage.name.join(', ')}</div>
                                 </div>

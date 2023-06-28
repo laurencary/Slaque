@@ -38,8 +38,8 @@ export const fetchMessages = (messageableId, messageableType) => async (dispatch
     const res = await fetch(`/api/${type}s/${messageableId}`)
 
     if (res.ok) {
-        const messages = await res.json();
-        dispatch(receiveMessages(messages));
+        const data = await res.json();
+        dispatch(receiveMessages(data.messages));
     }
 }
 

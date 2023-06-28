@@ -1,0 +1,127 @@
+.create-channel-modal-container {
+    height: auto;
+    max-width: 520px;
+    width: 100%;
+    background-color: rgb(39,39,39);
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px var(--saf-0), 0 18px 48px 0 #00000059;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    overflow: hidden;
+    position: relative;
+    justify-content: space-evenly;
+}
+
+.create-channel-header, .create-channel-footer {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 28px;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.36365;
+}
+
+.create-channel-header {
+    justify-content: space-between;
+}
+
+.create-channel-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 28px 0 28px;
+}
+.create-channel-form h2 {
+    padding-bottom: 20px;
+}
+
+.channel-input-container {
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.33334;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.channel-input-container input{
+    background-color: none;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    padding: 4px;
+    border: 1px solid var(--saf-0);
+    border-radius: 4px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: border 80ms ease-out, box-shadow 80ms ease-out;
+    white-space: nowrap;
+    outline: none;
+    text-align: left;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.create-channel-message {
+    padding: 0 28px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.38461538;
+    margin: 4px 0 20px;
+}
+
+.create-channel-footer {
+    justify-content: flex-end;
+}
+
+.green-text-button {
+    font-size: 15px;
+    height: 36px;
+    min-width: 80px;
+    padding: 0 12px 1px;
+    background: #007a5a;
+    box-shadow: none;
+    color: #fff;
+    font-weight: 700;
+    transition: all 80ms linear;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    outline: none;
+    align-items: center;
+}
+
+.green-text-button:hover {
+    background: #148567;
+    box-shadow: 0 1px 4px #0000004d;
+    color: #fff;
+}
+
+.close-modal {
+    background-color: rgb(39, 39, 39);
+    border: none;
+    color: white;
+    size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.close-modal:hover {
+    background-color: rgb(64, 64, 64);
+}
+
+.green-text-button:disabled {
+    background-color: grey;
+}
