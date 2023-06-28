@@ -2,7 +2,7 @@ const MemberListItem = ({member}) => {
     return (
         <div className="member-list-item-container">
             <div className="member-list-item">
-                <div className="img-placeholder"></div>
+                <div className="img-placeholder-small"></div>
                 <div className="member-details">
                     <div className="member-names">
                         <h1>{member.fullName}</h1>

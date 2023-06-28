@@ -18,7 +18,7 @@ const MessagesHeader = ({ messageableType, messageDetailsName, messageMembersArr
                 </span>
             </header>
             <div className="primary-header-users">
-                <span>{messageMembersArr.length}</span>
+                <span>{messageMembersArr.length} members</span>
             </div>
             {showEditModal && (
                 <Modal onClose={() => setShowEditModal(false)}>

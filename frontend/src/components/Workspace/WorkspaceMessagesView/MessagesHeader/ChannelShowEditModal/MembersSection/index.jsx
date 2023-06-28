@@ -8,13 +8,25 @@ const MembersSection = ({channel}) => {
 
     return (
         <div>
-            <button><span><FiUserPlus /></span>Add People</button>
+            <div className="member-list-item-container">
+                <button className="add-people-button member-list-item unstyled-button">
+                    <div id="add-people-icon-container">
+                        <span id="add-members-icon"><FiUserPlus size='2x'/></span>
+                    </div>
+                    <div className="member-details">
+                        <div className="member-names">
+                            <h1>Add People</h1>
+                        </div>
+                    </div>
+                </button>
+            </div>
             {channel.workspaceUsers.map((memberId) => (
                 <MemberListItem key={`mm${memberId}`}
                     member={workspaceUsers[memberId]}
                 />
             ))}
         </div>
+        
     )
 }
 
