@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-input.form-input:focus {
+input.form-input:focus, .edit-profile-input:focus {
     outline: 0;
     box-shadow: 0 0 0 1px #1264a3, 0 0 0 5px rgba(29, 155, 209, .3);
     border-radius: 4px;

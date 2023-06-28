@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
-import '../SigninPage/SignPage.css';
+import '../Session.css';
 import SessionHeader from '../SessionHeader';
 import SessionForm from '../SessionForm';
 import DemoButton from '../../DemoButton';
