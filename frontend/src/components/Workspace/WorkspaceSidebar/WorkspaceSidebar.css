@@ -7,7 +7,8 @@
     position: relative;
     border-color: rgb(43, 42, 47) !important;
     border-bottom: 1px solid #0000001a;
-    padding-left: 8px;
+    padding: 0 8px;
+    justify-content: space-between;
 }
 
 .sidebar-team-menu-icon, .sidebar-channel-icon, .sidebar-direct-message-icon, .sidebar-static-item-text:hover .sidebar-channel-menu-icon, .create-message-send-icon {
@@ -191,4 +192,22 @@ a {
     background-color: #1164A3;
     border-radius: 6px;
     /* width: 100%; */
+}
+
+.new-message-button svg {
+    height: 18px;
+    width: 18px;
+}
+
+.new-message-button {
+    align-items: center;
+    border-radius: 9999px;
+    box-shadow: 0 1px 3px #00000014;
+    display: flex;
+    font-size: 18px;
+    height: 34px;
+    justify-content: center;
+    border: none;
+    width: 34px;
+    z-index: 3;
 }

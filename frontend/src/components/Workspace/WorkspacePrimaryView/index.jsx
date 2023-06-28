@@ -55,7 +55,7 @@ const WorkspacePrimaryView = ({workspaceId}) => {
     
     useEffect(() => {
         dispatch(fetchMessages(messageableId, messageableType));
-        dispatch(fetchCurrentWorkspace(workspaceId))
+        // dispatch(fetchCurrentWorkspace(workspaceId))
         const subscriptionChannel = messageableType === "channel" ? "ChannelsChannel" : "DirectMessagesChannel"
 
         const subscription = consumer.subscriptions.create(
