@@ -5,7 +5,8 @@ import { FiX } from "react-icons/fi";
 import './NewDirectMessage.css'
 
 const NewDirectMessage = () => {
-    const [messageMembersArr, updateMessageMembersArr] = useState([])
+    const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId)
+    const [messageMembersArr, updateMessageMembersArr] = useState([workspaceUserId])
     const workspaceUsers = useSelector(state => state.workspaceUsers)
     const workspaceUsersArr = useSelector(state => Object.values(state.workspaceUsers))
     const [searchVal, setSearchVal] = useState('');
@@ -27,10 +28,10 @@ const NewDirectMessage = () => {
             <div className="composer-subheader-container">
                 <div className="composer-subheader">
                     <span className="composer-subheader-prefix">To:</span>
-                    {messageMembersArr.map((userId) => (
+                    {messageMembersArr.filter(id => id !== workspaceUserId).map((userId) => (
                         <span key={`ub${userId}`}
                             className="unstyled-button new-dm-recipient-button">
-                            <span>{workspaceUsers[userId].fullName}</span>
+                            <span className="new-dm-recipient-name">{workspaceUsers[userId].fullName}</span>
                             <span onClick={() => handleRemoveItem(userId)}><FiX /></span>
                         </span>
                     ))}
@@ -43,12 +44,14 @@ const NewDirectMessage = () => {
                     </div>
                 </div>
             </div>
-            <div className="search-user-results">
+            <div className={searchVal ? "search-user-results" : ""}>
                 {searchVal && workspaceUsersArr.filter((user) => (!messageMembersArr.includes(user.id) && (user.fullName.includes(searchVal) || (user.displayName && user.displayName.includes(searchVal))))).map((user) => (
                     <div key={`user${user.id}`}
                         onClick={() => handleAddItem(user.id)} 
                         className="search-result-user">
-                        {user.fullName} - {user.displayName}
+                        <strong>{user.fullName}</strong>
+                        <span className="search-result-user-display">{user.displayName && (user.displayName)}</span>
+                        <span className="search-result-user-title">{user.title && (`(${user.title})`)}</span>
                     </div>
                 ))}
             </div>

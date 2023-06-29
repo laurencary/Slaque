@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch } from "react-redux";
 import { createMessage, updateMessage } from "../../../../../store/messages";
+import { createDirectMessage } from "../../../../../store/directMessages";
 
 
 const MessageContentInput = ({ messageableId, messageableType, messageMembersArr, defaultVal, content, isCreate, message, setShowEditContent }) => {
-    const { clientId } = useParams();
+    const { clientId, workspaceId } = useParams();
     const dispatch = useDispatch();
     const [messageContent, setMessageContent] = useState(content);
 
@@ -18,16 +19,26 @@ const MessageContentInput = ({ messageableId, messageableType, messageMembersArr
             }
         }
         setMessageContent('')
-
-        const newMessage = {
-            workspaceAuthorId: clientId,
-            content: messageContent,
-            edited: false,
-            unreadByWorkspaceUsers,
-            messageableId,
-            messageableType: messageableType === "channel" ? "Channel" : "DirectMessage"
+        if (messageableId) {
+            const newMessage = {
+                workspaceAuthorId: clientId,
+                content: messageContent,
+                edited: false,
+                unreadByWorkspaceUsers,
+                messageableId,
+                messageableType: messageableType === "channel" ? "Channel" : "DirectMessage"
+            }
+            dispatch(createMessage(newMessage));
+        } else {
+            const newMessage = {
+                workspaceAuthorId: clientId,
+                content: messageContent,
+                edited: false,
+                unreadByWorkspaceUsers,
+                messageableType: "DirectMessage"
+            }
+            dispatch(createDirectMessage(messageMembersArr, newMessage, workspaceId));
         }
-        dispatch(createMessage(newMessage));
     }
 
     const handleUpdateMessage = (e) => {

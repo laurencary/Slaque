@@ -17,6 +17,17 @@
 
 .new-dm-recipient-button {
     color: white;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    outline: none;
+    font-size: 15px;
+    margin: 4px;
+    min-height: 26px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background-color: rgb(55, 54, 54);
 }
 
 .search-user-input {
@@ -25,6 +36,44 @@
     border: none;
     outline: none;
     text-align: left;
-    padding-left: 12px;
 }
 
+.composer-subheader-prefix {
+    padding-right: 12px;
+}
+
+.new-dm-recipient-name {
+    padding-right: 6px;
+}
+
+.search-result-user {
+    line-height: 1.468;
+    padding: 6px 40px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+}
+
+.search-user-results {
+    margin: 6px 40px;
+    padding: 4px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    min-width: 300px;
+    border-radius: 6px;
+    border: 1px solid grey !important;
+    opacity: 1;
+}
+
+.search-result-user-title, .search-result-user-display {
+    padding-left: 6px;
+    position: relative;
+    top: 0.5px;
+}
+
+.search-result-user-title {
+    color: grey;
+}
