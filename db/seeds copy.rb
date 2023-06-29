@@ -117,11 +117,11 @@ ApplicationRecord.transaction do
 
     puts "Create channels..."
 
-    Channel.create!(owner_id: 12, workspace_id: 2, name: "ozians")                  #1
-    Channel.create!(owner_id: 5, workspace_id: 2, name: "munckinland")              #2
-    Channel.create!(owner_id: 8, workspace_id: 2, name: "shiz-university")          #3
-    Channel.create!(owner_id: 13, workspace_id: 2, name: "popular-girls")           #4
-    Channel.create!(owner_id: 7, workspace_id: 2, name: "ozdust-ballroom-party")    #5
+    Channel.create!(owner_id: 12, workspace_id: 2, name: "ozians")                  #1 thank goodness no one mourns the wicked
+    Channel.create!(owner_id: 5, workspace_id: 2, name: "munckinland")              
+    Channel.create!(owner_id: 8, workspace_id: 2, name: "shiz-university")          #3 dear old shiz
+    Channel.create!(owner_id: 13, workspace_id: 2, name: "popular-girls")           #4 
+    Channel.create!(owner_id: 7, workspace_id: 2, name: "ozdust-ballroom-party")    #5 dancing through life
     Channel.create!(owner_id: 29, workspace_id: 1, name: "scranton-branch")         #6
     Channel.create!(owner_id: 29, workspace_id: 1, name: "everyone-except-toby")    #7
     Channel.create!(owner_id: 17, workspace_id: 1, name: "finer-things-club")       #8
@@ -147,7 +147,6 @@ ApplicationRecord.transaction do
     ChannelSubscription.create!(workspace_user_id: 15, channel_id: 1)
 
     ChannelSubscription.create!(workspace_user_id: 5, channel_id: 2)
-    ChannelSubscription.create!(workspace_user_id: 8, channel_id: 2)
     ChannelSubscription.create!(workspace_user_id: 9, channel_id: 2)
     ChannelSubscription.create!(workspace_user_id: 10, channel_id: 2)
     ChannelSubscription.create!(workspace_user_id: 11, channel_id: 2)
@@ -244,21 +243,87 @@ ApplicationRecord.transaction do
 
     
     puts "Creating direct messages..."
-    DirectMessage.create!(workspace_id: 1)
+    DirectMessage.create!(workspace_id: 1) # 1 Michael, Jim, Dwitght, Demo 1
+    DirectMessage.create!(workspace_id: 1) # 2 Demo 1, Demo 2
+    DirectMessage.create!(workspace_id: 1) # 3 Demo 2, Pam, Jim
+    DirectMessage.create!(workspace_id: 2) # 4 glinda to her friends demo 1 popular
+    DirectMessage.create!(workspace_id: 2) # 5 elphaba w her parents demo 1 popular
+    DirectMessage.create!(workspace_id: 2) # 6 Dr Dillamond and Elphaba demo 2
+    DirectMessage.create!(workspace_id: 2) # 7 Demo 1 and Demo 2
 
 
     puts "Creating direct message subscriptions..."
     DirectMessageSubscription.create!(workspace_user_id: 1, direct_message_id: 1)
 
-
+    # michael asking for dates
+    # popular
     puts "Creating messages"
-    Message.create!(workspace_author_id: 4, 
-        content: "Can someone help me with my polymorphic associations?", 
-        messageable_id: 1, 
+    Message.create!(workspace_author_id: 13, 
+        content: "My granny is always giving me the most hideous hats. She got me a witch's hat", 
+        messageable_id: 4, 
         messageable_type: "Channel", 
-        unread_by_workspace_users: { 1 => true }, 
+        unread_by_workspace_users: {  }, 
         edited: false)
-    
+    Message.create!(workspace_author_id: 10, 
+        content: "What isn Oz's name!?", 
+        messageable_id: 4, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 13, 
+        content: "I'd give it away, but I don't hate anyone that much.", 
+        messageable_id: 4, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 11, 
+        content: "Yes you do!", 
+        messageable_id: 4, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 10, 
+        content: "Give it to her! Just do it!", 
+        messageable_id: 4, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 13, 
+        content: "Oh you're right. I'll give it to", 
+        messageable_id: 4, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 5, 
+        content: "Galinda, you are just to good! How do you stand it? I don't think I could!", 
+        messageable_id: 2, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 9, 
+        content: "She's a terror, she's a tartar! I don't mean to show a bias, but Galinda, you're a martar.", 
+        messageable_id: 2, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 13, 
+        content: "Well... these things are sent to try us.", 
+        messageable_id: 2, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 10, 
+        content: "Poor Galinda, forced to reside with someone so disgustified. We just want to tell you, we're all on your side!", 
+        messageable_id: 2, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 11, 
+        content: "We share your loathing, unadulterated lathing", 
+        messageable_id: 2, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
 
     puts "Done!"
 end

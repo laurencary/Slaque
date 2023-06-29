@@ -5,6 +5,7 @@ import ChannelEditNameForm from "./ChannelEditNameForm";
 import ChannelEditDescriptionForm from "./ChannelEditDescriptionForm";
 import { useState } from "react";
 import { FiTrash2} from "react-icons/fi";
+import { deleteChannelSubscription } from "../../../../../../store/channelSubscriptions";
 
 const ChannelAboutSection = ({ channel, setShow }) => {
     const history = useHistory();
@@ -19,6 +20,11 @@ const ChannelAboutSection = ({ channel, setShow }) => {
         setShow(false)
         history.push(`/client/${clientId}/${workspaceId}`)
         dispatch(deleteChannel(channel.id))
+    }
+
+    const handleLeave = () => {
+        history.push(`/client/${clientId}/${workspaceId}`)
+        dispatch(deleteChannelSubscription(channel.id, workspaceUserId))
     }
 
     return (
@@ -58,7 +64,7 @@ const ChannelAboutSection = ({ channel, setShow }) => {
                     <div className="created-by-header"><h2>Created by</h2></div>
                     <p className="edit-modal-text">{channelOwner.displayName ? channelOwner.displayName : channelOwner.fullName} on {channel.createdAt}</p>
                 </div>
-                <div className="leave-channel-container">
+                <div onClick={handleLeave} className="leave-channel-container">
                     <button className="leave-channel-button unstyled-button">Leave Channel</button>
                 </div>
             </div>

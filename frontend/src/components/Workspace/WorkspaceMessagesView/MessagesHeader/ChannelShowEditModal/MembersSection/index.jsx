@@ -3,7 +3,7 @@ import { FiUserPlus } from "react-icons/fi";
 import MemberListItem from "./MemberListItem";
 import './MembersSection.css'
 
-const MembersSection = ({channel}) => {
+const MembersSection = ({messageable}) => {
     const workspaceUsers = useSelector(state => state.workspaceUsers)
 
     return (
@@ -20,7 +20,7 @@ const MembersSection = ({channel}) => {
                     </div>
                 </button>
             </div>
-            {channel.workspaceUsers.map((memberId) => (
+            {messageable.workspaceUsers.map((memberId) => (
                 <MemberListItem key={`mm${memberId}`}
                     member={workspaceUsers[memberId]}
                 />

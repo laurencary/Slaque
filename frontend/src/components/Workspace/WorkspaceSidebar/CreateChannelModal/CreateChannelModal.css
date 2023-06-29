@@ -24,6 +24,12 @@
 
 .create-channel-header {
     justify-content: space-between;
+    align-items: center;
+}
+
+.create-channel-header h1 {
+    display: flex;
+    align-items: center;
 }
 
 .create-channel-form {

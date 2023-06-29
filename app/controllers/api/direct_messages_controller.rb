@@ -1,6 +1,6 @@
 class Api::DirectMessagesController < ApplicationController
     def show
-        @direct_message = DirectMessage.where("id = #{params[:id]}").includes(:messages)[0]
+        @direct_message = DirectMessage.where("id = #{params[:id]}").includes(messages: :workspace_author)[0]
         render 'api/direct_messages/show'
     end
 

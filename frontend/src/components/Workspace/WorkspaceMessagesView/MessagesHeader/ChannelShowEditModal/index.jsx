@@ -8,9 +8,10 @@ import MembersSection from "./MembersSection";
 
 
 const MessageShowEditModal = ({ setShow, messageDetailsName, messageableId, messageableType}) => {
-    const [showAbout, setShowAbout] = useState(true);
-    const [showMembers, setShowMembers] = useState(false);
-    const channel = useSelector(state => state.channels[messageableId])
+    const [showAbout, setShowAbout] = useState(messageableType === "channel");
+    const [showMembers, setShowMembers] = useState(messageableType !== "channel");
+    const messageable = useSelector(state => messageableType === "channel" ? state.channels[messageableId] : state.directMessages[messageableId])
+
 
     const switchTabs = () => {
         setShowAbout(!showAbout)
@@ -19,20 +20,20 @@ const MessageShowEditModal = ({ setShow, messageDetailsName, messageableId, mess
     return (
         <div className="edit-message-modal">
             <header className="create-channel-header">
-                <h1><HiOutlineHashtag />{messageDetailsName}</h1>
+                <h1>{messageableType === "channel" && <HiOutlineHashtag />}{messageDetailsName}</h1>
                 <button className="close-modal" onClick={() => setShow(false)}><FiX /></button>
             </header>
             <section className="show-page-tabs">
-                <div onClick={switchTabs} className={showAbout ? "tab selected-tab" : "tab"}>About</div>
-                <div onClick={switchTabs} className={showMembers ? "tab selected-tab" : "tab"}>Members<span>{channel.workspaceUsers.length}</span></div>
+                {messageableType === "channel" && <div onClick={switchTabs} className={showAbout ? "tab selected-tab" : "tab"}>About</div>}
+                <div onClick={switchTabs} className={showMembers ? "tab selected-tab" : "tab"}>Members<span>{messageable.workspaceUsers.length}</span></div>
             </section>
             {showAbout && <ChannelAboutSection 
-                channel={channel}
+                channel={messageable}
                 messageDetailsName={messageDetailsName}
                 setShow={setShow}
             />}
             {showMembers && <MembersSection 
-                channel={channel}
+                messageable={messageable}
                 />
 
             }

@@ -15,12 +15,14 @@ Rails.application.routes.draw do
 		resources :channels, only: [:create, :index, :show, :update, :destroy]
 		resources :direct_messages, only: [:create, :index, :show, :update]
 		resources :messages, only: [:create, :index, :show, :update, :destroy]
-		resources :channel_subscriptions, only: [:create, :destroy]
+		resources :channel_subscriptions, only: [:create]
 
 		patch '/messages/:id/mark_read', :to => 'messages#mark_read'
+		delete '/channel_subscriptions', :to => 'channel_subscriptions#destroy'
 
 		resource :session, only: [:show, :create, :destroy]
 
 	end
 	get '*path', to: "static_pages#frontend_index"
 end
+
