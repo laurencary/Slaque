@@ -210,5 +210,11 @@ a {
     justify-content: center;
     border: none;
     width: 34px;
+    background-color: white;
+    color: black;
     /* z-index: 3; */
+}
+
+.new-message-button:hover {
+    cursor: pointer;
 }

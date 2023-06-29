@@ -1,0 +1,15 @@
+.composer-subheader-container {
+    padding: 0 20px;
+}
+
+.composer-subheader {
+    display: flex;
+    flex-direction: row;
+    height: 52px;
+    align-items: center;
+}
+
+.search-result-user:hover {
+    cursor: pointer;
+    background-color: #1164A3;
+}
