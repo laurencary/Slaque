@@ -125,3 +125,8 @@
 .green-text-button:disabled {
     background-color: grey;
 }
+
+.create-channel-error {
+    padding: 0 26px;
+    font-size: 13px;
+}

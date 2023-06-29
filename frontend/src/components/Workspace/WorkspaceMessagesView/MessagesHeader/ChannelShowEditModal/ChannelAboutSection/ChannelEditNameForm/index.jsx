@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { HiOutlineHashtag } from "react-icons/hi";
 import { updateChannel } from "../../../../../../../store/channels";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import FormError from "../../../../../../Session/SessionForm/FormError";
 
 const ChannelEditNameForm = ({channel, setShow}) => {
     const dispatch = useDispatch();
+    const {workspaceId} = useParams();
     const [channelName, setChannelName] = useState(channel.name)
+    const workspaceName = useSelector(state => state.userWorkspaces[workspaceId].name)
+    const existingChannelNames = useSelector(state => Object.values(state.channels).map((channel) => channel.name))
 
     const handleUpdate = () => {
         const updatedChannel = {
@@ -28,6 +33,8 @@ const ChannelEditNameForm = ({channel, setShow}) => {
                         value={channelName} />
                     <p>{80 - channelName.length}</p>
                 </div>
+                {existingChannelNames.includes(channelName) && channelName !== channel.name &&
+                    <div className="create-channel-error"><FormError error={`That name is already taken by a channel in ${workspaceName}`} /></div>}
             </div>
             <footer className="create-channel-footer">
                 <button className="unstyled-button cancel-button" onClick={() => setShow(false)}>Cancel</button>

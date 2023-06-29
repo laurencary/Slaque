@@ -10,14 +10,13 @@ const ProfileButton = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
     const profile = useSelector(getCurrentWorkspaceProfile);
-    // console.log(profile);
     const closeModals = () => {
         setShowMenu(false);
         setShowProfile(false)
     }
 
     return profile ? (
-        <div>
+        <div onMouseLeave={() => setShowMenu(false)}>
             <i onClick={() => setShowMenu(!showMenu)}  style={{ color: "navy", backgroundColor: "white", fontSize: "40px" }} className="fa-solid fa-user"></i>
             <ul className={showMenu ? "profile-button-menu" : "hidden"}>
                 <h1>{profile.fullName}</h1>

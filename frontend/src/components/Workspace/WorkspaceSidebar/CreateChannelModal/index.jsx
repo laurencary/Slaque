@@ -5,9 +5,12 @@ import './CreateChannelModal.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { createChannel } from "../../../../store/channels";
+import FormError from "../../../Session/SessionForm/FormError";
 
 const CreateChannelModal = ({setShowActions}) => {
     const { workspaceId } = useParams();
+    const workspaceName = useSelector(state => state.userWorkspaces[workspaceId].name)
+    const existingChannelNames = useSelector(state => Object.values(state.channels).map((channel) => channel.name))
     const currentWorkspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId);
     const [channelName, setChannelName] = useState('')
     const dispatch = useDispatch();
@@ -39,11 +42,14 @@ const CreateChannelModal = ({setShowActions}) => {
                     <p>{80 - channelName.length}</p>
                 </div>
             </div>
-            <div className="create-channel-message">Channels are where conversations happen around a topic. Use a
-                name that is easy to find and understand.</div>
+                { existingChannelNames.includes(channelName) ?
+                    <div className="create-channel-error"><FormError error={`That name is already taken by a channel in ${workspaceName}`} /></div> :
+                    <div className="create-channel-message">Channels are where conversations happen around a topic. Use a
+                        name that is easy to find and understand.</div>
+                }
             <div>
                 <footer className="create-channel-footer">
-                    <button onClick={handleSubmit} className="green-text-button" disabled={channelName === ""}>Create</button>
+                    <button onClick={handleSubmit} className="green-text-button" disabled={channelName === "" || existingChannelNames.includes(channelName)}>Create</button>
                 </footer>
             </div>
         </div>
