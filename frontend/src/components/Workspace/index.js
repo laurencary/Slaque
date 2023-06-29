@@ -45,19 +45,19 @@ const Workspace = () => {
     return userWorkspaces.length ? (
         <div id="workspace-layout">
             <WorkspaceNavBar />
-            <WorkspaceSidebar/>
+            <WorkspaceSidebar setShowNewMessage={setShowNewMessage}r/>
             {/* <Route path="/client/:clientId/:workspaceId/create-direct-message">
                 <WorkspaceNavBar />
                 <WorkspaceSidebar />
                 <NewDirectMessage />
             </Route> */}
-            {true && <NewDirectMessage />}
-            {/* {messageableCode && channels.length > 0 && directMessages.length > 0 ? <WorkspaceMessagesView workspaceId={workspaceId}/> : 
+            {showNewMessage ? (<NewDirectMessage />) : 
+            (messageableCode && channels.length > 0 && directMessages.length > 0 ? <WorkspaceMessagesView workspaceId={workspaceId}/> : 
                 <h1 className="workspace-primary-view h1-only">
                     Please select a channel or direct message.
                     <br></br>
                     Happy Slaquing!
-                </h1>} */}
+                </h1>)}
         </div>
     ) : null
 }
