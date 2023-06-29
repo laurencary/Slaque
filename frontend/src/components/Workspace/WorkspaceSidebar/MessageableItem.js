@@ -26,10 +26,8 @@ const MessageableItem = ({messageableType, show, setShow}) => {
                 messageableType === "Direct messages" ?
                     <span className="open-dm"><FiPlus /></span> : <></>
             }
-            {showActions && <Modal onClose={() => setShowActions(false)}>
-                { messageableType === "Channels" ? 
+            {showActions && messageableType === "Channels" && <Modal onClose={() => setShowActions(false)}>
                     <CreateChannelModal setShowActions={setShowActions} /> : <></>
-                }
             </Modal>}
         </div>
     )
