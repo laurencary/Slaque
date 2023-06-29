@@ -13,7 +13,7 @@ class Api::ChannelsController < ApplicationController
 	end
 
 	def show
-		@channel = Channel.where("id = #{params[:id]}").includes(:messages)[0]
+		@channel = Channel.where("id = #{params[:id]}").includes(messages: :workspace_author)[0]
 		render :show
 	end
 

@@ -25,33 +25,18 @@ const Workspace = () => {
         if (userWorkspaces.length === 0 || !workspace.name) {
             dispatch(fetchUser(user.id));
             dispatch(fetchCurrentWorkspace(workspaceId))
-            // const subscription = consumer.subscriptions.create(
-            //     { channel: 'ChannelsChannel', id: workspaceId }
-            // );
-
-            // return () => subscription?.unsubscribe();
         }
     }, [])
 
     useEffect(() => {
         if (channels.length === 0) {
             dispatch(fetchCurrentWorkspace(workspaceId))
-            // const subscription = consumer.subscriptions.create(
-            //     { channel: 'ChannelsChannel', id: workspaceId }
-            // );
-
-            // return () => subscription?.unsubscribe();
         }
     }, [])
 
     useEffect(() => {
         dispatch(removeCurrentWorkspace())
         dispatch(fetchCurrentWorkspace(workspaceId))
-            // const subscription = consumer.subscriptions.create(
-            //     { channel: 'ChannelsChannel', id: workspaceId }
-            // );
-
-            // return () => subscription?.unsubscribe();
     }, [workspaceId])
 
     if (!user) return <Redirect to='/' />;

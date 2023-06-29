@@ -11,10 +11,9 @@ const MessageItem = ({ message, messageableId, messageableType }) => {
     const [showEditContent, setShowEditContent] = useState(false)
 
     return (
-        <div className="message-item"
+        <div className={showEditContent ? "edit-message-item" : "message-item"}
             onMouseEnter={() => setShowActions(workspaceUserId === message.workspaceAuthorId ? true : false)}
-            onMouseLeave={() => setShowActions(false)}
-            >
+            onMouseLeave={() => setShowActions(false)}>
             <div className="message-author-photo img-placeholder"></div>
             {showEditContent ? <MessageContentInput messageableId={messageableId}
                     messageableType={messageableType}

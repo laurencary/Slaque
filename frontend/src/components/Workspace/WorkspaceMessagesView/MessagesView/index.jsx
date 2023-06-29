@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMessages, updateMessageUnreads } from "../../../../store/messages";
 import DirectMessageTopDetails from "./MessageScrollDirectTop";
@@ -8,33 +8,34 @@ import './MessagesView.css'
 
 const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => {
     const messagesEndRef = useRef(null)
+    const dispatch = useDispatch();
     const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId)
     const messages = useSelector(getMessages);
-    const dispatch = useDispatch();
     const unreadMessages = messages.filter(message => message.unread && message.workspaceAuthorId !== workspaceUserId)
-    const readMessages = messages.filter(message => message.workspaceAuthorId === workspaceUserId || !message.unread)
+    const firstUnreadMessage = unreadMessages[0];
     // const [unreadMessages, setUnreadMessages] = useState(initialUnreadMessages)
     // const [readMessages, setReadMessages] = useState(initialReadMessages)
-
-    useEffect(() => {
-        unreadMessages.forEach((message) => {
-            dispatch(updateMessageUnreads(message, messageableId));
-        });
-        scrollToBottom();
-    }, [messageableId])
     
     useEffect(() => {
         unreadMessages.forEach((message) => {
-            dispatch(updateMessageUnreads(message, messageableId));
+            dispatch(updateMessageUnreads(message, messageableId, messageableType));
         });
         scrollToBottom();
     }, [])
-    // if (readMessages.length > 0 && unreadMessages.length > 0) {
-    //     if (readMessages[readMessages.length - 1].createdAt > unreadMessages[0].createdAt) {
+
+    // useEffect(() => {
+    //     unreadMessages.forEach((message) => {
+    //         dispatch(updateMessageUnreads(message, messageableId, messageableType));
+    //     });
+    //     scrollToBottom();
+    // }, [messageableId])
+
+    // useEffect(() => {
+    //     if (messages.length > 0 && messages[messages.length - 1].workspaceAuthorId === workspaceUserId) {
     //         setReadMessages(messages)
     //         setUnreadMessages([])
     //     }
-    // }
+    // }, [messages, messageableId])
     
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -49,19 +50,27 @@ const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => 
                 }
             </div>
             <div className="primary-messages">
-                {readMessages.map((message) => (
-                    <div key={`m${message.id}`}>
-                        <MessageItem message={message} messageableId={messageableId} messageableType={messageableType} />
-                    </div>
+                {messages.map((message) => (
+                    <>
+                        { unreadMessages.length > 0 && message.id === firstUnreadMessage.id && (
+                            <div className="new-messages-line">
+                                <hr></hr>
+                                <p>New</p>
+                            </div>
+                        )}
+                        <div key={`msg${message.id}`}>
+                            <MessageItem  message={message} messageableId={messageableId} messageableType={messageableType} />
+                        </div>
+                    </>
                 ))}
-                {Object.values(unreadMessages).length > 0 ?
+                {/* {Object.values(unreadMessages).length > 0 ?
                     <div className="new-messages-line">
                         <hr></hr>
                         <p>New</p>
-                    </div> : <></>}
-                {unreadMessages.map((message) => (
-                    <MessageItem message={message} />
-                ))}
+                    </div> : <></>} */}
+                {/* {unreadMessages.map((message) => (
+                    <MessageItem key={`msg${message.id}`} message={message} />
+                ))} */}
             </div>
             <div ref={messagesEndRef} />
         </div>

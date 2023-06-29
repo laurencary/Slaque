@@ -86,6 +86,7 @@ const channelsReducer = (state = {}, action) => {
             delete newState[action.channelId];
             return newState;
         case MARK_CHANNEL_READ:
+            debugger
             newState[action.messageableId].unreadMessages = false
             return newState;
         default:

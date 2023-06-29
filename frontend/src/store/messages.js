@@ -63,15 +63,14 @@ export const updateMessage = (message) => async (dispatch) => {
     })
 }
 
-export const updateMessageUnreads = (message, messageableId) => async (dispatch) => {
+export const updateMessageUnreads = (message, messageableId, messageableType) => async (dispatch) => {
     const res = await csrfFetch(`/api/messages/${message.id}/mark_read`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
     })
-    // debugger
-    message.messageableType === "channel" ? 
+    messageableType === "channel" ? 
         dispatch(markChannelRead(messageableId)) : dispatch(markDirectMessageRead(messageableId))
 }
 
