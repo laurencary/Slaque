@@ -1,5 +1,5 @@
 class Api::WorkspaceUserSubscriptionsController < ApplicationController
-	wrap_parameters :message, include: Message.attribute_names + ["fullName", "displayName"]
+	wrap_parameters :message, include: Message.attribute_names + ["fullName", "displayName","workspaceUser"]
 
 	def index
 		@workspace_user_subscriptions = WorkspaceUserSubscription.where("user_id = #{current_user.id}").includes(:workspace)
@@ -7,6 +7,7 @@ class Api::WorkspaceUserSubscriptionsController < ApplicationController
 	end
 
 	def update
+		debugger
 		@workspace_user_subscription = WorkspaceUserSubscription.find(params[:id])
 		# debugger
 		if @workspace_user_subscription.update(wus_params)
@@ -18,7 +19,7 @@ class Api::WorkspaceUserSubscriptionsController < ApplicationController
 
 	private
 	def wus_params
-		params.require(:workspace_user_subscriptions).permit(
+		params.require(:workspace_user).permit(
 		:id,
 		:user_id, 
 		:workspace_id, 

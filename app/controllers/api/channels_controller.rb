@@ -21,7 +21,7 @@ class Api::ChannelsController < ApplicationController
 		@channel = Channel.find(params[:id])
 
 		if @channel.update(channel_params)
-			render :show
+			render 'api/channels/show'
 		end
 	end
 
@@ -32,7 +32,7 @@ class Api::ChannelsController < ApplicationController
 
 	private
 	def channel_params 
-		params.require(:channel).permit(:name, :description, :owner_id, :workspace_id)
+		params.require(:channel).permit(:id, :name, :description, :owner_id, :workspace_id)
 	end
 end
 

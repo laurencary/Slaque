@@ -17,23 +17,22 @@ const ProfileButton = () => {
     }
 
     return profile ? (
-        <div onClick={() => setShowMenu(!showMenu)}>
-            <i style={{ color: "navy", backgroundColor: "white", fontSize: "40px" }} className="fa-solid fa-user"></i>
+        <div>
+            <i onClick={() => setShowMenu(!showMenu)}  style={{ color: "navy", backgroundColor: "white", fontSize: "40px" }} className="fa-solid fa-user"></i>
             <ul className={showMenu ? "profile-button-menu" : "hidden"}>
                 <h1>{profile.fullName}</h1>
                 <hr className="profile-menu-hr"></hr>
                 <li onClick={() => setShowProfile(true)} className="profile-menu-li">Edit Profile</li>
                 <hr className="profile-menu-hr"></hr>
                 <li className="profile-menu-li" onClick={() => dispatch(sessionActions.logout())}>
-                    Sign out of App Academy</li>
+                    Sign out of Slaque</li>
             </ul>
             {showProfile && (
                 <Modal onClose={closeModals}>
                     <ShowEditProfile 
                         setShow={setShowProfile}
                         profile={profile}
-                        closeModals={closeModals}
-                        setShowMenu={setShowMenu}/>
+                        closeModals={closeModals}/>
                 </Modal>
             )}
         </div>

@@ -56,6 +56,7 @@
     position: fixed;
     top: 44px;
     width: 326px;
+    z-index: 1;
 }
 
 .sidebar-static-item, .sidebar-list-item {
@@ -209,5 +210,5 @@ a {
     justify-content: center;
     border: none;
     width: 34px;
-    z-index: 3;
+    /* z-index: 3; */
 }

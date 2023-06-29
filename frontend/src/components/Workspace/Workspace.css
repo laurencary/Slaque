@@ -27,11 +27,12 @@
     justify-content: center;
     min-width: 0;
     position: fixed;
-    z-index: 203;
+    /* z-index: 203; */
     align-items: center;
     background: #121016;
     box-shadow: 0 1px 0 0 rgba(209, 210, 211, 0.1);
     height: 44px;
+    z-index: 1;
 }
 
 .workspace-primary-view {

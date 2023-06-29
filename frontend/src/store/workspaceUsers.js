@@ -23,12 +23,13 @@ export const getWorkspaceUsers = (state) => {
 }
 
 export const updateWorkspaceUser = (workspaceUser) => async (dispatch) => {
+    // debugger
     const res = await csrfFetch(`/api/workspace_user_subscriptions/${workspaceUser.id}`, {
         method: 'PATCH',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(workspaceUser)
+        body: JSON.stringify({workspaceUser})
     })
 
     if (res.ok) {

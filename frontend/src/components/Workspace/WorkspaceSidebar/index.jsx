@@ -7,6 +7,7 @@ import { HiOutlineHashtag } from "react-icons/hi";
 import MessageableItem from "./MessageableItem";
 import { getDirectMessages } from "../../../store/directMessages";
 import { NavLink } from "react-router-dom";
+import WorkapceOptionsDropdown from "./WorkspaceOptionsDropdown";
 
 const WorkspaceSidebar = () => {
     const dispatch = useDispatch();
@@ -17,17 +18,18 @@ const WorkspaceSidebar = () => {
     const user = useSelector(state => state.session.user);
     const [showChannels, setShowChannels] = useState(true);
     const [showDirectMessages, setShowDirectMessages] = useState(true);
-
+    const [showWorkspaceOptions, setShowWorkspaceOptions] = useState(false)
     return (
         <div className="workspace-sidebar">
-            <header className="sidebar-header">
-                <div className="sidebar-team-menu">
+            <header className="sidebar-header" onMouseLeave={() => setShowWorkspaceOptions(false)}>
+                <div onClick={() => setShowWorkspaceOptions(!showWorkspaceOptions)} className="sidebar-team-menu">
                     <span className="sidebar-team-name">{workspace.name}</span>
                     <span className="sidebar-team-menu-icon">
                         <svg viewBox="0 0 20 20" >
                             <path fill="currentColor" d="M5.72 7.47a.75.75 0 0 1 1.06 0L10 10.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-3.75 3.75a.75.75 0 0 1-1.06 0L5.72 8.53a.75.75 0 0 1 0-1.06Z"></path>
                         </svg>
                     </span>
+                    {showWorkspaceOptions && <WorkapceOptionsDropdown workspace={workspace} />}
                 </div>
                 <div className="new-message-button-container">
                     <button className="new-message-button">

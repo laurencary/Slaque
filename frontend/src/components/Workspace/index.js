@@ -9,7 +9,7 @@ import './Workspace.css'
 import WorkspaceSidebar from "./WorkspaceSidebar";
 import { getChannels } from "../../store/channels";
 import WorkspaceMessagesView from "./WorkspaceMessagesView";
-import { getDirectMessages } from "../../store/directMessages";
+import { getDirectMessages, removeCurrentWorkspace } from "../../store/directMessages";
 
 const Workspace = () => {
     const dispatch = useDispatch();
@@ -43,6 +43,16 @@ const Workspace = () => {
             // return () => subscription?.unsubscribe();
         }
     }, [])
+
+    useEffect(() => {
+        dispatch(removeCurrentWorkspace())
+        dispatch(fetchCurrentWorkspace(workspaceId))
+            // const subscription = consumer.subscriptions.create(
+            //     { channel: 'ChannelsChannel', id: workspaceId }
+            // );
+
+            // return () => subscription?.unsubscribe();
+    }, [workspaceId])
 
     if (!user) return <Redirect to='/' />;
     

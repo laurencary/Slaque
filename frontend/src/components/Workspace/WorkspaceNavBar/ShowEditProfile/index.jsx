@@ -4,7 +4,7 @@ import FormError from '../../../Session/SessionForm/FormError';
 import { updateWorkspaceUser } from '../../../../store/workspaceUsers';
 import { useDispatch } from 'react-redux';
 
-const ShowEditProfile = ({ profile, setShow, closeModals, setShowMenu }) => {
+const ShowEditProfile = ({ profile, setShow, closeModals }) => {
     const [fullName, setFullName] = useState(profile.fullName) 
     const [displayName, setDisplayName] = useState(profile.displayName ? profile.displayName : '') 
     const [title, setTitle] = useState(profile.title ? profile.title : '') 
@@ -24,7 +24,6 @@ const ShowEditProfile = ({ profile, setShow, closeModals, setShowMenu }) => {
         dispatch(updateWorkspaceUser(newProfile))
         closeModals();
     }
-    setShowMenu(false)
     return (
         <div className="edit-profile-modal">
             <header className="edit-profile-header-container">
