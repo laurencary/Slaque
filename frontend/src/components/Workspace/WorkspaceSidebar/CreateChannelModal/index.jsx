@@ -3,12 +3,13 @@ import { FiX } from "react-icons/fi";
 import { useState } from "react";
 import './CreateChannelModal.css'
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom";
 import { createChannel } from "../../../../store/channels";
 import FormError from "../../../Session/SessionForm/FormError";
 
 const CreateChannelModal = ({setShowActions}) => {
-    const { workspaceId } = useParams();
+    const history = useHistory();
+    const { workspaceId, clientId } = useParams();
     const workspaceName = useSelector(state => state.userWorkspaces[workspaceId].name)
     const existingChannelNames = useSelector(state => Object.values(state.channels).map((channel) => channel.name))
     const currentWorkspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId);
@@ -17,6 +18,9 @@ const CreateChannelModal = ({setShowActions}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setChannelName('');
+        setShowActions(false);
+        history.push(`/client/${clientId}/${workspaceId}`)
         const channelParams = {
             workspaceId,
             ownerId: currentWorkspaceUserId,

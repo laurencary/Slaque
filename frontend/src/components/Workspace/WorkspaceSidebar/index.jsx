@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
-import { getChannels } from "../../../store/channels";
+import { getSubscribedChannels } from "../../../store/channels";
 import './WorkspaceSidebar.css'
 import { HiOutlineHashtag } from "react-icons/hi";
 import MessageableItem from "./MessageableItem";
@@ -10,15 +10,15 @@ import { NavLink } from "react-router-dom";
 import WorkapceOptionsDropdown from "./WorkspaceOptionsDropdown";
 
 const WorkspaceSidebar = () => {
-    const dispatch = useDispatch();
     const { workspaceId, messageableCode } = useParams();
     const workspace = useSelector(state => state.userWorkspaces[workspaceId]);
-    const channels = useSelector(getChannels);
+    const channels = useSelector(getSubscribedChannels);
     const directMessages = useSelector(getDirectMessages);
     const user = useSelector(state => state.session.user);
     const [showChannels, setShowChannels] = useState(true);
     const [showDirectMessages, setShowDirectMessages] = useState(true);
-    const [showWorkspaceOptions, setShowWorkspaceOptions] = useState(false)
+    const [showWorkspaceOptions, setShowWorkspaceOptions] = useState(false);
+
     return (
         <div className="workspace-sidebar">
             <header className="sidebar-header" onMouseLeave={() => setShowWorkspaceOptions(false)}>

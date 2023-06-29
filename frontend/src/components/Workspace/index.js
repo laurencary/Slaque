@@ -7,7 +7,7 @@ import { getUserWorkspaces } from "../../store/userWorkspaces";
 import { fetchCurrentWorkspace } from "../../store/currentWorkspace";
 import './Workspace.css'
 import WorkspaceSidebar from "./WorkspaceSidebar";
-import { getChannels } from "../../store/channels";
+import { getAllChannels } from "../../store/channels";
 import WorkspaceMessagesView from "./WorkspaceMessagesView";
 import { getDirectMessages, removeCurrentWorkspace } from "../../store/directMessages";
 
@@ -17,7 +17,7 @@ const Workspace = () => {
     const user = useSelector(state => state.session.user);
     const {workspaceId} = useParams();
     const workspace = useSelector(state => state.userWorkspaces[workspaceId])
-    const channels = useSelector(getChannels);
+    const channels = useSelector(getAllChannels);
     const directMessages = useSelector(getDirectMessages);
     const { messageableCode } = useParams();
     

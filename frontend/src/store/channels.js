@@ -1,7 +1,7 @@
 import csrfFetch from "./csrf";
 
 export const RECEIVE_CURRENT_WORKSPACE = '/RECEIVE_CURRENT_WORKSPACE';
-export const RECEIVE_CHANNEL = 'channels/RECEIVE_CHANNEL';
+export const RECEIVE_CHANNEL = '/RECEIVE_CHANNEL';
 export const REMOVE_CURRENT_WORKSPACE = '/REMOVE_CURRENT_WORKSPACE';
 export const MARK_CHANNEL_READ = '/channels/MARK_CHANNEL_READ';
 export const REMOVE_CHANNEL = '/channels/REMOVE_CHANNEL';
@@ -30,7 +30,16 @@ export const markChannelRead = (messageableId) => ({
     messageableId
 })
 
-export const getChannels = (state) => {
+export const getSubscribedChannels = (state) => {
+    if (state.currentWorkspace.subscribedChannels) {
+        const subChannels = state.currentWorkspace.subscribedChannels;
+        return Object.values(state.channels).filter(channel => subChannels.includes(channel.id))
+    } else {
+        return [];
+    }
+}
+
+export const getAllChannels = (state) => {
     return state.channels ? Object.values(state.channels) : []
 }
 
@@ -79,7 +88,7 @@ const channelsReducer = (state = {}, action) => {
             return { ...state, ...action.payload.channels }
         case RECEIVE_CHANNEL:
             newState[action.channel.id] = action.channel
-            return newState
+            return newState;
         case REMOVE_CURRENT_WORKSPACE:
             return {};
         case REMOVE_CHANNEL:
