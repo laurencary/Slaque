@@ -2,14 +2,19 @@ import { useSelector } from "react-redux";
 import { FiUserPlus } from "react-icons/fi";
 import MemberListItem from "./MemberListItem";
 import './MembersSection.css'
+import { useState } from "react";
+import AddMemberForm from "./AddMemberForm";
 
 const MembersSection = ({messageable}) => {
     const workspaceUsers = useSelector(state => state.workspaceUsers)
+    const [showAddPeople, setShowAddPeople] = useState(false)
 
     return (
         <div className="member-list-container">
             <div className="member-list-item-container">
-                <button className="add-people-button member-list-item unstyled-button">
+                {!showAddPeople && <button 
+                    onClick={() => setShowAddPeople(true)}
+                    className="add-people-button member-list-item unstyled-button">
                     <div id="add-people-icon-container">
                         <span id="add-members-icon"><FiUserPlus size='2x'/></span>
                     </div>
@@ -18,7 +23,10 @@ const MembersSection = ({messageable}) => {
                             <h1>Add People</h1>
                         </div>
                     </div>
-                </button>
+                </button>}
+                {showAddPeople && <AddMemberForm 
+                    setShow={setShowAddPeople}
+                    messageable={messageable}/>}
             </div>
             {messageable.workspaceUsers.map((memberId) => (
                 <MemberListItem key={`mm${memberId}`}

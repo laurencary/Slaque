@@ -7,7 +7,7 @@
     border-radius: 8px;
     box-shadow: 0 0 0 1px var(--saf-0), 0 18px 48px 0 #00000059;
     /* z-index: 400; */
-    width: 500px;
+    width: 580px;
 }   
 
 .about-content-container, .delete-channel-button, .edit-channel-name {

@@ -74,7 +74,7 @@ const WorkspaceSidebar = ({setShowNewMessage}) => {
                                 <div className="sidebar-unread-count">
                                     <p>{directMessage.unreadMessageCount > 0 ? directMessage.unreadMessageCount : ''}</p>
                                 </div>
-                                <FiX className="delete-dm" onClick={() => openDeleteMessageModal(directMessage.id)}/>
+                                {directMessage.unreadMessageCount === 0 && <FiX className="delete-dm" onClick={() => openDeleteMessageModal(directMessage.id)}/>}
                             </div>
                         </NavLink>
                     </div>

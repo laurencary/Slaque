@@ -3,9 +3,9 @@ import './SidebarOptionsModal.css'
 import { Modal } from '../../../../context/Modal';
 import CreateChannelModal from '../CreateChannelModal';
 
-const ChannelOptionsModal = () => {
+const ChannelOptionsModal = ({setShowActions}) => {
     const [showCreateChannelModal, setShowCreateChannelModal] = useState(false)
-    console.log(showCreateChannelModal);
+    
     return (
         <>
             <div className="actions-modal-container">
@@ -22,8 +22,9 @@ const ChannelOptionsModal = () => {
                 </div>
             </div>
             {showCreateChannelModal && (
-                <Modal onClose={setShowCreateChannelModal(false)}>
-                    <CreateChannelModal />
+                <Modal>
+                    <CreateChannelModal
+                        setShowActions={setShowCreateChannelModal}/>
                 </Modal>
             )}
         </>

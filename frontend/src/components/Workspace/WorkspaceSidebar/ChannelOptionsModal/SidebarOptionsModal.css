@@ -4,7 +4,7 @@
     flex-direction: column;
     background-color: black;
     border-radius: 6px;
-    box-shadow: 0 0 0 1px var(--saf-0), 0 4px 12px 0 #0000001f;
+    border: darkgray 1px solid !important;
     max-height: calc(100vh - 62px);
     max-width: 360px;
     min-width: 200px;
@@ -16,6 +16,9 @@
     border: solid 1px grey;
     margin: 0;
     justify-content: center;
+    position: fixed;
+    top: 120px;
+    left: 50px;
 }
 
 .actions-button {

@@ -3,7 +3,7 @@ import { updateChannel } from "../../../../../../../store/channels";
 import { useDispatch } from "react-redux";
 
 
-const ChannelDescriptionForm = ({channel, setShow}) => {
+const ChannelDescriptionForm = ({ channel, setShow }) => {
     const dispatch = useDispatch();
     const [channelDescription, setChannelDescription] = useState(channel.description)
 

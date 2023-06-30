@@ -435,6 +435,78 @@ ApplicationRecord.transaction do
         messageable_type: "Channel", 
         unread_by_workspace_users: {  }, 
         edited: false)
+    Message.create!(workspace_author_id: 31, 
+        content: "EVERYONE! Tonight is Casino Night in the warehouse. Great cause lined up for donations...", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 25, 
+        content: "Kobe Bryant has a foundation, and he is so hot.", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 31, 
+        content: "I am going to donate to Afghanistanis with AIDS.", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 16, 
+        content: "Oh, I think you mean the Aid to Afghanistan", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 31, 
+        content: "No, I mean Afghanistanis with AIDS", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 20, 
+        content: "Afghani", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 31, 
+        content: "What?", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 20, 
+        content: "Afghani", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 31, 
+        content: "That's a dog", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 18, 
+        content: "No, that's an afghan", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 31, 
+        content: "That's a shawl", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 32, 
+        content: "Wait, canine AIDS?", 
+        messageable_id: 6, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
 
 
     puts "Done!"

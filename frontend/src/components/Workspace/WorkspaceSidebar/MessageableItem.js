@@ -14,7 +14,7 @@ const MessageableItem = ({messageableType, show, setShow}) => {
             <div className="sidebar-messeagable-arrow-container">
                 <GoTriangleRight onClick={() => setShow(!show)} className={show ? "sidebar-messeagable-arrow show-messageable" : "sidebar-messeagable-arrow"} />
             </div>
-            <div className="sidebar-static-item-text" onClick={() => setShowActions(true)}>
+            <div className="sidebar-static-item-text" onClick={() => setShowActions(!showActions)}>
                 <span>{messageableType}</span>
                 <span className="sidebar-channel-menu-icon">
                     <svg viewBox="0 0 20 20" >
@@ -26,9 +26,12 @@ const MessageableItem = ({messageableType, show, setShow}) => {
                 messageableType === "Direct messages" ?
                     <span className="open-dm"><FiPlus /></span> : <></>
             }
-            {showActions && messageableType === "Channels" && <Modal onClose={() => setShowActions(false)}>
-                    <CreateChannelModal setShowActions={setShowActions} /> : <></>
-            </Modal>}
+            {showActions && messageableType === "Channels" && 
+                    <ChannelOptionsModal setShowActions={setShowActions} onClose={() => setShowActions(false)}/>
+                    }
+            {/* {showActions && messageableType === "Channels" && <Modal onClose={() => setShowActions(false)}>
+                <CreateChannelModal setShowActions={setShowActions} /> : <></>
+            </Modal>} */}
         </div>
     )
 }

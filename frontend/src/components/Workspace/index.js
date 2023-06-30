@@ -46,11 +46,7 @@ const Workspace = () => {
         <div id="workspace-layout">
             <WorkspaceNavBar />
             <WorkspaceSidebar setShowNewMessage={setShowNewMessage}r/>
-            {/* <Route path="/client/:clientId/:workspaceId/create-direct-message">
-                <WorkspaceNavBar />
-                <WorkspaceSidebar />
-                <NewDirectMessage />
-            </Route> */}
+            {/* {showChannelIndex &&} */}
             {showNewMessage ? (<NewDirectMessage />) : 
             (messageableCode && channels.length > 0 && directMessages.length > 0 ? <WorkspaceMessagesView workspaceId={workspaceId}/> : 
                 <h1 className="workspace-primary-view h1-only">

@@ -1,5 +1,6 @@
 .member-list-item-container {
     padding: 0 16px;
+    border-radius: 6px;
 }
 
 .member-list-item {
@@ -55,6 +56,7 @@
     background-color: rgb(51, 50, 50);
     height: 36px;
     width: 36px;
+    border-radius: 6px;
 }
 
 .img-placeholder-small {
@@ -71,6 +73,7 @@
 .add-people-button:hover {
     background-color: rgb(67, 66, 66);
     width: 100%;
+    border-radius: 6px;
 }
 
 .member-list-container {
