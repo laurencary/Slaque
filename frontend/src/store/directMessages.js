@@ -5,6 +5,7 @@ export const RECEIVE_CURRENT_WORKSPACE = '/RECEIVE_CURRENT_WORKSPACE';
 export const RECEIVE_DIRECT_MESSAGE = '/directMessages/RECEIVE_DIRECT_MESSAGE';
 export const REMOVE_CURRENT_WORKSPACE = '/REMOVE_CURRENT_WORKSPACE';
 export const MARK_DIRECT_MESSAGE_READ = '/directMessages/MARK_DIRECT_MESSAGE_READ';
+export const REMOVE_DIRECT_MESSAGE = '/directMessages/REMOVE_DIRECT_MESSAGE'
 
 export const receiveCurrentWorkspace = (payload) => ({
     type: RECEIVE_CURRENT_WORKSPACE,
@@ -14,6 +15,11 @@ export const receiveCurrentWorkspace = (payload) => ({
 export const receiveDirectMessage = (directMessage) => ({
     type: RECEIVE_DIRECT_MESSAGE,
     directMessage
+})
+
+export const removeDirectMessage = (directMessageId) => ({
+    type: REMOVE_DIRECT_MESSAGE,
+    directMessageId
 })
 
 export const removeCurrentWorkspace = () => ({
@@ -27,6 +33,16 @@ export const markDirectMessageRead = (messageableId) => ({
 
 export const getDirectMessages = (state) => {
     return state.directMessages ? Object.values(state.directMessages) : []
+}
+
+export const deleteDirectMessage = (directMessageId) => async (dispatch) => {
+    const res = csrfFetch(`/api/direct_messages/${directMessageId}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        dispatch(removeDirectMessage(directMessageId));
+    }
 }
 
 export const createDirectMessage = (workspaceUserIds, message, workspaceId) => async (dispatch) => {
@@ -57,7 +73,11 @@ const directMessagesReducer = (state = {}, action) => {
             return { ...state, ...action.payload.directMessages }
         case RECEIVE_DIRECT_MESSAGE:
             newState[action.directMessage.id] = action.directMessage
-            return {};
+            return newState;
+        case REMOVE_DIRECT_MESSAGE:
+            delete newState[action.directMessageId]
+            debugger
+            return newState;
         case REMOVE_CURRENT_WORKSPACE:
             return {};
         case MARK_DIRECT_MESSAGE_READ:

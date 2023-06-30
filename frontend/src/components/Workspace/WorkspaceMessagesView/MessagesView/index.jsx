@@ -17,18 +17,21 @@ const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => 
     // const [readMessages, setReadMessages] = useState(initialReadMessages)
     
     useEffect(() => {
+        if (unreadMessages.length > 0) {
+            unreadMessages.forEach((message) => {
+                dispatch(updateMessageUnreads(message, messageableId, messageableType));
+            });
+        }
+        scrollToBottom();
+    }, [])
+
+
+    useEffect(() => {
         unreadMessages.forEach((message) => {
             dispatch(updateMessageUnreads(message, messageableId, messageableType));
         });
         scrollToBottom();
-    }, [])
-
-    // useEffect(() => {
-    //     unreadMessages.forEach((message) => {
-    //         dispatch(updateMessageUnreads(message, messageableId, messageableType));
-    //     });
-    //     scrollToBottom();
-    // }, [messageableId])
+    }, [messageableId])
 
     // useEffect(() => {
     //     if (messages.length > 0 && messages[messages.length - 1].workspaceAuthorId === workspaceUserId) {

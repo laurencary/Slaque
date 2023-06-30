@@ -5,9 +5,12 @@ import { getSubscribedChannels } from "../../../store/channels";
 import './WorkspaceSidebar.css'
 import { HiOutlineHashtag } from "react-icons/hi";
 import MessageableItem from "./MessageableItem";
-import { getDirectMessages } from "../../../store/directMessages";
+import { deleteDirectMessage, getDirectMessages } from "../../../store/directMessages";
 import { NavLink } from "react-router-dom";
 import WorkapceOptionsDropdown from "./WorkspaceOptionsDropdown";
+import { FiX } from "react-icons/fi";
+import { Modal } from "../../../context/Modal";
+import DeleteDirectMessageModal from "./DeleteDirectMessageModal";
 
 const WorkspaceSidebar = ({setShowNewMessage}) => {
     const { workspaceId, messageableCode, clientId } = useParams();
@@ -18,7 +21,13 @@ const WorkspaceSidebar = ({setShowNewMessage}) => {
     const [showChannels, setShowChannels] = useState(true);
     const [showDirectMessages, setShowDirectMessages] = useState(true);
     const [showWorkspaceOptions, setShowWorkspaceOptions] = useState(false);
+    const [showDeleteDirectMessage, setShowDeleteDirectMessage] = useState(false);
+    const [deleteId, setDeleteId] = useState();
 
+    const openDeleteMessageModal = (id) => {
+        setDeleteId(id);
+        setShowDeleteDirectMessage(true);
+    }
     return (
         <div className="workspace-sidebar">
             <header className="sidebar-header" onMouseLeave={() => setShowWorkspaceOptions(false)}>
@@ -57,19 +66,27 @@ const WorkspaceSidebar = ({setShowNewMessage}) => {
                 {showDirectMessages && directMessages.map((directMessage) => (
                     <div key={`d${directMessage.id}`} className="sidebar-list-item-container">
                         <NavLink to={`/client/${user.id}/${workspace.id}/dm${directMessage.id}`}>
-                            <div className="sidebar-direct-message">
-                                <div className={messageableCode == `dm${directMessage.id}` ? "selected sidebar-list-item" : "sidebar-list-item"}>
+                            <div className={messageableCode === `dm${directMessage.id}` ? "selected sidebar-direct-message" : "sidebar-direct-message"}>
+                                <div className="sidebar-list-item-message">
                                     <div className="sidebar-direct-message-icon"></div>
                                     <div className={directMessage.unreadMessageCount > 0 ? "bold dm-name" : "dm-name"}>{directMessage.name.join(', ')}</div>
                                 </div>
                                 <div className="sidebar-unread-count">
                                     <p>{directMessage.unreadMessageCount > 0 ? directMessage.unreadMessageCount : ''}</p>
                                 </div>
+                                <FiX className="delete-dm" onClick={() => openDeleteMessageModal(directMessage.id)}/>
                             </div>
                         </NavLink>
                     </div>
                 ))}
             </div>
+            {showDeleteDirectMessage && (
+                <Modal onClose={() => setShowDeleteDirectMessage(false)}>
+                    <DeleteDirectMessageModal 
+                        setShow={setShowDeleteDirectMessage}
+                        directMessageId={deleteId}/>
+                </Modal>
+            )}
         </div>
     )
 }

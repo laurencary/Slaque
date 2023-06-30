@@ -7,7 +7,7 @@ const MembersSection = ({messageable}) => {
     const workspaceUsers = useSelector(state => state.workspaceUsers)
 
     return (
-        <div>
+        <div className="member-list-container">
             <div className="member-list-item-container">
                 <button className="add-people-button member-list-item unstyled-button">
                     <div id="add-people-icon-container">

@@ -239,21 +239,31 @@ ApplicationRecord.transaction do
     ChannelSubscription.create!(workspace_user_id: 34, channel_id: 10)
 
     ChannelSubscription.create!(workspace_user_id: 33, channel_id: 11)
+    ChannelSubscription.create!(workspace_user_id: 34, channel_id: 11)
     ChannelSubscription.create!(workspace_user_id: 36, channel_id: 11)
 
     
     puts "Creating direct messages..."
     DirectMessage.create!(workspace_id: 1) # 1 Michael, Jim, Dwitght, Demo 1
     DirectMessage.create!(workspace_id: 1) # 2 Demo 1, Demo 2
-    DirectMessage.create!(workspace_id: 1) # 3 Demo 2, Pam, Jim
     DirectMessage.create!(workspace_id: 2) # 4 glinda to her friends demo 1 popular
-    DirectMessage.create!(workspace_id: 2) # 5 elphaba w her parents demo 1 popular
     DirectMessage.create!(workspace_id: 2) # 6 Dr Dillamond and Elphaba demo 2
     DirectMessage.create!(workspace_id: 2) # 7 Demo 1 and Demo 2
 
 
     puts "Creating direct message subscriptions..."
-    DirectMessageSubscription.create!(workspace_user_id: 1, direct_message_id: 1)
+    DirectMessageSubscription.create!(workspace_user_id: 31, direct_message_id: 1)
+    DirectMessageSubscription.create!(workspace_user_id: 16, direct_message_id: 1)
+    DirectMessageSubscription.create!(workspace_user_id: 32, direct_message_id: 1)
+    DirectMessageSubscription.create!(workspace_user_id: 34, direct_message_id: 1)
+    DirectMessageSubscription.create!(workspace_user_id: 34, direct_message_id: 2)
+    DirectMessageSubscription.create!(workspace_user_id: 35, direct_message_id: 2)
+    DirectMessageSubscription.create!(workspace_user_id: 1, direct_message_id: 3)
+    DirectMessageSubscription.create!(workspace_user_id: 13, direct_message_id: 3)
+    DirectMessageSubscription.create!(workspace_user_id: 14, direct_message_id: 3)
+    DirectMessageSubscription.create!(workspace_user_id: 14, direct_message_id: 4)
+    DirectMessageSubscription.create!(workspace_user_id: 15, direct_message_id: 4)
+
 
     # michael asking for dates
     # popular
@@ -321,6 +331,42 @@ ApplicationRecord.transaction do
     Message.create!(workspace_author_id: 11, 
         content: "We share your loathing, unadulterated lathing", 
         messageable_id: 2, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 33, 
+        content: "I turn all kinds of things into pies.", 
+        messageable_id: 11, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 33, 
+        content: "Who hasn’t lived in a cave at one point or another? That’s what they’re for.", 
+        messageable_id: 11, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 33, 
+        content: "Most people have a thing against bugs, but not me. I love the little guys. The way I see it, there’s more of them than there are of us, so you have to respect them just in case. If they ever got their stuff together, they could really do some serious damage. I’m talking city destruction, livestock relocation, and political domination here.", 
+        messageable_id: 11, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 18, 
+        content: "Everyone ready to discuss Angela's Ashes tomorrow during lunch?", 
+        messageable_id: 8, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+    Message.create!(workspace_author_id: 19, 
+        content: "Definitely, I'll bring the tea.", 
+        messageable_id: 8, 
+        messageable_type: "Channel", 
+        unread_by_workspace_users: {  }, 
+        edited: false)
+     Message.create!(workspace_author_id: 21, 
+        content: "We can listen to Vivaldi as well.", 
+        messageable_id: 8, 
         messageable_type: "Channel", 
         unread_by_workspace_users: {  }, 
         edited: false)

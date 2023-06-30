@@ -72,3 +72,7 @@
     background-color: rgb(67, 66, 66);
     width: 100%;
 }
+
+.member-list-container {
+    overflow-y: scroll;
+}

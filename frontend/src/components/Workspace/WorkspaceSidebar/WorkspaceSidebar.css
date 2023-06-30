@@ -59,7 +59,7 @@
     z-index: 1;
 }
 
-.sidebar-static-item, .sidebar-list-item {
+.sidebar-static-item, .sidebar-list-item, .sidebar-list-item-message {
     display: flex;
     align-items: center;
     height: 28px;
@@ -89,7 +89,7 @@
     background-color: rgb(31, 31, 32);
 }
 
-.sidebar-list-item {
+.sidebar-list-item, .sidebar-list-item-message {
     display: flex;
     flex-direction: row;
     padding: 0 10px 0 16px;
@@ -100,7 +100,7 @@
     padding: 0 8px;
 }
 
-.sidebar-list-item:hover,.sidebar-direct-message:hover, .sidebar-messeagable-arrow-container:hover {
+.sidebar-list-item:hover,.sidebar-direct-message:hover, .sidebar-messeagable-arrow-container:hover{
     border-radius: 6px;
     background-color: rgb(31, 31, 32);
 }
@@ -140,6 +140,7 @@
     justify-content: space-between;
     align-items: center;
     padding-right: 8px;
+    max-width: 302px;
 }
 
 .sidebar-unread-count {
@@ -160,7 +161,7 @@
     overflow: hidden;
     display: inline-block;
     white-space: nowrap;
-    max-width: 262px;
+    max-width: 240px;
     text-overflow: ellipsis;
     text-decoration: none;
 }
@@ -189,12 +190,6 @@ a {
     background-color: #2c2a2f;
 }
 
-.selected, .selected:hover {
-    background-color: #1164A3;
-    border-radius: 6px;
-    /* width: 100%; */
-}
-
 .new-message-button svg {
     height: 18px;
     width: 18px;
@@ -217,4 +212,32 @@ a {
 
 .new-message-button:hover {
     cursor: pointer;
+}
+
+.selected,
+.selected:hover {
+    background-color: #1164A3 !important;
+    border-radius: 6px;
+    /* margin: 0 3px; */
+    /* width: 100%; */
+    z-index: 1;
+}
+
+.sidebar-direct-message:hover .delete-dm:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar-direct-message:hover .delete-dm {
+    color: grey;
+    position: fixed;
+    left: 290px;
+}
+
+.delete-dm {
+    color: black;
+}
+
+.selected .delete-dm {
+    padding-right: 3px;
 }

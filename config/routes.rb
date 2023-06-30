@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 		resources :workspaces, only: [:index ,:show ,:create ,:update ,:destroy]
 		resources :workspace_user_subscriptions, only: [:index ,:show ,:create ,:update ,:destroy]
 		resources :channels, only: [:create, :index, :show, :update, :destroy]
-		resources :direct_messages, only: [:create, :index, :show, :update]
+		resources :direct_messages, only: [:create, :index, :show, :update, :destroy]
 		resources :messages, only: [:create, :index, :show, :update, :destroy]
 		resources :channel_subscriptions, only: [:create]
 

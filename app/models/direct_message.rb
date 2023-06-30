@@ -14,7 +14,8 @@ class DirectMessage < ApplicationRecord
 
 	has_many :direct_message_subscriptions,
 		foreign_key: :direct_message_id,
-		class_name: :DirectMessageSubscription
+		class_name: :DirectMessageSubscription,
+		dependent: :destroy
 
 	has_many :workspace_users,
 		through: :direct_message_subscriptions,

@@ -20,6 +20,12 @@ class Api::DirectMessagesController < ApplicationController
 
     end
 
+    def destroy
+        @direct_message = DirectMessage.find(params[:id])
+		@direct_message.destroy
+    end
+
+
     private
     def direct_message_params
         params.require[:direct_message].permit(:workspace_id, :workspace_user_ids) 

@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom/";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createMessage, updateMessage } from "../../../../../store/messages";
 import { createDirectMessage } from "../../../../../store/directMessages";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 const MessageContentInput = ({ messageableId, messageableType, messageMembersArr, defaultVal, content, isCreate, message, setShowEditContent }) => {
+    const history = useHistory();
     const { clientId, workspaceId } = useParams();
+    const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId)
     const dispatch = useDispatch();
     const [messageContent, setMessageContent] = useState(content);
 
@@ -14,14 +17,14 @@ const MessageContentInput = ({ messageableId, messageableType, messageMembersArr
         e.preventDefault();
         let unreadByWorkspaceUsers = {};
         for (const id of messageMembersArr) {
-            if (id !== clientId * 1) {
+            if (id !== workspaceUserId * 1) {
                 unreadByWorkspaceUsers[id] = true
             }
         }
         setMessageContent('')
         if (messageableId) {
             const newMessage = {
-                workspaceAuthorId: clientId,
+                workspaceAuthorId: workspaceUserId,
                 content: messageContent,
                 edited: false,
                 unreadByWorkspaceUsers,
@@ -31,12 +34,13 @@ const MessageContentInput = ({ messageableId, messageableType, messageMembersArr
             dispatch(createMessage(newMessage));
         } else {
             const newMessage = {
-                workspaceAuthorId: clientId,
+                workspaceAuthorId: workspaceUserId,
                 content: messageContent,
                 edited: false,
                 unreadByWorkspaceUsers,
                 messageableType: "DirectMessage"
             }
+            history.push(`/client/${clientId}/${workspaceId}`)
             dispatch(createDirectMessage(messageMembersArr, newMessage, workspaceId));
         }
     }

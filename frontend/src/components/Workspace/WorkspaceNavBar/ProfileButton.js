@@ -16,7 +16,7 @@ const ProfileButton = () => {
     }
 
     return profile ? (
-        <div onMouseLeave={() => setShowMenu(false)}>
+        <div>
             <i onClick={() => setShowMenu(!showMenu)}  style={{ color: "navy", backgroundColor: "white", fontSize: "40px" }} className="fa-solid fa-user"></i>
             <ul className={showMenu ? "profile-button-menu" : "hidden"}>
                 <h1>{profile.fullName}</h1>
