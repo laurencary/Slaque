@@ -113,6 +113,8 @@ div.message-author-photo.img-placeholder {
 .message-content {
     line-height: 1.46;
     font-size: 15px;
+    display: inline-block;
+    text-align: left;
 }
 
 .message-details {

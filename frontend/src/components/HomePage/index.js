@@ -13,10 +13,10 @@ const HomePage = () => {
             <NavBar />
             <section className="billboard">
                 <header className="home-header">
-                    <h1>Made for minions.</h1>
-                    <h1 className='yellow-text'>Built for papoi.</h1>
-                <p>Connect the right minions, find anything you need and automate <br>
-                </br>the rest. That's work in Slaque, your banana platform.</p>
+                    <h1>Made for People.</h1>
+                    <h1 className='yellow-text'>Built for productivity.</h1>
+                <p>Connect the right people, find anything you need and automate <br>
+                </br>the rest. That's work in Slaque, your productivity platform.</p>
                 <br></br>
                 <p><strong>Slaque is free to try</strong> for as long as you'd like</p>
                 </header>
@@ -26,10 +26,10 @@ const HomePage = () => {
                     <div className="video"></div>
                     <div className="grid-text left">
                         <h2>Bring your team together</h2>
-                        <p>Gru's Slaque has channels: fun places for all minions
-                            and everything needed for work. In channels, connecting 
-                            with other minions from different departments, offices, 
-                            time zones, and even other companies is easier!</p>
+                        <p>At the heart of Slack are channels: organized spaces 
+                            for everyone and everything you need for work. In 
+                            channels, it’s easier to connect across departments, 
+                            offices, time zones and even other companies.</p>
                     </div>
                 </div>
 

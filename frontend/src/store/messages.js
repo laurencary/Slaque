@@ -40,6 +40,9 @@ export const fetchMessages = (messageableId, messageableType) => async (dispatch
     if (res.ok) {
         const data = await res.json();
         dispatch(receiveMessages(data.messages));
+        messageableType === "channel" ? 
+            dispatch(markChannelRead(messageableId)) : dispatch(markDirectMessageRead(messageableId)) 
+        
     }
 }
 

@@ -49,6 +49,7 @@
     flex:2;
     background-color: rgb(68, 68, 68);
     vertical-align: center;
+    border-radius: 6px;
 }
 
 .workspace-nav-bar-right {

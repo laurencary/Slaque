@@ -220,7 +220,6 @@ a {
     border-radius: 6px;
     /* margin: 0 3px; */
     /* width: 100%; */
-    z-index: 1;
 }
 
 .sidebar-direct-message:hover .delete-dm:hover {

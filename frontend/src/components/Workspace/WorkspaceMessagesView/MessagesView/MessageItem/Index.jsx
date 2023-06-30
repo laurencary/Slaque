@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "../../../../../context/Modal";
+import { updateMessageUnreads } from "../../../../../store/messages";
 import MessageActionsModal from "../MessageActionsModal";
 import MessageContentInput from "../MessageContentInput";
 
@@ -9,6 +10,13 @@ const MessageItem = ({ message, messageableId, messageableType }) => {
     const [showActions, setShowActions] = useState(false)
     const [showActionModal, setShowActionModal] = useState(false)
     const [showEditContent, setShowEditContent] = useState(false)
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (message.unread) {
+            dispatch(updateMessageUnreads(message, messageableId, messageableType));
+        }
+    }, [])
 
     return (
         <div className={showEditContent ? "edit-message-item" : "message-item"}

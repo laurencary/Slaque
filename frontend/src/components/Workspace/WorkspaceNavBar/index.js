@@ -6,7 +6,7 @@ const WorkspaceNavBar = () => {
         <div className="workspace-nav-bar">
             <div className="workspace-nav-bar-right"></div>
             <div className="workspace-nav-bar-center">
-                <div className="workspace-nav-bar-search">Search</div>
+                <div className="workspace-nav-bar-search"></div>
             </div>
             <div className="workspace-nav-bar-left"><ProfileButton /></div>
         </div>
