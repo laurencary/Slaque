@@ -45,7 +45,7 @@ class Api::MessagesController < ApplicationController
 					**from_template('api/messages/show', message: @message))
 			end
 		else
-			debugger
+			# debugger
 			render json: { errors: @message.errors.full_messages }, status: :unprocessable_entity 
 		end
 	end

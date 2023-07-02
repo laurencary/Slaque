@@ -5,12 +5,12 @@ import { useDispatch } from "react-redux";
 
 const ChannelDescriptionForm = ({ channel, setShow }) => {
     const dispatch = useDispatch();
-    const [channelDescription, setChannelDescription] = useState(channel.description)
+    const [channelDescription, setChannelDescription] = useState(channel.description ? channel.description : '')
 
     const handleUpdate = () => {
         const updatedChannel = {
             id: channel.id,
-            description: channelDescription
+            description: channelDescription === '' ? null : channelDescription
         }
         dispatch(updateChannel(updatedChannel));
         setShow(false);

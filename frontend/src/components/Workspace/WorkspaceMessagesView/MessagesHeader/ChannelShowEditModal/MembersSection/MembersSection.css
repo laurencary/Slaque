@@ -79,3 +79,10 @@
 .member-list-container {
     overflow-y: scroll;
 }
+
+.messageable-modal-add-member-container {
+    margin: 20px 0;
+    border-radius: 12px;
+    border: 1px solid rgb(73, 72, 72);
+    padding: 16px    
+}

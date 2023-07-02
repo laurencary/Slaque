@@ -3,6 +3,8 @@ import { updateChannel } from "../../../../../../../store/channels";
 import { useDispatch } from "react-redux";
 import { FiX } from "react-icons/fi";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { createChannelSubscription } from "../../../../../../../store/channelSubscriptions";
 
 
 const AddMemberForm = ({ messageable, setShow }) => {
@@ -12,6 +14,7 @@ const AddMemberForm = ({ messageable, setShow }) => {
     const workspaceUsers = useSelector(state => state.workspaceUsers)
     const workspaceUsersArr = useSelector(state => Object.values(state.workspaceUsers).filter(u => !messageable.workspaceUsers.includes(u.id)))
     const [searchVal, setSearchVal] = useState('');
+    const [searchResults, setSearchResults] = useState();
 
     const handleRemoveItem = (id) => {
         updateMessageMembersArr(messageMembersArr.filter(userId => userId !== id));
@@ -19,17 +22,28 @@ const AddMemberForm = ({ messageable, setShow }) => {
 
     const handleAddItem = (id) => {
         setSearchVal('')
-        updateMessageMembersArr([...messageMembersArr, id]);
+        if (id) updateMessageMembersArr([...messageMembersArr, id]);
     }
 
     const handleAddSubscriber = () => {
-        // const subscription = {
-        //     id: channel.id,
-        //     description: channelDescription
-        // }
-        // dispatch(updateChannel(updatedChannel));
+        if (messageable.ownerId) {
+            // channel
+            messageMembersArr.forEach((workspaceUserId) => {
+
+                dispatch(createChannelSubscription(messageable.id,workspaceUserId));
+            })
+        } else {
+            // direct message
+
+        }
+
         setShow(false);
     }
+
+    useEffect(() => {
+        const filtered = workspaceUsersArr.filter((user) => (!messageMembersArr.includes(user.id) && (user.fullName.includes(searchVal) || (user.displayName && user.displayName.includes(searchVal))))) 
+        setSearchResults( filtered.length === 0 ? [{fullName: "No items"}] : filtered )
+    }, [searchVal])
 
     return (
         <div className="edit-channel-container">
@@ -53,10 +67,10 @@ const AddMemberForm = ({ messageable, setShow }) => {
                 </div>
             </div>
             <div className={searchVal ? "search-user-results" : ""}>
-                {searchVal && workspaceUsersArr.filter((user) => (!messageMembersArr.includes(user.id) && (user.fullName.includes(searchVal) || (user.displayName && user.displayName.includes(searchVal))))).map((user) => (
+                {searchVal && searchResults.map((user) => (
                     <div key={`user${user.id}`}
                         onClick={() => handleAddItem(user.id)}
-                        className="search-result-user">
+                        className={user.fullName === "No items" ? "no-search-result" : "search-result-user"}>
                         <strong>{user.fullName}</strong>
                         <span className="search-result-user-display">{user.displayName && (user.displayName)}</span>
                         <span className="search-result-user-title">{user.title && (`(${user.title})`)}</span>

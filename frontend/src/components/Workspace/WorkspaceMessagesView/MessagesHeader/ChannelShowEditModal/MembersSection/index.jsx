@@ -24,9 +24,11 @@ const MembersSection = ({messageable}) => {
                         </div>
                     </div>
                 </button>}
-                {showAddPeople && <AddMemberForm 
-                    setShow={setShowAddPeople}
-                    messageable={messageable}/>}
+                {showAddPeople && <div className="messageable-modal-add-member-container">
+                    <AddMemberForm 
+                        setShow={setShowAddPeople}
+                        messageable={messageable}/>
+                </div>}
             </div>
             {messageable.workspaceUsers.map((memberId) => (
                 <MemberListItem key={`mm${memberId}`}

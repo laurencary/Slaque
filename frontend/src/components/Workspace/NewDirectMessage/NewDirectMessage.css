@@ -46,13 +46,17 @@
     padding-right: 6px;
 }
 
-.search-result-user {
+.search-result-user, .no-search-result {
     line-height: 1.468;
     padding: 6px 40px;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     align-items: flex-end;
+}
+
+.no-search-result {
+    color: grey
 }
 
 .search-user-results {
@@ -66,6 +70,7 @@
     border-radius: 6px;
     border: 1px solid grey !important;
     opacity: 1;
+    /* overflow-y: scroll; */
 }
 
 .search-result-user-title, .search-result-user-display {

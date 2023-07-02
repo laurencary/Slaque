@@ -10,6 +10,8 @@ const NewDirectMessage = () => {
     const workspaceUsers = useSelector(state => state.workspaceUsers)
     const workspaceUsersArr = useSelector(state => Object.values(state.workspaceUsers))
     const [searchVal, setSearchVal] = useState('');
+    const [searchResults, setSearchResults] = useState();
+
 
     const handleRemoveItem = (id) => {
         updateMessageMembersArr(messageMembersArr.filter(userId => userId !== id));
@@ -17,8 +19,13 @@ const NewDirectMessage = () => {
 
     const handleAddItem = (id) => {
         setSearchVal('')
-        updateMessageMembersArr([...messageMembersArr, id]);
+        if (id) updateMessageMembersArr([...messageMembersArr, id]);
     }
+
+    useEffect(() => {
+        const filtered = workspaceUsersArr.filter((user) => (!messageMembersArr.includes(user.id) && (user.fullName.includes(searchVal) || (user.displayName && user.displayName.includes(searchVal)))))
+        setSearchResults(filtered.length === 0 ? [{ fullName: "No items" }] : filtered)
+    }, [searchVal])
 
     return (
         <div className="workspace-primary-view">
@@ -45,10 +52,10 @@ const NewDirectMessage = () => {
                 </div>
             </div>
             <div className={searchVal ? "search-user-results" : ""}>
-                {searchVal && workspaceUsersArr.filter((user) => (!messageMembersArr.includes(user.id) && (user.fullName.includes(searchVal) || (user.displayName && user.displayName.includes(searchVal))))).map((user) => (
+                {searchVal && searchResults.map((user) => (
                     <div key={`user${user.id}`}
                         onClick={() => handleAddItem(user.id)} 
-                        className="search-result-user">
+                        className={user.fullName === "No items" ? "no-search-result" : "search-result-user"}>
                         <strong>{user.fullName}</strong>
                         <span className="search-result-user-display">{user.displayName && (user.displayName)}</span>
                         <span className="search-result-user-title">{user.title && (`(${user.title})`)}</span>
