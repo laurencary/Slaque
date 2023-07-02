@@ -1,10 +1,8 @@
-import { useState } from "react";
-import { updateChannel } from "../../../../../../../store/channels";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FiX } from "react-icons/fi";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
 import { createChannelSubscription } from "../../../../../../../store/channelSubscriptions";
+import { createDirectMessageSubscription } from "../../../../../../../store/directMessageSubscriptions";
 
 
 const AddMemberForm = ({ messageable, setShow }) => {
@@ -29,12 +27,13 @@ const AddMemberForm = ({ messageable, setShow }) => {
         if (messageable.ownerId) {
             // channel
             messageMembersArr.forEach((workspaceUserId) => {
-
                 dispatch(createChannelSubscription(messageable.id,workspaceUserId));
             })
         } else {
             // direct message
-
+            messageMembersArr.forEach((workspaceUserId) => {
+                dispatch(createDirectMessageSubscription(messageable.id, workspaceUserId));
+            })
         }
 
         setShow(false);

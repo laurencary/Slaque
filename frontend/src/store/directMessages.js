@@ -60,7 +60,7 @@ export const createDirectMessage = (workspaceUserIds, message, workspaceId) => a
             ...message,
             messageableId: data.directMessage.id
         }
-        debugger
+        // debugger
         dispatch(createMessage(newMessage))
         dispatch(receiveDirectMessage(data.directMessage))
     }
@@ -76,7 +76,7 @@ const directMessagesReducer = (state = {}, action) => {
             return newState;
         case REMOVE_DIRECT_MESSAGE:
             delete newState[action.directMessageId]
-            debugger
+            // debugger
             return newState;
         case REMOVE_CURRENT_WORKSPACE:
             return {};

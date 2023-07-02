@@ -1,5 +1,5 @@
 class Api::ChannelSubscriptionsController < ApplicationController
-    wrap_parameters :message, include: Message.attribute_names + ["workspaceUserId", "channelId"]
+    wrap_parameters :channel_subscription, include: ChannelSubscription.attribute_names + ["workspaceUserId", "channelId"]
 
     def create
         @channel_subscription = ChannelSubscription.new(channel_subscription_params)
@@ -17,6 +17,6 @@ class Api::ChannelSubscriptionsController < ApplicationController
 
     private
     def channel_subscription_params
-        params.require(:message).permit(:workspace_user_id, :channel_id)
+        params.require(:channel_subscription).permit(:workspace_user_id, :channel_id)
     end
 end

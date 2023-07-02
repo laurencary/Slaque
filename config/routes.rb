@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 		resources :direct_messages, only: [:create, :index, :show, :update, :destroy]
 		resources :messages, only: [:create, :index, :show, :update, :destroy]
 		resources :channel_subscriptions, only: [:create]
+		resources :direct_message_subscriptions, only: [:create]
 
 		patch '/messages/:id/mark_read', :to => 'messages#mark_read'
 		delete '/channel_subscriptions', :to => 'channel_subscriptions#destroy'
