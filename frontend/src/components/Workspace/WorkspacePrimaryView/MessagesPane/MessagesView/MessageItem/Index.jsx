@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Modal } from "../../../../../context/Modal";
-import { updateMessageUnreads } from "../../../../../store/messages";
+import { Modal } from "../../../../../../context/Modal";
+import { updateMessageUnreads } from "../../../../../../store/messages";
 import MessageActionsModal from "../MessageActionsModal";
 import MessageContentInput from "../MessageContentInput";
 

@@ -6,6 +6,9 @@ class Api::WorkspaceUserSubscriptionsController < ApplicationController
 		render :index
 	end
 
+	def create
+	end
+
 	def update
 		debugger
 		@workspace_user_subscription = WorkspaceUserSubscription.find(params[:id])

@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMessages, receiveMessage, removeMessage } from "../../../store/messages";
+import { fetchMessages, receiveMessage, removeMessage } from "../../../../store/messages";
+import WorkspaceNavBar from "../../WorkspaceNavBar";
+import WorkspaceSidebar from "../../WorkspaceSidebar";
 import MessagesHeader from "./MessagesHeader";
 import MessagesView from "./MessagesView";
 import MessageContentInput from "./MessagesView/MessageContentInput";
-import consumer from '../../../consumer';
-import './WorkspaceMessagesView.css'
+import consumer from '../../../../consumer';
+import '../WorkspaceMessagesView.css'
 
-const WorkspacePrimaryView = ({workspaceId}) => {
+const MessagesPane = ({workspaceId}) => {
     const { messageableCode } = useParams();
     const dispatch = useDispatch();
     const messageableType = messageableCode.includes("c") ? "channel" : "directMessage";
@@ -122,4 +124,4 @@ const WorkspacePrimaryView = ({workspaceId}) => {
     ) 
 }
 
-export default WorkspacePrimaryView;
+export default MessagesPane;

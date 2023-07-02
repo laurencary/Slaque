@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
-import { createMessage, updateMessage } from "../../../../../store/messages";
-import { createDirectMessage } from "../../../../../store/directMessages";
+import { createMessage, updateMessage } from "../../../../../../store/messages";
+import { createDirectMessage } from "../../../../../../store/directMessages";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 

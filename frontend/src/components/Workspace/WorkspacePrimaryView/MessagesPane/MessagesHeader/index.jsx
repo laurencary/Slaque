@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HiOutlineHashtag } from "react-icons/hi";
-import { Modal } from "../../../../context/Modal";
+import { Modal } from "../../../../../context/Modal";
 import MessageShowEditModal from "./ChannelShowEditModal";
 
 const MessagesHeader = ({ messageableType, messageDetailsName, messageMembersArr, messageableId }) => {

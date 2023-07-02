@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FiX } from "react-icons/fi";
-import { createChannelSubscription } from "../../../../../../../store/channelSubscriptions";
-import { createDirectMessageSubscription } from "../../../../../../../store/directMessageSubscriptions";
+import { createChannelSubscription } from "../../../../../../../../store/channelSubscriptions";
+import { createDirectMessageSubscription } from "../../../../../../../../store/directMessageSubscriptions";
 
 
 const AddMemberForm = ({ messageable, setShow }) => {

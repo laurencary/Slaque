@@ -81,8 +81,7 @@ const directMessagesReducer = (state = {}, action) => {
         case REMOVE_CURRENT_WORKSPACE:
             return {};
         case MARK_DIRECT_MESSAGE_READ:
-            newState
-            [action.messageableId].unreadMessageCount = 0
+            newState[action.messageableId].unreadMessageCount = 0
             return newState;
         default:
             return state;

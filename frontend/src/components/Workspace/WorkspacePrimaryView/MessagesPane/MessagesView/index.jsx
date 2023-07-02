@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { getMessages } from "../../../../store/messages";
+import { getMessages } from "../../../../../store/messages";
 import DirectMessageTopDetails from "./MessageScrollDirectTop";
 import ChannelTopDetails from "./MessageScrollChannelTop";
 import MessageItem from "./MessageItem/Index";
@@ -35,7 +35,7 @@ const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => 
                 {messages.map((message) => (
                     <>
                         { unreadMessages.length > 0 && message.id === firstUnreadMessage.id && (
-                            <div className="new-messages-line">
+                            <div key={`nms${message.id}`} className="new-messages-line">
                                 <hr></hr>
                                 <p>New</p>
                             </div>
@@ -45,14 +45,6 @@ const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => 
                         </div>
                     </>
                 ))}
-                {/* {Object.values(unreadMessages).length > 0 ?
-                    <div className="new-messages-line">
-                        <hr></hr>
-                        <p>New</p>
-                    </div> : <></>} */}
-                {/* {unreadMessages.map((message) => (
-                    <MessageItem key={`msg${message.id}`} message={message} />
-                ))} */}
             </div>
             <div ref={messagesEndRef} />
         </div>

@@ -7,7 +7,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { createChannel } from "../../../../store/channels";
 import FormError from "../../../Session/SessionForm/FormError";
 
-const CreateChannelModal = ({setShowActions}) => {
+const CreateChannelModal = ({setShowActions, parentModalShow}) => {
     const history = useHistory();
     const { workspaceId, clientId } = useParams();
     const workspaceName = useSelector(state => state.userWorkspaces[workspaceId].name)
@@ -20,6 +20,7 @@ const CreateChannelModal = ({setShowActions}) => {
         e.preventDefault();
         setChannelName('');
         setShowActions(false);
+        parentModalShow(false);
         history.push(`/client/${clientId}/${workspaceId}`)
         const channelParams = {
             workspaceId,

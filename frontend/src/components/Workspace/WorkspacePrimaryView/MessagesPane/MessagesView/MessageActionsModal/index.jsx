@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import './MessageActionsModal.css'
-import { deleteMessage } from '../../../../../store/messages';
+import { deleteMessage } from '../../../../../../store/messages';
 
 const MessageActionsModal = ({ messageId, setShowEditContent, setShowActions, setShowActionModal}) => {
 

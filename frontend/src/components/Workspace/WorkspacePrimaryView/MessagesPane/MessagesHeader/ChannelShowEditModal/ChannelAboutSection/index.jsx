@@ -1,11 +1,11 @@
-import { deleteChannel } from "../../../../../../store/channels";
+import { deleteChannel } from "../../../../../../../store/channels";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import ChannelEditNameForm from "./ChannelEditNameForm";
 import ChannelEditDescriptionForm from "./ChannelEditDescriptionForm";
 import { useState } from "react";
 import { FiTrash2} from "react-icons/fi";
-import { deleteChannelSubscription } from "../../../../../../store/channelSubscriptions";
+import { deleteChannelSubscription } from "../../../../../../../store/channelSubscriptions";
 
 const ChannelAboutSection = ({ channel, setShow }) => {
     const history = useHistory();

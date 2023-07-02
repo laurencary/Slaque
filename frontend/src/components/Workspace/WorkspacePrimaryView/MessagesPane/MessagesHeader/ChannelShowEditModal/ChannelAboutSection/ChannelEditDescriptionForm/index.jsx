@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateChannel } from "../../../../../../../store/channels";
+import { updateChannel } from "../../../../../../../../store/channels";
 import { useDispatch } from "react-redux";
 
 

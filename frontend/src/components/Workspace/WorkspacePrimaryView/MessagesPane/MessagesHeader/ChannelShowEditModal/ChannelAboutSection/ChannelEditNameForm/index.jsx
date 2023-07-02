@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { HiOutlineHashtag } from "react-icons/hi";
-import { updateChannel } from "../../../../../../../store/channels";
+import { updateChannel } from "../../../../../../../../store/channels";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import FormError from "../../../../../../Session/SessionForm/FormError";
+import FormError from "../../../../../../../Session/SessionForm/FormError";
 
 const ChannelEditNameForm = ({channel, setShow}) => {
     const dispatch = useDispatch();

@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
-import { useParams, Redirect, Route } from "react-router-dom"
+import { useEffect } from "react";
+import { useParams, Redirect } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
-import WorkspaceNavBar from "./WorkspaceNavBar";
-import { fetchUser } from "../../store/session";
-import { getUserWorkspaces } from "../../store/userWorkspaces";
-import { fetchCurrentWorkspace } from "../../store/currentWorkspace";
-import './Workspace.css'
-import WorkspaceSidebar from "./WorkspaceSidebar";
-import { getAllChannels } from "../../store/channels";
-import WorkspaceMessagesView from "./WorkspaceMessagesView";
-import { getDirectMessages, removeCurrentWorkspace } from "../../store/directMessages";
-import NewDirectMessage from "./NewDirectMessage";
+import { fetchUser } from "../../../store/session";
+import { getAllChannels } from "../../../store/channels";
+import { getUserWorkspaces } from "../../../store/userWorkspaces";
+import { getDirectMessages, removeCurrentWorkspace } from "../../../store/directMessages";
+import { fetchCurrentWorkspace } from "../../../store/currentWorkspace";
+import WorkspaceNavBar from "../WorkspaceNavBar";
+import WorkspaceSidebar from "../WorkspaceSidebar";
+import MessagesPane from "./MessagesPane";
+import '../Workspace.css'
 
-const Workspace = () => {
+const WorkspacePrimaryView = () => {
     const dispatch = useDispatch();
     const userWorkspaces = useSelector(getUserWorkspaces);
     const user = useSelector(state => state.session.user);
@@ -21,7 +20,7 @@ const Workspace = () => {
     const channels = useSelector(getAllChannels);
     const directMessages = useSelector(getDirectMessages);
     const { messageableCode } = useParams();
-    const [showNewMessage, setShowNewMessage] = useState(false)
+
     useEffect(() => {
         if (userWorkspaces.length === 0 || !workspace.name) {
             dispatch(fetchUser(user.id));
@@ -45,17 +44,15 @@ const Workspace = () => {
     return userWorkspaces.length ? (
         <div id="workspace-layout">
             <WorkspaceNavBar />
-            <WorkspaceSidebar setShowNewMessage={setShowNewMessage}r/>
-            {/* {showChannelIndex &&} */}
-            {showNewMessage ? (<NewDirectMessage />) : 
-            (messageableCode && channels.length > 0 && directMessages.length > 0 ? <WorkspaceMessagesView workspaceId={workspaceId}/> : 
+            <WorkspaceSidebar />
+            {messageableCode && channels.length > 0 && directMessages.length > 0 ? <MessagesPane workspaceId={workspaceId}/> : 
                 <h1 className="workspace-primary-view h1-only">
                     Please select a channel or direct message.
                     <br></br>
                     Happy Slaquing!
-                </h1>)}
+                </h1>}
         </div>
     ) : null
 }
 
-export default Workspace;
+export default WorkspacePrimaryView;

@@ -5,8 +5,11 @@ import SigninPage from "./components/Session/SigninPage";
 import SignupPage from "./components/Session/SignupPage";
 import HomePage from "./components/HomePage";
 import Welcome from "./components/Welcome";
-import Workspace from "./components/Workspace";
+import WorkspacePrimaryView from "./components/Workspace/WorkspacePrimaryView";
 import './reset.css'
+import WorkspaceWelcome from "./components/Workspace/WorkspaceWelcome";
+import NewDirectMessage from "./components/Workspace/NewDirectMessage";
+import ChannelsIndex from "./components/Workspace/ChannelsIndex";
 
 function App() {
 	return (
@@ -21,13 +24,16 @@ function App() {
 				<Welcome />
 			</Route>
 			<Route path="/client/:clientId/:workspaceId/create-direct-message">
-				<Workspace />
+				<NewDirectMessage />
+			</Route>
+			<Route path="/client/:clientId/:workspaceId/all-channels">
+				<ChannelsIndex />
 			</Route>
 			<Route path="/client/:clientId/:workspaceId/:messageableCode">
-				<Workspace />
+				<WorkspacePrimaryView />
 			</Route>
 			<Route path="/client/:clientId/:workspaceId">
-				<Workspace />
+				<WorkspaceWelcome />
 			</Route>
 			<Route exact path="/">
 				<HomePage />
