@@ -33,10 +33,6 @@ const ChannelsIndex = () => {
         }
     }, [dispatch, workspaceId])
 
-    useEffect(() => {
-        dispatch(removeCurrentWorkspace())
-        dispatch(fetchCurrentWorkspace(workspaceId))
-    }, [workspaceId, dispatch])
 
     if (!user) return <Redirect to='/' />;
 
@@ -50,7 +46,9 @@ const ChannelsIndex = () => {
                 </div>
                 <div className="channels-browse-controls">{channels.length} channel{channels.length === 1 ? '' : 's'}</div>
                 {channels.map((channel) => (
-                    <ChannelItem key={`ci${channel.id}`} channel={channel} />
+                    <ChannelItem key={`ci${channel.id}`} 
+                    channel={channel} 
+                    isSubscribed={subscribedChannelsArr.includes(channel.id)}/>
                 ))}
             </div>
         </div>

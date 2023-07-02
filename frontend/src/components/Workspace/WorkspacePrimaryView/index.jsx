@@ -34,10 +34,6 @@ const WorkspacePrimaryView = () => {
         }
     }, [])
 
-    useEffect(() => {
-        dispatch(removeCurrentWorkspace())
-        dispatch(fetchCurrentWorkspace(workspaceId))
-    }, [workspaceId])
 
     if (!user) return <Redirect to='/' />;
     

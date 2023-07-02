@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom/";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMessages, receiveMessage, removeMessage } from "../../../../store/messages";
-import WorkspaceNavBar from "../../WorkspaceNavBar";
-import WorkspaceSidebar from "../../WorkspaceSidebar";
+import { fetchMessages, receiveMessage, removeMessage, getMessages } from "../../../../store/messages";
 import MessagesHeader from "./MessagesHeader";
 import MessagesView from "./MessagesView";
 import MessageContentInput from "./MessagesView/MessageContentInput";
@@ -13,6 +11,7 @@ import '../WorkspaceMessagesView.css'
 const MessagesPane = ({workspaceId}) => {
     const { messageableCode } = useParams();
     const dispatch = useDispatch();
+    const messages = useSelector(getMessages);
     const messageableType = messageableCode.includes("c") ? "channel" : "directMessage";
     const messageableId = messageableType === "channel" ? 
         messageableCode.slice(1, 100) * 1 : messageableCode.slice(2, 100) * 1
@@ -121,7 +120,7 @@ const MessagesPane = ({workspaceId}) => {
                 </div>
             </div>
         </div>  
-    ) 
+    )
 }
 
 export default MessagesPane;

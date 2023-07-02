@@ -48,8 +48,7 @@ const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => 
             </div>
             <div ref={messagesEndRef} />
         </div>
-        
-    )
+    ) 
 }
 
 export default MessagesView;
