@@ -12,8 +12,6 @@ const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => 
     const messages = useSelector(getMessages);
     const unreadMessages = messages.filter(message => message.unread && message.workspaceAuthorId !== workspaceUserId)
     const firstUnreadMessage = unreadMessages[0];
-    // const [unreadMessages, setUnreadMessages] = useState(initialUnreadMessages)
-    // const [readMessages, setReadMessages] = useState(initialReadMessages)
     
     useEffect(() => {
         scrollToBottom();

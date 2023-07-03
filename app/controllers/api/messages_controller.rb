@@ -25,7 +25,6 @@ class Api::MessagesController < ApplicationController
 		@message = Message.find(params[:id])
 		unreads = @message.unread_by_workspace_users
 		unreads.delete(@message.messageable.workspace_users.where(user_id: current_user.id)[0].id.to_s)
-		# debugger
 		@message.update(unread_by_workspace_users: unreads == nil ? {} : unreads)
 		render json: {}, status: 200
 	end

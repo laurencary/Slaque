@@ -17,7 +17,6 @@ class Api::DirectMessagesController < ApplicationController
         else
 			render json: { errors: @direct_message.errors.full_messages }, status: :unprocessable_entity 
 		end
-
     end
 
     def destroy
