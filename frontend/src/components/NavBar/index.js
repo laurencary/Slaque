@@ -29,7 +29,7 @@ const NavBar = () => {
         sessionLinksRight = (
             <div id="nav-right">
                 <Link to="/" onClick={() => dispatch(sessionActions.logout())} className="link-text button-purple">SIGN OUT</Link>
-                <NavLink to="" className="link-text button-white">CREATE A NEW WORKSPACE</NavLink>
+                {/* <NavLink to="" className="link-text button-white">CREATE A NEW WORKSPACE</NavLink> */}
             </div>
         )
     }
