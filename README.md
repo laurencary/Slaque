@@ -2,7 +2,7 @@
 
 Live website: [Slaque](https://slaque-app-dddbd857f989.herokuapp.com/)
 
-Slaque is a clone of the popular messaging app, Slack. Slack allows users from a 
+Slaque is a clone of the popular messaging app, Slack. Slaque allows users from a 
 workspace to live chat with each other through channels and direct messages.
 
 ## Technologies Used
@@ -15,24 +15,24 @@ workspace to live chat with each other through channels and direct messages.
 - HTML5
 - CSS
 
-Slaque's core application is built around Websocket Communication Protocol which 
-provides users with live updates without refreshing the page. The backend is built
-using Ruby on Rails using a PostgreSQL database. The front end is built using 
+Slaque's core application centers on the Websocket Communication Protocol which 
+provides users with live updates without refreshing the page. I built the backend
+using Ruby on Rails and a PostgreSQL database. The front end utilizes 
 React.js, Redux (for global state management), HTML5, and CSS.
 
 ## Features
-### LiveChat with WebSocket Communication Protocol
-- Logged in users that are subscribed to a given channel/direct message will receive
-live updates without having to refresh the page. These types of updates include
-receiving messages, edited or deleted messages.
-- Currently, the user is subscribed to the channel or direct message they have selected 
+### LiveChat with the WebSocket Communication Protocol
+- Logged in users that are subscribed to a given channel/direct message receive
+live updates without having to refresh the page. Updates include
+receiving messages, updating messages or omitting deleted messages.
+- Currently, the user is subscribed to a single channel or direct message they have selected 
 
 
 ### User Authentication:
-- Users can create an account and login with credentials, as well as logout.
+- Users can create an account and login with credentials, as well as log out.
 - Users can login with Demo user accounts, providing access to all the application's features
 - Most functionality requires a login.
-- Authentication is created and validated using Rails session object.
+- Authentication is created and validated using a Rails session object.
 
 
 ### Workspaces:
@@ -44,14 +44,14 @@ receiving messages, edited or deleted messages.
 - Users can create a channel
 - Users can browse all channels
 - Users that are members of a channel can edit the description
-- Users that are the owners of a channel can edit the name or even delete the channel
+- Users that are the owners of a channel can edit the name or delete the channel
 - Users can leave a channel
 - Users can join a channel
 - Users can add other memebers of the workspace to a channel
 
 ### Direct Messages
-- Users can create conversations with one or more workspace members to chat with them
-- Users can add other members of the workapce to a direct message they are a part of
+- Users can create conversations with one or more workspace members
+- Users can add other members of the workspace to a direct message
 
 ### Messages
 - Users can live chat in a direct message or channel
@@ -59,7 +59,7 @@ receiving messages, edited or deleted messages.
 - Users can see conversations with unread messages on refresh
 
 ## Highlighted Features
-1. To handle unread messages, I save objects with the keys of the users who have not read a message. When I display the messages to the user, I save off the first unread message so the application renders a new notification line above all the messages that were unread when the user selected the channel or direct message. I mark messages read when the conversation is selected, but I don't refresh the messages slice of state until the conversation is selected again or refreshed so I maintain the new line as messages are received and sent - similar to the behavior on Slack. I do however mark the channel or direct message read in the side bar.
+1. To handle unread messages, the site saves objects with the keys of the users who have not read a message. When it displays the messages to the user, it saves the first unread message so the application renders a new notification line above all the messages that are unread. It marks messages read when the conversation is selected, but it doesn't refresh the messages "slice of state" until the conversation is selected again or refreshed so it maintains the new line as messages are received and sent. I do however mark the channel or direct message read in the side bar.
 
 ```javascript
 const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => {
@@ -112,10 +112,13 @@ const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => 
 ```
 
 2. To ensure creating a new message is streamlined, I needed to perform three actions 
-in the backend in a specific order. Create the direct message, create the user subscriptions to the message
-and then create the message with the content in the new message form. To do this,
-I send all the information for these actions to the thunk action to create the direct message. 
-The direct message controller creates the direct message, and the user subscriptions (shown below).
+in the backend in a specific order. 
+  * create the direct message
+  * create the user subscriptions to the message
+  * create the message with the content in the new message form
+  
+To do this, the application sends all the information for these actions to the thunk action to create the direct message. 
+The direct message controller creates the direct message and the user subscriptions (shown below).
 The thunk creator then creates the dispatches the createMessage thunk once it receives an 
 okay response from the backend.
 
@@ -137,7 +140,7 @@ end
 
 ## Features to add in the future
 - In the future, this will be expanded so that when a user is logged in they will be 
-subscribed to updates from all channels and direct messages they are a part of.
+  subscribed to updates from all channels and direct messages they are a part of.
 - Add mentions
 - Add threads
 - Add emojis to the message content
