@@ -22,6 +22,7 @@
 
 .workspace-options-workspace {
     display: flex;
+    flex-direction: row;
     align-items: center;
     padding: 0 24px 12px 24px;
 }
@@ -59,7 +60,7 @@
 
 .other-workspaces-list-container {
     left: 330px;
-    top: 175px;
+    top: 275px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -105,8 +106,15 @@
 
 
 .other-workspaces-logo {
-    height: 20px;
-    width: 20px;
+    height: 22px;
+    width: 22px;
+    margin-right: 5px;
+    overflow: hidden;
+}
+
+.current-workspace-logo {
+    height: 50px;
+    width: 50px;
     margin-right: 1rem;
     overflow: hidden;
 }

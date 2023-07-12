@@ -107,7 +107,7 @@ ApplicationRecord.transaction do
     WorkspaceUserSubscription.create!(user_id: 26, workspace_id: 1, full_name: 'Lonny Collins', title: 'Warehouse Specialist')
     WorkspaceUserSubscription.create!(user_id: 27, workspace_id: 1, full_name: 'David Wallace', title: 'CEO')
     WorkspaceUserSubscription.create!(user_id: 28, workspace_id: 1, full_name: 'Jan Levinson', title: 'VP of Northeaster nSales')
-    WorkspaceUserSubscription.create!(user_id: 29, workspace_id: 1, display_name: 'Michael Scarn', full_name: 'Michael Scott', title: 'Regional Manager')
+    WorkspaceUserSubscription.create!(user_id: 29, workspace_id: 1, full_name: 'Michael Scott', title: 'Regional Manager')
     WorkspaceUserSubscription.create!(user_id: 30, workspace_id: 1, full_name: 'Dwight Shrute', title: 'Assistant to the Manager, Salesman')
     WorkspaceUserSubscription.create!(user_id: 31, workspace_id: 1, full_name: 'Creed Bratton', title: 'Quality Assurance')
     WorkspaceUserSubscription.create!(user_id: 32, workspace_id: 1, full_name: 'Demo 1', title: 'Thanks for checking out Slaque!')
@@ -122,8 +122,8 @@ ApplicationRecord.transaction do
     Channel.create!(owner_id: 8, workspace_id: 2, name: "shiz-university")          #3 
     Channel.create!(owner_id: 13, workspace_id: 2, name: "popular-girls")           #4 
     Channel.create!(owner_id: 7, workspace_id: 2, name: "ozdust-ballroom-party")    #5
-    Channel.create!(owner_id: 29, workspace_id: 1, name: "scranton-branch")         #6
-    Channel.create!(owner_id: 29, workspace_id: 1, name: "everyone-except-toby")    #7
+    Channel.create!(owner_id: 31, workspace_id: 1, name: "scranton-branch")         #6
+    Channel.create!(owner_id: 31, workspace_id: 1, name: "everyone-except-toby")    #7
     Channel.create!(owner_id: 18, workspace_id: 1, name: "finer-things-club")       #8            #10
     Channel.create!(owner_id: 31, workspace_id: 1, name: "creeds-thoughts")         #9
     

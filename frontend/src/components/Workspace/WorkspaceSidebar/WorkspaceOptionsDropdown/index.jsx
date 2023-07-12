@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../../../store/session';
 import { getUserWorkspaces } from '../../../../store/userWorkspaces';
 import { useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, Link } from 'react-router-dom';
 import DunderLogo from '../../../Welcome/WorkspaceItem/DunderMifflinLogo';
 import WickedLogo from '../../../Welcome/WorkspaceItem/WickedLogo';
 
@@ -17,10 +17,15 @@ const WorkapceOptionsDropdown = ({workspace}) => {
         <>
             <div className="workspace-options-dropdown-container">
                 <div className='workspace-options-workspace'>
-                    <div className='img-placeholder-small'></div>
+                    <div className='current-workspace-logo'>
+                        {workspace.name.startsWith("D") ? <DunderLogo /> : <WickedLogo />}
+                    </div>
                     <div className='workspace-options-bold-text'>{workspace.name}</div>
                 </div>
                 <hr className="actions-modal-hr workspaces-hr"/>
+                <Link to={{ pathname: "https://github.com/laurencary" }} target="_blank" className="workspace-options-text">GitHub</Link>
+                <Link to={{ pathname: "https://www.linkedin.com/in/laurengcary/" }} target="_blank" className="workspace-options-text">LinkedIn</Link>
+                <hr className="actions-modal-hr workspaces-hr" />
                 <div onClick={() => dispatch(sessionActions.logout())} className='workspace-options-text'>Sign out of Slaque</div>
                 <hr className="actions-modal-hr workspaces-hr" />
                 {userWorkspaces.length > 1 && <button onMouseEnter={() => setShowOtherWorkspaces(true)} 
