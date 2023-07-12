@@ -4,6 +4,7 @@ import { Modal } from "../../../../../../context/Modal";
 import { updateMessageUnreads } from "../../../../../../store/messages";
 import MessageActionsModal from "../MessageActionsModal";
 import MessageContentInput from "../MessageContentInput";
+import UserIcon from "../../../../UserIcon";
 
 const MessageItem = ({ message, messageableId, messageableType }) => {
     const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId)
@@ -22,7 +23,9 @@ const MessageItem = ({ message, messageableId, messageableType }) => {
         <div className={showEditContent ? "edit-message-item" : "message-item"}
             onMouseEnter={() => setShowActions(workspaceUserId === message.workspaceAuthorId ? true : false)}
             onMouseLeave={() => setShowActions(false)}>
-            <div className="message-author-photo img-placeholder"></div>
+            <div className="message-author-photo img-placeholder">
+                <UserIcon wusId={message.workspaceAuthorId} size='medium' />
+            </div>
             {showEditContent ? <MessageContentInput messageableId={messageableId}
                     messageableType={messageableType}
                     messageMembersArr={{}}

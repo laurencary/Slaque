@@ -19,7 +19,7 @@ const ProfileButton = () => {
     return profile ? (
         <div>
             <div className="profile-button" onClick={() => setShowMenu(!showMenu)}>
-                <UserIcon wusId={profile.id}/>
+                <UserIcon wusId={profile.id} size="small"/>
             </div>
             {/* <i onClick={() => setShowMenu(!showMenu)}  style={{ color: "navy", backgroundColor: "white", fontSize: "40px" }} className="fa-solid fa-user"></i> */}
             <ul className={showMenu ? "profile-button-menu" : "hidden"}>

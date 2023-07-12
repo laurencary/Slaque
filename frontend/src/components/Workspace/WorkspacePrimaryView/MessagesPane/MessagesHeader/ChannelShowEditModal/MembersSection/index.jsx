@@ -16,7 +16,7 @@ const MembersSection = ({messageable}) => {
                     onClick={() => setShowAddPeople(true)}
                     className="add-people-button member-list-item unstyled-button">
                     <div id="add-people-icon-container">
-                        <span id="add-members-icon"><FiUserPlus size='2x'/></span>
+                        <span id="add-members-icon"><FiUserPlus /></span>
                     </div>
                     <div className="member-details">
                         <div className="member-names">

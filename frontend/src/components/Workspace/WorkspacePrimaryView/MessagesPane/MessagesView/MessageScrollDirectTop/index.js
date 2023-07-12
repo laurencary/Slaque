@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import UserIcon from "../../../../UserIcon";
+
 
 const DirectMessageTopDetails = ({ messageMembersArr, messageableId }) => {
     const currentWorkspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId);
@@ -19,7 +21,9 @@ const DirectMessageTopDetails = ({ messageMembersArr, messageableId }) => {
         <>
             <div className="message-details-user-photos">
                 {messageMembersArr.filter(id => id !== currentWorkspaceUserId).map((workspaceUserId) => (
-                    <div key={`i${workspaceUserId}dm${messageableId}`} className="img-placeholder"></div>
+                    <div key={`i${workspaceUserId}dm${messageableId}`} className="img-placeholder">
+                        <UserIcon wusId={workspaceUserId} size="large"/>
+                    </div>
                 ))}
             </div>
             <div className="message-details-text-container">

@@ -2,7 +2,7 @@ import { FaUser } from 'react-icons/fa'
 
 import './UserIcon.css'
 
-const UserIcon = ({wusId}) => {
+const UserIcon = ({wusId, size}) => {
 
     const wickedThemeArr = [
         ['black', 'yellowgreen'],
@@ -16,9 +16,11 @@ const UserIcon = ({wusId}) => {
         ['ghostwhite', 'gold'],
         ['ghostwhite', 'indigo'],
         ['ghostwhite', 'lightseagreen'],
-        ['linen', 'lightpink'],
         ['azure', 'royalblue'],
-        ['azure', 'darkolivegreen']
+        ['linen', 'lightpink'],
+        ['azure', 'darkolivegreen'],
+        ['azure', 'royalblue'],
+
     ]
     const otherThemeArr = [
         ['azure', 'coral'],
@@ -35,16 +37,20 @@ const UserIcon = ({wusId}) => {
         ['azure', 'maroon'],
         ['azure', 'navy'],
         ['azure', 'green'],
-        ['azure', 'cadetblue']
+        ['darkgray', 'antiquewhite'],
+        ['azure', 'darkslategrey'],
+        ['darkslategrey', 'darkturquoise'],
+        ['firebrick', 'ghostwhite'],
+        ['honeydew', 'lightseagreen']
     ]
 
     const colors = wusId < 16 ? 
         wickedThemeArr[wusId - 1] : 
-        otherThemeArr[(wusId - 16) % 16]
+        otherThemeArr[(wusId - 16) % 18]
 
     return (
         <div className='user-icon-container' style={{ backgroundColor: colors[0] }}>
-            <FaUser className={`user-icon ${"small"}`} color={colors[1]} />
+            <FaUser className={`user-icon ${size}`} color={colors[1]} />
         </div>
     )
 }
