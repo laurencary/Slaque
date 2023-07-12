@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux";
-import { getSubscribedChannels } from "../../../store/channels";
-import './WorkspaceSidebar.css'
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams, NavLink } from "react-router-dom"
 import { HiOutlineHashtag } from "react-icons/hi";
-import MessageableItem from "./MessageableItem";
-import { getDirectMessages } from "../../../store/directMessages";
-import { NavLink } from "react-router-dom";
-import WorkapceOptionsDropdown from "./WorkspaceOptionsDropdown";
 import { FiX } from "react-icons/fi";
-import { Modal } from "../../../context/Modal";
+import MessageableItem from "./MessageableItem";
+import WorkapceOptionsDropdown from "./WorkspaceOptionsDropdown";
 import DeleteDirectMessageModal from "./DeleteDirectMessageModal";
+import { getSubscribedChannels } from "../../../store/channels";
+import { getDirectMessages } from "../../../store/directMessages";
+import { Modal } from "../../../context/Modal";
+import UserIcon from "../UserIcon";
+import './WorkspaceSidebar.css'
 
 const WorkspaceSidebar = () => {
     const { workspaceId, messageableCode, clientId } = useParams();
     const workspace = useSelector(state => state.userWorkspaces[workspaceId]);
+    const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId);
     const channels = useSelector(getSubscribedChannels);
     const directMessages = useSelector(getDirectMessages);
     const user = useSelector(state => state.session.user);
@@ -68,7 +69,10 @@ const WorkspaceSidebar = () => {
                         <NavLink to={`/client/${user.id}/${workspace.id}/dm${directMessage.id}`}>
                             <div className={messageableCode === `dm${directMessage.id}` ? "selected sidebar-direct-message" : "sidebar-direct-message"}>
                                 <div className="sidebar-list-item-message">
-                                    <div className="sidebar-direct-message-icon"></div>
+                                    <div className="sidebar-direct-message-icon">
+                                        <UserIcon wusId={directMessage.workspaceUsers.filter(id => id !== workspaceUserId)[0]} size="xsmall" />
+                                        {directMessage.workspaceUsers.length > 2 && <div className="dm-user-count">{directMessage.workspaceUsers.length}</div>}
+                                    </div>
                                     <div className={directMessage.unreadMessageCount > 0 ? "bold dm-name" : "dm-name"}>{directMessage.name.join(', ')}</div>
                                 </div>
                                 <div className="sidebar-unread-count">
