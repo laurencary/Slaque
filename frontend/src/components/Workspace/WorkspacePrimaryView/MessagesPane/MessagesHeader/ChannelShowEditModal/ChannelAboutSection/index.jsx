@@ -5,7 +5,7 @@ import ChannelEditNameForm from "./ChannelEditNameForm";
 import ChannelEditDescriptionForm from "./ChannelEditDescriptionForm";
 import { useState } from "react";
 import { FiTrash2} from "react-icons/fi";
-import { deleteChannelSubscription } from "../../../../../../../store/channelSubscriptions";
+import { createChannelSubscription, deleteChannelSubscription } from "../../../../../../../store/channelSubscriptions";
 
 const ChannelAboutSection = ({ channel, setShow }) => {
     const history = useHistory();
@@ -15,11 +15,18 @@ const ChannelAboutSection = ({ channel, setShow }) => {
     const [showEditDescription, setShowEditDescription] = useState(false);
     const [showEditName, setShowEditName] = useState(false);
     const channelOwner = useSelector(state => state.workspaceUsers[channel.ownerId]);
+    const isChannelMember = useSelector(state => state.currentWorkspace.subscribedChannels.includes(channel.id))
+    console.log(useSelector(state => state.currentWorkspace.subscribedChannels.includes(channel.id)));
+    console.log(channel.id);
 
     const handleDelete = () => {
         setShow(false)
         history.push(`/client/${clientId}/${workspaceId}`)
         dispatch(deleteChannel(channel.id))
+    }
+
+    const handleJoin = () => {
+        dispatch(createChannelSubscription(channel.id, workspaceUserId));
     }
 
     const handleLeave = () => {
@@ -49,7 +56,8 @@ const ChannelAboutSection = ({ channel, setShow }) => {
                     {showEditDescription ?
                         <ChannelEditDescriptionForm
                             channel={channel}
-                            setShow={setShowEditDescription} /> : <>
+                            setShow={setShowEditDescription} /> : 
+                        <>
                             <div className="description-header">
                                 <h2>Description</h2>
                                 <button onClick={() => setShowEditDescription(true)} className="edit-button unstyled-button">Edit</button>
@@ -64,9 +72,14 @@ const ChannelAboutSection = ({ channel, setShow }) => {
                     <div className="created-by-header"><h2>Created by</h2></div>
                     <p className="edit-modal-text">{channelOwner.displayName ? channelOwner.displayName : channelOwner.fullName} on {channel.createdAt}</p>
                 </div>
-                <div onClick={handleLeave} className="leave-channel-container">
-                    <button className="leave-channel-button unstyled-button">Leave Channel</button>
-                </div>
+                { isChannelMember ?
+                    <div onClick={handleLeave} className="leave-channel-container">
+                        <button className="leave-channel-button unstyled-button">Leave Channel</button>
+                    </div> :
+                    <div onClick={handleJoin} className="join-channel-container">
+                        <button className="join-channel-button unstyled-button">Join Channel</button>
+                    </div> 
+                }
             </div>
             <div>
                 {channel.ownerId === workspaceUserId ?

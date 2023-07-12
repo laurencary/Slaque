@@ -286,3 +286,25 @@ div.message-author-photo.img-placeholder {
     cursor: pointer;
     background-color: #018a65;
 }
+
+.channel-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.all-channels-link {
+    padding: 13px 10px 10px 10px;
+    text-decoration: underline;
+    color: lightgray;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.all-channels-link:hover {
+    cursor: pointer;
+    color: #40B3E4;
+}

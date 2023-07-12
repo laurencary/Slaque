@@ -7,12 +7,17 @@ import MessagesView from "./MessagesView";
 import MessageContentInput from "./MessagesView/MessageContentInput";
 import consumer from '../../../../consumer';
 import '../WorkspaceMessagesView.css'
+import { createChannelSubscription } from "../../../../store/channelSubscriptions";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { HiOutlineHashtag } from "react-icons/hi";
 
 const MessagesPane = ({workspaceId}) => {
-    const { messageableCode } = useParams();
+    const { messageableCode, clientId } = useParams();
     const dispatch = useDispatch();
     const messages = useSelector(getMessages);
     const messageableType = messageableCode.includes("c") ? "channel" : "directMessage";
+    const subChannels = useSelector(state => state.currentWorkspace.subscribedChannels);
+    const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId);
     const messageableId = messageableType === "channel" ? 
         messageableCode.slice(1, 100) * 1 : messageableCode.slice(2, 100) * 1
     const messageName = useSelector(state => {
@@ -25,6 +30,9 @@ const MessagesPane = ({workspaceId}) => {
         }
     })
 
+    const handleJoin = () => {
+        dispatch(createChannelSubscription(messageableId.id, workspaceUserId));
+    }
 
     let messageDetailsName;
     if (messageableType === "channel") {
@@ -108,14 +116,22 @@ const MessagesPane = ({workspaceId}) => {
                     messageableType={messageableType} 
                     messageMembersArr={messageMembersArr} /> 
                 <div className="create-message-footer">
-                    <MessageContentInput messageableId={messageableId}
-                        messageableType={messageableType}
-                        messageMembersArr={messageMembersArr}
-                        defaultVal={messageableType === "channel" ? "Message #" + messageName : "Message " + messageName.join(", ")}
-                        content={''}
-                        isCreate={true}
-                        message={{}}
-                        setShowEditContent={{}}/>
+                    {messageableType === "channel" && subChannels.includes(messageableId) ?
+                        <MessageContentInput messageableId={messageableId}
+                            messageableType={messageableType}
+                            messageMembersArr={messageMembersArr}
+                            defaultVal={messageableType === "channel" ? "Message #" + messageName : "Message " + messageName.join(", ")}
+                            content={''}
+                            isCreate={true}
+                            message={{}}
+                            setShowEditContent={{}}/> :
+                        <div className="create-message-container">
+                            <h1 className="channel-name">{messageableType === "channel" && <HiOutlineHashtag />}{messageDetailsName}</h1>
+                            <div>
+                                <button className="green-text-button">Join Channel</button>
+                            </div>
+                            <NavLink to={`/client/${clientId}/${workspaceId}/all-channels`} className="all-channels-link">Back to all channels</NavLink>
+                        </div >}
                     <div className="notifications-footer"></div>
                 </div>
             </div>

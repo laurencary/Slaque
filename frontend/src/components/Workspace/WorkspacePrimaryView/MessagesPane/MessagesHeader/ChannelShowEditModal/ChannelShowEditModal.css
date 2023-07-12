@@ -17,7 +17,7 @@
     background-color: rgb(24, 24, 24);
 }
 
-.name-header, .description-header, .created-by-header, .leave-channel-button {
+.name-header, .description-header, .created-by-header, .leave-channel-button, .join-channel-button {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -61,7 +61,7 @@
     text-decoration: underline;
 }
 
-.description-container, .created-by-container, .leave-channel-container, .edit-channel-name,
+.description-container, .created-by-container, .join-channel-container,.leave-channel-container, .edit-channel-name,
 .delete-channel-button {
     padding: 16px 20px;
 }
@@ -160,9 +160,20 @@
     box-shadow: inset 0 -2px 0 0 #007a5a;
 }
 
-.leave-channel-container:hover {
+.leave-channel-container:hover, .join-channel-container:hover {
     background-color: grey;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
     cursor: pointer;
+}
+
+.join-channel-container {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: green;
+}
+
+.join-channel-button {
+    color: white;
+    font-size: 15px;
 }
