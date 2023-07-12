@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import './WorkspaceItem.css'
+import DunderLogo from "./DunderMifflinLogo";
+import WickedLogo from "./WickedLogo";
 
 const WorkspaceItem = ({workspace}) => {
     const user = useSelector(state => state.session.user);
@@ -9,7 +11,9 @@ const WorkspaceItem = ({workspace}) => {
     return (
         <li className="workspace-item-container">
             <div className="workspace-item-left">
-                <div className="img-placeholder"></div>
+                <div className="welcome-workspace-logo">
+                    {workspace.name.startsWith("D") ? <DunderLogo /> : <WickedLogo />}
+                </div>
                 <div className="workspace-item-details">
                     <h2 className="workspace-item-name">{workspace.name}</h2>
                     {/* <> 5 memberphotos?</> */}

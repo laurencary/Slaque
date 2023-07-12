@@ -37,7 +37,7 @@ const NavBar = () => {
     const sessionLinksLeft = (
         <div id="nav-left">
             <li className="nav-li"><Link to={{pathname: "https://github.com/laurencary" }}target="_blank" className="link-text">GitHub</Link></li>
-            <li className="nav-li"><Link to={{ pathname: "https://www.linkedin.com/in/laurengarmstrong/"}} target="_blank" className="link-text">LinkedIn</Link></li>
+            <li className="nav-li"><Link to={{ pathname: "https://www.linkedin.com/in/laurengcary/"}} target="_blank" className="link-text">LinkedIn</Link></li>
         </div>
     )
 
