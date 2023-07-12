@@ -116,7 +116,7 @@ const MessagesPane = ({workspaceId}) => {
                     messageableType={messageableType} 
                     messageMembersArr={messageMembersArr} /> 
                 <div className="create-message-footer">
-                    {messageableType === "channel" && subChannels.includes(messageableId) ?
+                    {(messageableType === "channel" && subChannels.includes(messageableId)) || messageableType !== "channel" ?
                         <MessageContentInput messageableId={messageableId}
                             messageableType={messageableType}
                             messageMembersArr={messageMembersArr}
