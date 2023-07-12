@@ -4,6 +4,8 @@ import * as sessionActions from '../../../../store/session';
 import { getUserWorkspaces } from '../../../../store/userWorkspaces';
 import { useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
+import DunderLogo from '../../../Welcome/WorkspaceItem/DunderMifflinLogo';
+import WickedLogo from '../../../Welcome/WorkspaceItem/WickedLogo';
 
 const WorkapceOptionsDropdown = ({workspace}) => {
     const {clientId} = useParams();
@@ -45,6 +47,9 @@ const WorkapceOptionsDropdown = ({workspace}) => {
                             to={`/client/${clientId}/${ws.id}`}
                             className='other-workspace-item' 
                             key={`ow${ws.id}`}>
+                                <div className='other-workspaces-logo'>
+                                    {ws.name.startsWith("D") ? <DunderLogo /> : <WickedLogo />}
+                                </div>
                                 <strong>{ws.name}</strong>
                         </NavLink>
                     ))}
