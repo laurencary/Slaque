@@ -1,6 +1,10 @@
 .profile-button {
     background-color: white;
-    color: pink
+    color: pink;
+    height: 26px;
+    width: 26px;
+    margin-right: 16px;
+    border-radius: 3px;
 }
 
 #workspace-layout {
@@ -41,6 +45,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background-color: #201c24;
 }
 
 .workspace-nav-bar-search {

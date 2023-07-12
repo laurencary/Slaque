@@ -4,6 +4,7 @@ import * as sessionActions from '../../../store/session';
 import { getCurrentWorkspaceProfile } from "../../../store/currentWorkspace";
 import { Modal } from "../../../context/Modal";
 import ShowEditProfile from "./ShowEditProfile";
+import UserIcon from "../UserIcon";
 
 const ProfileButton = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,10 @@ const ProfileButton = () => {
 
     return profile ? (
         <div>
-            <i onClick={() => setShowMenu(!showMenu)}  style={{ color: "navy", backgroundColor: "white", fontSize: "40px" }} className="fa-solid fa-user"></i>
+            <div className="profile-button" onClick={() => setShowMenu(!showMenu)}>
+                <UserIcon />
+            </div>
+            {/* <i onClick={() => setShowMenu(!showMenu)}  style={{ color: "navy", backgroundColor: "white", fontSize: "40px" }} className="fa-solid fa-user"></i> */}
             <ul className={showMenu ? "profile-button-menu" : "hidden"}>
                 <h1>{profile.fullName}</h1>
                 <hr className="profile-menu-hr"></hr>

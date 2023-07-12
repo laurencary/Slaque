@@ -22,10 +22,11 @@ const WorkapceOptionsDropdown = ({workspace}) => {
                     </div>
                     <div className='workspace-options-bold-text'>{workspace.name}</div>
                 </div>
-                <hr className="actions-modal-hr workspaces-hr"/>
+                <hr className="actions-modal-hr workspaces-hr" />
                 <Link to={{ pathname: "https://github.com/laurencary" }} target="_blank" className="workspace-options-text">GitHub</Link>
                 <Link to={{ pathname: "https://www.linkedin.com/in/laurengcary/" }} target="_blank" className="workspace-options-text">LinkedIn</Link>
                 <hr className="actions-modal-hr workspaces-hr" />
+                <NavLink to={`/client/${clientId}/get-started/landing`} className="workspace-options-text">Back to welcome</NavLink>
                 <div onClick={() => dispatch(sessionActions.logout())} className='workspace-options-text'>Sign out of Slaque</div>
                 <hr className="actions-modal-hr workspaces-hr" />
                 {userWorkspaces.length > 1 && <button onMouseEnter={() => setShowOtherWorkspaces(true)} 

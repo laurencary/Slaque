@@ -25,6 +25,7 @@
 .create-channel-header {
     justify-content: space-between;
     align-items: center;
+    background-color: #1a1d21;
 }
 
 .create-channel-header h1 {

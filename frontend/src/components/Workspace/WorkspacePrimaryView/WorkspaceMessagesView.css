@@ -132,17 +132,17 @@ div.message-author-photo.img-placeholder {
     flex-direction: column;
     width: calc(100vw - 326px);
     box-sizing: border-box;
-    background-color: #121016;
+    background-color: #201c24;
 }
 
 .create-message-container {
     border-radius: 8px;
-    border: 1px solid rgb(43, 42, 47) !important;
+    border: 1px solid #565856 !important;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     width: 100%;
-    background-color: black;
+    background-color: #222529;
 }
 
 
@@ -175,7 +175,7 @@ div.message-author-photo.img-placeholder {
 
 .message-textarea {
     /* padding: 0 10px; */
-    background-color: #121016;
+    background-color: #222529;
     width: 97%;
     box-sizing: border-box;
     text-align: left;
@@ -269,10 +269,11 @@ div.message-author-photo.img-placeholder {
     padding-right: 5px;
 }
 
-.create-message-send-button:disabled {
-    background-color: #121016;
+.create-message-send-button:disabled, .create-message-send-button:disabled:hover {
+    background-color: #222529;
     color: grey;
     border: none;
+    cursor: default;
 }
 
 .small-button {

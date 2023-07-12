@@ -1,20 +1,21 @@
 .edit-message-modal {
-    background-color: rgb(39, 39, 39);
+    background-color: #222529;
     display: flex;
     flex-direction: column;
     height: min(85vh, 820px);
-    max-width: 580px;
+    max-width: 500px;
     border-radius: 8px;
     box-shadow: 0 0 0 1px var(--saf-0), 0 18px 48px 0 #00000059;
     /* z-index: 400; */
     width: 580px;
+    color: #d1d2d3
 }   
 
 .about-content-container, .delete-channel-button, .edit-channel-name {
-    border: 1px solid grey;
+    border: 1px solid #35373b;
     border-radius: 12px;
     margin: 16px 28px;
-    background-color: rgb(24, 24, 24);
+    background-color: #1a1d21;
 }
 
 .name-header, .description-header, .created-by-header, .leave-channel-button, .join-channel-button {
@@ -79,8 +80,8 @@
 }
 
 .created-by-container {
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
+    border-top: 1px solid #35373b;
+    border-bottom: 1px solid #35373b;
 }
 
 .description-placeholder {
@@ -138,6 +139,7 @@
     display: flex;
     flex-direction: row;
     padding-left: 20px;
+    background-color: #1a1d21;
     border-bottom: rgb(65, 63, 63) 1px solid;
 }
 
