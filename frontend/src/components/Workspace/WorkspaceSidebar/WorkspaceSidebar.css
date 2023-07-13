@@ -22,7 +22,7 @@
 .sidebar-direct-message-icon {
     height: 20px;
     width: 20px;
-    background-color: grey;
+    /* background-color: grey; */
     margin-left: -1.5px;
     margin-right: 6px;
 }
@@ -225,16 +225,18 @@ a {
 .sidebar-direct-message:hover .delete-dm:hover {
     color: white;
     cursor: pointer;
+    opacity: 1;
 }
 
 .sidebar-direct-message:hover .delete-dm {
     color: grey;
     position: fixed;
     left: 290px;
+    opacity: 1;
 }
 
-.delete-dm {
-    color: black;
+.sidebar-direct-message .delete-dm {
+    opacity: 0;
 }
 
 .selected .delete-dm {
@@ -255,4 +257,5 @@ a {
     text-align: center;
     width: 14px;
     padding: 1px 4px;
+    z-index: 200;
 }

@@ -3,7 +3,6 @@ import './SidebarOptionsModal.css'
 import { Modal } from '../../../../context/Modal';
 import CreateChannelModal from '../CreateChannelModal';
 import { NavLink, useParams } from 'react-router-dom';
-import ShowEditProfile from '../../WorkspaceNavBar/ShowEditProfile';
 
 const ChannelOptionsModal = ({setShowActions}) => {
     const {clientId, workspaceId} = useParams()
@@ -19,11 +18,7 @@ const ChannelOptionsModal = ({setShowActions}) => {
                 </div>
                 <hr className='actions-modal-hr'></hr>
                 <div className="actions-modal-item">
-                    <button className="actions-modal-manage-button actions-button">
-                        <div className='action-text'>
-                            <NavLink to={`/client/${clientId}/${workspaceId}/all-channels`} >Browse channels</NavLink>
-                        </div>
-                    </button>
+                    <NavLink to={`/client/${clientId}/${workspaceId}/all-channels`} className='actions-modal-manage-button actions-button action-text'>Browse channels</NavLink>
                 </div>
             </div>
             {showCreateChannelModal && (
