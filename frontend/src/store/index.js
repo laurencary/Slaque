@@ -7,10 +7,12 @@ import currentWorkspaceReducer from './currentWorkspace';
 import channelsReducer from './channels';
 import directMessagesReducer from './directMessages';
 import messagesReducer from './messages';
+import otherWorkspacesReducer from './otherWorkspaces';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     userWorkspaces: userWorkspacesReducer,
+    otherWorkspaces: otherWorkspacesReducer,
     workspaceUsers: workspaceUsersReducer,
     currentWorkspace: currentWorkspaceReducer,
     channels: channelsReducer,

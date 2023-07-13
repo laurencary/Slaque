@@ -3,6 +3,7 @@ class Api::WorkspaceUserSubscriptionsController < ApplicationController
 
 	def index
 		@workspace_user_subscriptions = WorkspaceUserSubscription.where("user_id = #{current_user.id}").includes(:workspace)
+		@other_workspaces = 
 		render :index
 	end
 

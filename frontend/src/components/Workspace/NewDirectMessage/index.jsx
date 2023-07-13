@@ -77,7 +77,6 @@ const NewDirectMessage = () => {
                         message={{}}
                         setShowEditContent={{}} />
                     <div className="notifications-footer"></div>
-
                 </div>
             </div>
         </div>

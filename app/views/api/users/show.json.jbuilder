@@ -15,3 +15,13 @@ json.userWorkspaces do
         end
     end
 end
+
+json.otherWorkspaces do
+    Workspace.where("id not in (?)", @workspace_user_subscriptions.pluck(:workspace_id)).each do |otherWorkspace|
+        json.set! otherWorkspace.id.to_i do
+            json.id otherWorkspace.id
+            json.name otherWorkspace.name
+            json.memberCount otherWorkspace.workspace_users.count
+        end
+    end
+end

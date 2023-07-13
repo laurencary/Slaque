@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { receiveOtherWorkspaces } from "./otherWorkspaces";
 import { receiveUserWorkspaces } from "./userWorkspaces";
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
@@ -21,6 +22,7 @@ export const fetchUser = (userId) => async (dispatch) => {
     const data = await response.json();
     dispatch(setCurrentUser(data.user));
     dispatch(receiveUserWorkspaces(data.userWorkspaces));
+    dispatch(receiveOtherWorkspaces(data.otherWorkspaces));
     return response;
 }
 
@@ -32,6 +34,8 @@ export const restoreSession = () => async (dispatch) => {
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
     dispatch(receiveUserWorkspaces(data.userWorkspaces));
+    dispatch(receiveOtherWorkspaces(data.otherWorkspaces));
+
     return response;
 }
 
@@ -60,8 +64,10 @@ export const signup = (user) => async (dispatch) => {
 
     const data = await response.json();
     storeCurrentUser(data.user);
+    debugger
     dispatch(setCurrentUser(data.user));
     dispatch(receiveUserWorkspaces(data.userWorkspaces));
+    dispatch(receiveOtherWorkspaces(data.otherWorkspaces));
 
     return response;
 }
@@ -80,6 +86,7 @@ export const login = (user) => async (dispatch) => {
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
     dispatch(receiveUserWorkspaces(data.userWorkspaces));
+    dispatch(receiveOtherWorkspaces(data.otherWorkspaces));
     return response;
 }
 
