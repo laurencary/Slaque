@@ -4,6 +4,10 @@
     margin-right: 16px;
     border-radius: 3px;
 }
+.profile-button:hover {
+    cursor: pointer;
+    opacity: .8;
+}
 
 #workspace-layout {
     display: grid;
