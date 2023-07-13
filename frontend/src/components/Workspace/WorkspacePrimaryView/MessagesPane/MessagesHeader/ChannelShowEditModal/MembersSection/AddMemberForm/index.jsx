@@ -45,7 +45,7 @@ const AddMemberForm = ({ messageable, setShow }) => {
     }, [searchVal])
 
     return (
-        <div className="edit-channel-container">
+        <div className="edit-channel-container add-people">
             <div className="create-channel-form neg-padding">
                 <h2>Add people</h2>
                 <div className="channel-input-container">

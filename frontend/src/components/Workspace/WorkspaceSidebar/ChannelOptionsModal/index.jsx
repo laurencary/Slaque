@@ -7,10 +7,13 @@ import { NavLink, useParams } from 'react-router-dom';
 const ChannelOptionsModal = ({setShowActions}) => {
     const {clientId, workspaceId} = useParams()
     const [showCreateChannelModal, setShowCreateChannelModal] = useState(false)
+    const conditionalClose = () => {
+        if (!showCreateChannelModal) setShowActions(false)
+    }
     
     return (
         <>
-            <div className="actions-modal-container">
+            <div className="actions-modal-container" onMouseLeave={conditionalClose}>
                 <div className="actions-modal-item">
                     <button className="actions-modal-create-button actions-button" onClick={() => setShowCreateChannelModal(true)}>
                         <div className='action-text'>Create</div>

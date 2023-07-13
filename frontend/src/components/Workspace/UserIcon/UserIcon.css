@@ -8,17 +8,25 @@
 }
 
 .small {
-    font-size: 23px;
+    font-size: 25px;
+    margin-bottom: -2px;
 }
 
 .large {
-    font-size: 65px;
+    font-size: 69px;
+    margin-bottom: -4px;
 }
 
 .medium {
-    font-size: 35px;
+    margin-bottom: -2px;
+    font-size: 38px;
 }
 
 .xsmall {
     font-size: 18px;
+}
+
+
+.overflow-hidden {
+    overflow: hidden;
 }

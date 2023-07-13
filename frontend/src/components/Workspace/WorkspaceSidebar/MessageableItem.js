@@ -7,7 +7,7 @@ import CreateChannelModal from "./CreateChannelModal";
 
 const MessageableItem = ({messageableType, show, setShow}) => {
     const [showActions, setShowActions] = useState(false)
-    
+    // setShow(true)
 
     return (
         <div className="sidebar-static-item">
@@ -22,12 +22,12 @@ const MessageableItem = ({messageableType, show, setShow}) => {
                     </svg>
                 </span>
             </div>
-            {
+            {/* {
                 messageableType === "Direct messages" ?
                     <span className="open-dm"><FiPlus /></span> : <></>
-            }
+            } */}
             {showActions && messageableType === "Channels" && 
-                    <ChannelOptionsModal setShowActions={setShowActions} onClose={() => setShowActions(false)}/>
+                    <ChannelOptionsModal onClick={() => setShow(false)} setShowActions={setShowActions} onClose={() => setShowActions(false)}/>
                     }
             {/* {showActions && messageableType === "Channels" && <Modal onClose={() => setShowActions(false)}>
                 <CreateChannelModal setShowActions={setShowActions} /> : <></>

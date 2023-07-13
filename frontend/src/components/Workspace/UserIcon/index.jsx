@@ -49,7 +49,7 @@ const UserIcon = ({wusId, size}) => {
         otherThemeArr[(wusId - 16) % 18]
 
     return (
-        <div className='user-icon-container' style={{ backgroundColor: colors[0] }}>
+        <div className={size === 'xsmall' ? `user-icon-container` : `user-icon-container overflow-hidden`} style={{ backgroundColor: colors[0] }}>
             <FaUser className={`user-icon ${size}`} color={colors[1]} />
         </div>
     )

@@ -23,7 +23,12 @@ const ProfileButton = () => {
             </div>
             {/* <i onClick={() => setShowMenu(!showMenu)}  style={{ color: "navy", backgroundColor: "white", fontSize: "40px" }} className="fa-solid fa-user"></i> */}
             <ul className={showMenu ? "profile-button-menu" : "hidden"}>
-                <h1>{profile.fullName}</h1>
+                <header className="profile-dropdown-header">
+                    <div className="message-author-photo img-placeholder">
+                        <UserIcon wusId={profile.id} size="medium" />
+                    </div>
+                    <h1>{profile.fullName}</h1>
+                </header>
                 <hr className="profile-menu-hr"></hr>
                 <li onClick={() => setShowProfile(true)} className="profile-menu-li">Edit Profile</li>
                 <hr className="profile-menu-hr"></hr>

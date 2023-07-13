@@ -30,11 +30,16 @@ const CreateChannelModal = ({setShowActions, parentModalShow}) => {
         dispatch(createChannel(channelParams));
     }
 
+    const closeModals = () => {
+        setShowActions(false);
+        parentModalShow(false);
+    }
+
     return (
         <div className="create-channel-modal-container">
             <header className="create-channel-header">
                 <h1>Create a channel</h1>
-                <button className="close-modal" onClick={() => setShowActions(false)}><FiX /></button>
+                <button className="close-modal" onClick={closeModals}><FiX /></button>
             </header>
             <div className="create-channel-form">
                 <h2>Name</h2>
