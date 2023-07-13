@@ -10,7 +10,7 @@ class Api::WorkspaceUserSubscriptionsController < ApplicationController
 	end
 
 	def update
-		debugger
+		# debugger
 		@workspace_user_subscription = WorkspaceUserSubscription.find(params[:id])
 		# debugger
 		if @workspace_user_subscription.update(wus_params)

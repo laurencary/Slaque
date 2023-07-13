@@ -1,5 +1,9 @@
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import heroVideo from '../../videos/team-discussing.mp4'
+import video1 from '../../videos/team-connected.mp4'
+import video2 from '../../videos/team-connected2.mp4'
+import video3 from '../../videos/team-connected3.mp4'
 
 import NavBar from "../NavBar";
 import './HomePage.css'
@@ -20,10 +24,15 @@ const HomePage = () => {
                 <br></br>
                 <p><strong>Slaque is free to try</strong> for as long as you'd like</p>
                 </header>
+                <aside>
+                    <video src={heroVideo} autoPlay loop muted ></video>
+                </aside>
             </section>
             <section id="home-info">
                 <div className="grid-row">
-                    <div className="video"></div>
+                    <div className="video-container">
+                        <video src={video1} autoPlay loop muted className="video" ></video>
+                    </div>
                     <div className="grid-text left">
                         <h2>Bring your team together</h2>
                         <p>At the heart of Slack are channels: organized spaces 
@@ -40,11 +49,15 @@ const HomePage = () => {
                         and how it’s best for you. You can easily chat, send audio
                         and video clips, or hop on a huddle to talk things out live.</p>
                     </div>
-                    <div className="video"></div>
+                    <div className="video-container">
+                        <video src={video2} autoPlay loop muted className="video" ></video>
+                    </div>
                 </div>
 
                 <div className="grid-row">
-                    <div className="video"></div>
+                    <div className="video-container">
+                        <video src={video3} autoPlay loop muted className="video" ></video>
+                    </div>
                     <div className="grid-text left">
                     <h2>Move faster with your tools in one place</h2>
                     <p>With your other work apps connected to Slaque, you can work 
