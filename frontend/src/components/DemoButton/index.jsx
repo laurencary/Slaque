@@ -1,31 +1,22 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import * as sessionActions from '../../store/session';
-// import './DemoButton.css'
+import DemoModal from "./DemoModal";
+import { Modal } from "../../context/Modal";
 
 const DemoButton = ({ classNm }) => {
-    const dispatch = useDispatch();
-    const [errors, setErrors] = useState([]);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        return dispatch(sessionActions.login({ email:'demo1@user.io', password:'password' }))
-            .catch(async (res) => {
-                let data;
-                try {
-                    // .clone() essentially allows you to read the response body twice
-                    data = await res.clone().json();
-                } catch {
-                    data = await res.text(); // Will hit this case if the server is down
-                }
-                if (data?.errors) setErrors(data.errors);
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText]);
-            });
-    }
+    const [showDemoModal, setShowDemoModal] = useState(false)
 
     return (
-        <button onClick={handleSubmit} className={classNm}>Sign In With Demo</button>
+        <>
+            <button onClick={() => setShowDemoModal(!showDemoModal)} className={classNm}>Sign In With Demo</button>
+            {/* {true && ( */}
+            {showDemoModal && (
+                <Modal onClose={() => setShowDemoModal(false)}>
+                    <DemoModal 
+                        setShowDemoModal={setShowDemoModal}
+                    />
+                </Modal>
+            )}
+        </>
     )
 }
 

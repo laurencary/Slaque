@@ -1,0 +1,99 @@
+.demo-modal-container {
+    background-color: lavender;
+    color: black;
+    height: 70vh;
+    width: 35vw;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.demo-modal-container p, .demo-modal-container ol, .demo-instruction-item{
+    text-align: left;
+    padding-bottom: 15px;
+    line-height: 1.2;
+}
+
+.demo-instruction-item {
+    padding-left: 10px;
+    /* padding-bottom: 5px; */
+}
+
+.copy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #541554 !important;
+    color: white;
+    padding: 4px; 
+    font-size: 15px;
+    border: none;
+    box-shadow: none;
+    border-radius: 4px;
+}
+
+.copy-button:hover {
+    cursor: pointer;
+    background-color: #753e75 !important;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.copy-url-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 300px;
+    background-color: rgb(255, 255, 255);
+    padding: 4px 10px;
+    margin: 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.demo-modal-header {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #541554;
+    font-weight: 600;
+}
+
+.close-demo-modal-button {
+    position: fixed;
+    color: rgb(67, 67, 80);
+    font-size: 20px;
+    left: 66vw;
+}
+
+.close-demo-modal-button:hover {
+    color: black;
+}
+
+.bold-purple {
+    border-radius: 4px;
+    color: #541554;
+    font-weight: 600;
+}
+
+.demo-instructions-list {
+    padding: 5px 30px 20px;
+    margin-bottom: 20px;
+}
+
+.copied {
+    background-color: #007a5a !important;
+    padding: 4px;
+    font-size: 15px;
+    border: none;
+    box-shadow: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bold-green {
+    border-radius: 4px;
+    color: #007a5a;
+    font-weight: 600;
+}
