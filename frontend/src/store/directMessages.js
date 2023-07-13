@@ -63,6 +63,7 @@ export const createDirectMessage = (workspaceUserIds, message, workspaceId) => a
         // debugger
         dispatch(createMessage(newMessage))
         dispatch(receiveDirectMessage(data.directMessage))
+        return data.directMessage.id
     }
 }
 

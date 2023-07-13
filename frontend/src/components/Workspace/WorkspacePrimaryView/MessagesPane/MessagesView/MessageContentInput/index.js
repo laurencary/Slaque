@@ -13,7 +13,7 @@ const MessageContentInput = ({ messageableId, messageableType, messageMembersArr
     const dispatch = useDispatch();
     const [messageContent, setMessageContent] = useState(content);
 
-    const handleCreateMessage = (e) => {
+    const handleCreateMessage = async (e) => {
         e.preventDefault();
         let unreadByWorkspaceUsers = {};
         for (const id of messageMembersArr) {
@@ -40,8 +40,8 @@ const MessageContentInput = ({ messageableId, messageableType, messageMembersArr
                 unreadByWorkspaceUsers,
                 messageableType: "DirectMessage"
             }
-            history.push(`/client/${clientId}/${workspaceId}`)
-            dispatch(createDirectMessage(messageMembersArr, newMessage, workspaceId));
+            const id = await dispatch(createDirectMessage(messageMembersArr, newMessage, workspaceId));
+            history.push(`/client/${clientId}/${workspaceId}/dm${id}`)
         }
     }
 

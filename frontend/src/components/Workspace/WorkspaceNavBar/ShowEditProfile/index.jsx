@@ -62,7 +62,7 @@ const ShowEditProfile = ({ profile, setShow, closeModals }) => {
                 </form>
             </div>
             <footer className="create-channel-footer">
-                <button className="unstyled-button cancel-button" onClick={() => setShow(false)}>Cancel</button>
+                <button className="unstyled-button cancel-button" onClick={closeModals}>Cancel</button>
                 <button onClick={handleUpdate} className="green-text-button" disabled={fullName === ''}>Save Changes</button>
             </footer>
         </div>

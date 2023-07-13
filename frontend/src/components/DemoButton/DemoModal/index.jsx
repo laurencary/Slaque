@@ -53,7 +53,7 @@ const DemoModal = ({setShowDemoModal}) => {
                 <li className="demo-instruction-item">Launch the same workspace 
                 and head to the same channel or direct message</li>
                 <li className="demo-instruction-item">
-                    Create, edit, and delete some messages from both users!
+                    Create, edit, and delete some messages with both users!
                 </li>
             </ol>
             <div className="demo-buttons-container">

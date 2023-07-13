@@ -16,18 +16,18 @@ const CreateChannelModal = ({setShowActions, parentModalShow}) => {
     const [channelName, setChannelName] = useState('')
     const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setChannelName('');
         setShowActions(false);
         parentModalShow(false);
-        history.push(`/client/${clientId}/${workspaceId}`)
         const channelParams = {
             workspaceId,
             ownerId: currentWorkspaceUserId,
             name: channelName
         }
-        dispatch(createChannel(channelParams));
+        const id = await dispatch(createChannel(channelParams));
+        history.push(`/client/${clientId}/${workspaceId}/c${id}`)
     }
 
     const closeModals = () => {
