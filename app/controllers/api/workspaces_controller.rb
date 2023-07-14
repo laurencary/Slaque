@@ -3,7 +3,7 @@ class Api::WorkspacesController < ApplicationController
 	end
 
 	def show
-		@workspace = Workspace.where("id = #{params[:id]}").includes(:workspace_users, :channels, :direct_messages,)
+		@workspace = Workspace.where("id = #{params[:id]}").includes(:workspace_users, :channels, :direct_messages)
 		# debugger
 		render :show
 	end

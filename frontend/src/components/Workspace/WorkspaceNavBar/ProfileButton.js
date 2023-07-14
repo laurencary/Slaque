@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../../store/session';
 import { getCurrentWorkspaceProfile } from "../../../store/currentWorkspace";
 import { Modal } from "../../../context/Modal";
-import ShowEditProfile from "./ShowEditProfile";
 import UserIcon from "../UserIcon";
+import CreateEditProfile from "../../CreateEditProfile";
 
 const ProfileButton = () => {
     const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const ProfileButton = () => {
             </ul>
             {showProfile && (
                 <Modal onClose={closeModals}>
-                    <ShowEditProfile 
+                    <CreateEditProfile
                         setShow={setShowProfile}
                         profile={profile}
                         closeModals={closeModals}/>

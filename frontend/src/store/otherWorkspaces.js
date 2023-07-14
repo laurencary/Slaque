@@ -5,6 +5,11 @@ export const receiveOtherWorkspaces = (otherWorkspaces) => ({
     otherWorkspaces
 })
 
+export const getOtherWorkspaces = (state) => {
+    return state.otherWorkspaces ? Object.values(state.otherWorkspaces) : []
+
+}
+
 const otherWorkspacesReducer = (state = {}, action) => {
     const newState = { ...state };
 

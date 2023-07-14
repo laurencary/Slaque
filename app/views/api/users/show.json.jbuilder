@@ -3,7 +3,7 @@ json.user do
 end
 
 @workspace_user_subscriptions = WorkspaceUserSubscription.where("user_id = #{current_user.id}").includes(:workspace)
-
+@otherWorkspace = @workspace_user_subscriptions == [] ? Workspace.all : Workspace.where("id not in (?)", @workspace_user_subscriptions.pluck(:workspace_id))
 
 json.userWorkspaces do 
     @workspace_user_subscriptions.each do |userWorkspace|
@@ -17,7 +17,7 @@ json.userWorkspaces do
 end
 
 json.otherWorkspaces do
-    Workspace.where("id not in (?)", @workspace_user_subscriptions.pluck(:workspace_id)).each do |otherWorkspace|
+    @otherWorkspace.each do |otherWorkspace|
         json.set! otherWorkspace.id.to_i do
             json.id otherWorkspace.id
             json.name otherWorkspace.name

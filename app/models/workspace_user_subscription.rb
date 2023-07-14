@@ -14,7 +14,7 @@
 #  updated_at    :datetime         not null
 #
 class WorkspaceUserSubscription < ApplicationRecord
-    validates :full_name, presence: true
+    validates :full_name, presence: true, uniqueness: { scope: :workspace_id, message: "A user already exists with that name" }
 
     belongs_to :user
     belongs_to :workspace

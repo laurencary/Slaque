@@ -38,7 +38,7 @@ const DemoModal = ({setShowDemoModal}) => {
                 <li className="demo-instruction-item">Open a new incognito window, go to the following url
                     <div className="copy-url-container">
                         <span className={urlValue === "copied!" ? "bold-green" : "bold-purple"}>{urlValue}</span>
-                        <button className={urlValue === "copied!" ? "copied unstyled-button" : "copy-button"} onClick={handleCopy}>
+                        <button className={urlValue === "copied!" ? "copied" : "copy-button"} onClick={handleCopy}>
                             <BiCopy />
                         </button>
                     </div>

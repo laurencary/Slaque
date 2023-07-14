@@ -38,6 +38,21 @@ export const updateWorkspaceUser = (workspaceUser) => async (dispatch) => {
     }
 }
 
+export const createWorkspaceUser = (workspaceUser) => async (dispatch) => {
+    const res = await csrfFetch(`/api/workspace_user_subscriptions`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ workspaceUser })
+    })
+
+    if (res.ok) {
+        const payload = await res.json();
+        dispatch(receiveCurrentWorkspace(payload))
+    }
+}
+
 const workspaceUsersReducer = (state = {}, action) => {
     const newState = {...state}
 

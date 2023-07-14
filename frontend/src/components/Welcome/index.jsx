@@ -2,16 +2,18 @@ import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserWorkspaces } from "../../store/userWorkspaces";
+import { getOtherWorkspaces } from "../../store/otherWorkspaces";
+import { removeCurrentWorkspace } from "../../store/currentWorkspace";
 import { fetchUser } from "../../store/session";
-import NavBar from "../NavBar";
 import wave from '../../images/waving-hand@2x.gif'
 import WorkspaceItem from "./WorkspaceItem";
+import NavBar from "../NavBar";
 import './Welcome.css'
-import { removeCurrentWorkspace } from "../../store/currentWorkspace";
 
 const Welcome = () => {
     const dispatch = useDispatch();
     const userWorkspaces = useSelector(getUserWorkspaces);
+    const otherWorkspaces = useSelector(getOtherWorkspaces);
     const user = useSelector(state => state.session.user);
     
     useEffect(() => {
@@ -35,7 +37,14 @@ const Welcome = () => {
                     <h1 id="workspaces-for">Workspaces for { user === null ? '' : user.email }</h1>
                     <ul id="workspaces-welcome-list">
                         {userWorkspaces.map((userWorkspace) => (
-                            <WorkspaceItem key={`w${userWorkspace.id}`} workspace={userWorkspace} />
+                            <WorkspaceItem key={`w${userWorkspace.id}`} 
+                                workspace={userWorkspace} 
+                                isMember={true}/>
+                        ))}
+                        {otherWorkspaces.map((otherWorkspace) => (
+                            <WorkspaceItem key={`w${otherWorkspace.id}`} 
+                                workspace={otherWorkspace} 
+                                isMember={false}/>
                         ))}
                     </ul>
                 </div>

@@ -1,13 +1,19 @@
 class Api::WorkspaceUserSubscriptionsController < ApplicationController
-	wrap_parameters :message, include: Message.attribute_names + ["fullName", "displayName","workspaceUser"]
+	wrap_parameters :message, include: Message.attribute_names + ["fullName", "displayName","workspaceUser","workspaceId","userId"]
 
 	def index
 		@workspace_user_subscriptions = WorkspaceUserSubscription.where("user_id = #{current_user.id}").includes(:workspace)
-		@other_workspaces = 
 		render :index
 	end
 
 	def create
+		@workspace_user_subscription = WorkspaceUserSubscription.new(wus_params)
+		if @workspace_user_subscription.save
+			@workspace = Workspace.where("id = #{params[:workspace_id]}").includes(:workspace_users, :channels, :direct_messages)
+			render 'api/workspaces/show'
+		else
+			render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity 
+		end
 	end
 
 	def update

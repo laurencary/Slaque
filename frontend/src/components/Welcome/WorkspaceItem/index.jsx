@@ -1,12 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import { useState } from 'react';
 import './WorkspaceItem.css'
 import DunderLogo from "./DunderMifflinLogo";
 import WickedLogo from "./WickedLogo";
+import CreateEditProfile from "../../CreateEditProfile"
+import {Modal} from '../../../context/Modal'
 
-const WorkspaceItem = ({workspace}) => {
+const WorkspaceItem = ({ workspace, isMember }) => {
     const user = useSelector(state => state.session.user);
+    const [showCreateProfile, setShowCreateProfile] = useState(false);
 
     return (
         <li className="workspace-item-container">
@@ -21,8 +24,19 @@ const WorkspaceItem = ({workspace}) => {
                 </div>
             </div>
             <div >
-                <NavLink className="workspace-item-right" to={`/client/${user.id}/${workspace.id}`}>LAUNCH SLACK</NavLink>
+                {isMember ? <NavLink className="workspace-item-right" to={`/client/${user.id}/${workspace.id}`}>LAUNCH SLAQUE</NavLink>
+                    : <button className="workspace-item-right" onClick={() => setShowCreateProfile(!showCreateProfile)}>JOIN WORKSPACE</button>}
             </div>
+            {showCreateProfile && (
+                <Modal onClose={()=>setShowCreateProfile(false)}>
+                    <CreateEditProfile
+                        setShow={showCreateProfile}
+                        profile={{}}
+                        closeModals={() => setShowCreateProfile(false)} 
+                        isCreate={true}
+                        workspaceId={workspace.id}/>
+                </Modal>
+            )}
         </li>
     )
 }

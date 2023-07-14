@@ -30,6 +30,12 @@
     justify-content: flex-start;
 }
 
+.optional {
+    font-weight: 400;
+    padding-left: 7px;
+    color: #d1d2d3
+}
+
 .edit-profile-label-container {
     width: 100%;
 }

@@ -31,7 +31,7 @@ const MessagesPane = ({workspaceId}) => {
     })
 
     const handleJoin = () => {
-        dispatch(createChannelSubscription(messageableId.id, workspaceUserId));
+        dispatch(createChannelSubscription(messageableId, workspaceUserId));
     }
 
     let messageDetailsName;
@@ -128,7 +128,7 @@ const MessagesPane = ({workspaceId}) => {
                         <div className="create-message-container">
                             <h1 className="channel-name">{messageableType === "channel" && <HiOutlineHashtag />}{messageDetailsName}</h1>
                             <div>
-                                <button className="green-text-button">Join Channel</button>
+                                <button onClick={handleJoin} className="green-text-button">Join Channel</button>
                             </div>
                             <NavLink to={`/client/${clientId}/${workspaceId}/all-channels`} className="all-channels-link">Back to all channels</NavLink>
                         </div >}
