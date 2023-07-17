@@ -64,7 +64,7 @@ export const signup = (user) => async (dispatch) => {
 
     const data = await response.json();
     storeCurrentUser(data.user);
-    debugger
+    // debugger
     dispatch(setCurrentUser(data.user));
     dispatch(receiveUserWorkspaces(data.userWorkspaces));
     dispatch(receiveOtherWorkspaces(data.otherWorkspaces));

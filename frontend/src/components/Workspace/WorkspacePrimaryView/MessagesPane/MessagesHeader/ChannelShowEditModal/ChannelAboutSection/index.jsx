@@ -16,8 +16,6 @@ const ChannelAboutSection = ({ channel, setShow }) => {
     const [showEditName, setShowEditName] = useState(false);
     const channelOwner = useSelector(state => state.workspaceUsers[channel.ownerId]);
     const isChannelMember = useSelector(state => state.currentWorkspace.subscribedChannels.includes(channel.id))
-    console.log(useSelector(state => state.currentWorkspace.subscribedChannels.includes(channel.id)));
-    console.log(channel.id);
 
     const handleDelete = () => {
         setShow(false)

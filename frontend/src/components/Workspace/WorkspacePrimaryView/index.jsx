@@ -6,6 +6,7 @@ import { getAllChannels } from "../../../store/channels";
 import { getUserWorkspaces } from "../../../store/userWorkspaces";
 import { getDirectMessages, removeCurrentWorkspace } from "../../../store/directMessages";
 import { fetchCurrentWorkspace } from "../../../store/currentWorkspace";
+import { getMessages } from "../../../store/messages";
 import WorkspaceNavBar from "../WorkspaceNavBar";
 import WorkspaceSidebar from "../WorkspaceSidebar";
 import MessagesPane from "./MessagesPane";
@@ -14,11 +15,13 @@ import '../Workspace.css'
 const WorkspacePrimaryView = () => {
     const dispatch = useDispatch();
     const userWorkspaces = useSelector(getUserWorkspaces);
+    const haveData = useSelector(state => state.currentWorkspace.currentWorkspaceId !== undefined)
     const user = useSelector(state => state.session.user);
     const {workspaceId} = useParams();
     const workspace = useSelector(state => state.userWorkspaces[workspaceId])
     const channels = useSelector(getAllChannels);
-    const directMessages = useSelector(getDirectMessages);
+    const messages = useSelector(getMessages);
+    const channelsSubs = useSelector(state => state.currentWorkspace.subscribedChannels)
     const { messageableCode } = useParams();
 
     useEffect(() => {
@@ -29,7 +32,7 @@ const WorkspacePrimaryView = () => {
     }, [])
 
     useEffect(() => {
-        if (channels.length === 0) {
+        if (channels.length === 0 && channelsSubs) {
             dispatch(fetchCurrentWorkspace(workspaceId))
         }
     }, [])
@@ -37,11 +40,11 @@ const WorkspacePrimaryView = () => {
 
     if (!user) return <Redirect to='/' />;
     
-    return userWorkspaces.length ? (
+    return haveData ? (
         <div id="workspace-layout">
             <WorkspaceNavBar />
-            <WorkspaceSidebar />
-            {messageableCode && channels.length > 0 && directMessages.length > 0 ? <MessagesPane workspaceId={workspaceId}/> : 
+            {haveData && <WorkspaceSidebar />}
+            {messageableCode && haveData ? <MessagesPane workspaceId={workspaceId}/> : 
                 <h1 className="workspace-primary-view h1-only">
                     Please select a channel or direct message.
                     <br></br>

@@ -24,7 +24,7 @@ const CreateEditProfile = ({ profile, setShow, closeModals, isCreate, workspaceI
             title: title === '' ? null : title,
             pronunciation: pronunciation === '' ? null : pronunciation
         }
-        console.log(newProfile);
+        // console.log(newProfile);
         dispatch(updateWorkspaceUser(newProfile))
         closeModals();
     }
