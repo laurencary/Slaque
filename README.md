@@ -26,7 +26,8 @@ React.js, Redux (for global state management), HTML5, and CSS.
 - Users can login with Demo user accounts, providing access to all the application's features
 - Most functionality requires a login.
 - Authentication is created and validated using a Rails session object.
-https://github.com/laurencary/Slaque/assets/46424904/68a64d9b-6973-4979-82db-fe6373390a53
+
+https://github.com/laurencary/Slaque/assets/46424904/4da913e0-cb9a-429d-8ecb-0904ce8fce1e
 
 ### Workspaces:
 - Users can join a workspace
@@ -34,13 +35,13 @@ https://github.com/laurencary/Slaque/assets/46424904/68a64d9b-6973-4979-82db-fe6
 - Users can create and edit a profile specific to the workspace.
 
 ### Channels:
-- Users can create a channel
 - Users can browse all channels
+- Users can create a channel
 - Users that are members of a channel can edit the description
 - Users that are the owners of a channel can edit the name or delete the channel
 - Users can leave a channel
 - Users can join a channel
-- Users can add other memebers of the workspace to a channel
+- Users can add other memebers in the workspace to a channel
 
 ### Direct Messages
 - Users can create conversations with one or more workspace members
