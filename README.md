@@ -36,7 +36,7 @@ receiving messages, updating messages or omitting deleted messages.
 
 
 ### Workspaces:
-- Users can view a workspace
+- Users can join a workspace
 - Users can switch between workspaces they belong to
 - Users can create and edit a profile specific to the workspace.
 
