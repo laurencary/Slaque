@@ -33,12 +33,12 @@ const MessagesView = ({ messageableId, messageableType, messageMembersArr }) => 
                 {messages.map((message) => (
                     <>
                         { unreadMessages.length > 0 && message.id === firstUnreadMessage.id && (
-                            <div key={`nms${message.id}`} className="new-messages-line">
+                            <div key={`nms${messageableId}${messageableType}${message.id}`} className="new-messages-line">
                                 <hr></hr>
                                 <p>New</p>
                             </div>
                         )}
-                        <div key={`msg${message.id}`}>
+                        <div key={`msg${messageableId}${messageableType}${message.id}`}>
                             <MessageItem  message={message} messageableId={messageableId} messageableType={messageableType} />
                         </div>
                     </>

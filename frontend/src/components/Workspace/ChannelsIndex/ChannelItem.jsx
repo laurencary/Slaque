@@ -48,9 +48,9 @@ const ChannelItem = ({channel, isSubscribed}) => {
                 </div>
             </div>
             {showButtons && (joined ? 
-                <NavLink to={`/client/${clientId}/${workspaceId}/all-channels`} 
+                <button
                     onClick={handleLeave} 
-                    className="unstyled-button cancel-button">Leave</NavLink> 
+                    className="unstyled-button cancel-button">Leave</button> 
                 : <div className='channel-item-right-side'>
                     <button className="unstyled-button cancel-button">View</button>
                     <button onClick={handleJoin} className='green-text-button'>Join</button>

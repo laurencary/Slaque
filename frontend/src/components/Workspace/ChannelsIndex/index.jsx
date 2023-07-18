@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../../store/session";
 import { getAllChannels } from "../../../store/channels";
 import { getUserWorkspaces } from "../../../store/userWorkspaces";
-import { removeCurrentWorkspace } from "../../../store/directMessages";
 import { fetchCurrentWorkspace } from "../../../store/currentWorkspace";
 import WorkspaceNavBar from "../WorkspaceNavBar"
 import WorkspaceSidebar from "../WorkspaceSidebar"
