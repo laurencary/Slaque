@@ -15,25 +15,18 @@ workspace to live chat with each other through channels and direct messages.
 - HTML5
 - CSS
 
+## Features
 Slaque's core application centers on the Websocket Communication Protocol which 
 provides users with live updates without refreshing the page. I built the backend
 using Ruby on Rails and a PostgreSQL database. The front end utilizes 
 React.js, Redux (for global state management), HTML5, and CSS.
-
-## Features
-### LiveChat with the WebSocket Communication Protocol
-- Logged in users that are subscribed to a given channel/direct message receive
-live updates without having to refresh the page. Updates include
-receiving messages, updating messages or omitting deleted messages.
-- Currently, the user is subscribed to a single channel or direct message they have selected 
-
 
 ### User Authentication:
 - Users can create an account and login with credentials, as well as log out.
 - Users can login with Demo user accounts, providing access to all the application's features
 - Most functionality requires a login.
 - Authentication is created and validated using a Rails session object.
-
+https://github.com/laurencary/Slaque/assets/46424904/68a64d9b-6973-4979-82db-fe6373390a53
 
 ### Workspaces:
 - Users can join a workspace
@@ -52,6 +45,12 @@ receiving messages, updating messages or omitting deleted messages.
 ### Direct Messages
 - Users can create conversations with one or more workspace members
 - Users can add other members of the workspace to a direct message
+  
+### LiveChat with the WebSocket Communication Protocol
+- Logged in users that are subscribed to a given channel/direct message receive
+live updates without having to refresh the page. Updates include
+receiving messages, updating messages or omitting deleted messages.
+- Currently, the user is subscribed to a current channel or direct message they have selected 
 
 ### Messages
 - Users can live chat in a direct message or channel
