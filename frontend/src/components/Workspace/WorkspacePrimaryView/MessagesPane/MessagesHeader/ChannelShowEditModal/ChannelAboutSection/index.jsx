@@ -28,8 +28,8 @@ const ChannelAboutSection = ({ channel, setShow }) => {
     }
 
     const handleLeave = () => {
-        history.push(`/client/${clientId}/${workspaceId}`)
         dispatch(deleteChannelSubscription(channel.id, workspaceUserId))
+        history.push(`/client/${clientId}/${workspaceId}/all-channels`)
     }
 
     return (

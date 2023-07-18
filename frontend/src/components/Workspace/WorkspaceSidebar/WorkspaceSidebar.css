@@ -41,6 +41,7 @@
 .sidebar-team-menu:hover {
     background-color: rgb(70, 70, 70);
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .workspace-sidebar {
@@ -92,6 +93,10 @@
     flex-direction: row;
     padding: 0 10px 0 16px;
     line-height: 16px;
+}
+
+.sidebar-list-item-container:hover {
+    cursor: pointer;
 }
 
 .sidebar-list-item-container {

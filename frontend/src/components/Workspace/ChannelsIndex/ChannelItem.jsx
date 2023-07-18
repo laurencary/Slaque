@@ -3,11 +3,13 @@ import { HiHashtag } from 'react-icons/hi';
 import { useState } from 'react';
 import { createChannelSubscription, deleteChannelSubscription } from '../../../store/channelSubscriptions';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useHistory } from 'react-router-dom';
 import { FiCheck } from 'react-icons/fi';
 
 const ChannelItem = ({channel, isSubscribed}) => {
-    const {clientId, workspaceId} = useParams()
+    const {clientId, workspaceId} = useParams();
+    const history = useHistory();
+    const [joined, setJoined] = useState(isSubscribed)
     const dispatch = useDispatch();
     const workspaceUserId = useSelector(state => state.currentWorkspace.workspaceSubscriptionId)
     const [showButtons, setShowButtons] = useState(false);
@@ -17,6 +19,8 @@ const ChannelItem = ({channel, isSubscribed}) => {
 
     const handleLeave = () => {
         dispatch(deleteChannelSubscription(channel.id, workspaceUserId))
+        history.push(`/client/${clientId}/${workspaceId}/all-channels`)
+        setJoined(false);
     }
 
     return (
@@ -31,7 +35,7 @@ const ChannelItem = ({channel, isSubscribed}) => {
                     <span className='channel-item-header'>{channel.name}</span>
                 </div>
                 <div className='channel-item-details'>
-                    {isSubscribed && (
+                    {joined && (
                         <span className='channel-item-details-text green-text'><FiCheck /> Joined <RxDotFilled size='7px' className='channel-item-details-text dot' /></span>
                     )}
                     <span className='channel-item-details-text'>{channel.workspaceUsers.length} member{channel.workspaceUsers.length === 1 ? '' : 's'}</span>
@@ -43,7 +47,7 @@ const ChannelItem = ({channel, isSubscribed}) => {
                     )}
                 </div>
             </div>
-            {showButtons && (isSubscribed ? 
+            {showButtons && (joined ? 
                 <NavLink to={`/client/${clientId}/${workspaceId}/all-channels`} 
                     onClick={handleLeave} 
                     className="unstyled-button cancel-button">Leave</NavLink> 
