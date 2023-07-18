@@ -21,7 +21,7 @@ export const getUserWorkspaces = (state) => {
 // }
 
 const userWorkspacesReducer = (state = {}, action) => {
-    const newState = {...state};
+    // const newState = {...state};
 
     switch (action.type) {
         case RECEIVE_USER_WORKSPACES:

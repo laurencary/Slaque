@@ -1,10 +1,11 @@
 .demo-modal-container {
     background-color: lavender;
     color: black;
-    height: 70vh;
+    /* height: 70vh; */
     width: 35vw;
     padding: 30px;
     border-radius: 12px;
+    min-width: 380px;
 }
 
 .demo-modal-container p, .demo-modal-container ol, .demo-instruction-item{

@@ -11,7 +11,7 @@ export const getOtherWorkspaces = (state) => {
 }
 
 const otherWorkspacesReducer = (state = {}, action) => {
-    const newState = { ...state };
+    // const newState = { ...state };
 
     switch (action.type) {
         case RECEIVE_OTHER_WORKSPACES:
