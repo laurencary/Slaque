@@ -139,12 +139,10 @@ end
 
 
 ## Features to add in the future
-- Add a demo 2 button
-- In the future, this will be expanded so that when a user is logged in they will be 
+- In the future, WebSockets will be expanded so that when a user is logged in they will be 
   subscribed to updates from all channels and direct messages they are a part of.
 - functionality to create a workspace
-- functionality to add members to a workspace
-- functionality to join or leave a workspace
+- functionality to leave a workspace
 - Add mentions
 - Add threads
 - Add emojis to the message content
