@@ -38,7 +38,7 @@ const NavBar = () => {
         <div id="nav-left">
             <li className="nav-li"><Link to={{pathname: "https://github.com/laurencary" }}target="_blank" className="link-text">GitHub</Link></li>
             <li className="nav-li"><Link to={{ pathname: "https://www.linkedin.com/in/laurengcary/"}} target="_blank" className="link-text">LinkedIn</Link></li>
-            <li className="nav-li"><Link to={{ pathname: "https://laurencary.github.io/portfolio/"}} target="_blank" className="link-text">Portfolio</Link></li>
+            <li className="nav-li"><Link to={{ pathname: "https://laurencary.netlify.app/"}} target="_blank" className="link-text">Portfolio</Link></li>
         </div>
     )
 
