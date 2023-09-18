@@ -25,7 +25,7 @@ const WorkapceOptionsDropdown = ({workspace}) => {
                 <hr className="actions-modal-hr workspaces-hr" />
                 <Link to={{ pathname: "https://github.com/laurencary" }} target="_blank" className="workspace-options-text">GitHub</Link>
                 <Link to={{ pathname: "https://www.linkedin.com/in/laurengcary/" }} target="_blank" className="workspace-options-text">LinkedIn</Link>
-                <Link to={{ pathname: "https://laurencary.github.io/portfolio/" }} target="_blank" className="workspace-options-text">Portfolio</Link>
+                <Link to={{ pathname: "https://laurencary.netlify.app/" }} target="_blank" className="workspace-options-text">Portfolio</Link>
                 <hr className="actions-modal-hr workspaces-hr" />
                 <NavLink to={`/client/${clientId}/get-started/landing`} className="workspace-options-text">Back to welcome</NavLink>
                 <div onClick={() => dispatch(sessionActions.logout())} className='workspace-options-text'>Sign out of Slaque</div>
